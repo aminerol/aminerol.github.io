@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>@font-face { font-family: "Anton"; font-style: normal; font-weight: 400; src: url("fonts/Anton-normal-400.woff2") format("woff2"); }
+@font-face { font-family: "Instrument Sans"; font-style: normal; font-weight: 400; src: url("fonts/InstrumentSans-normal-400.woff2") format("woff2"); }
+@font-face { font-family: "Instrument Sans"; font-style: normal; font-weight: 600; src: url("fonts/InstrumentSans-normal-600.woff2") format("woff2"); }
+@font-face { font-family: "Instrument Serif"; font-style: italic; font-weight: 400; src: url("fonts/InstrumentSerif-italic-400.woff2") format("woff2"); }
+@font-face { font-family: "Instrument Serif"; font-style: normal; font-weight: 400; src: url("fonts/InstrumentSerif-normal-400.woff2") format("woff2"); }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1080px; height: 1920px; overflow: hidden; background: #130F2E; }
+    #root { position: relative; width: 100%; height: 100%; overflow: hidden; font-family: "Instrument Sans", sans-serif; color: #F4F2FF; background: #130F2E; }
+    .bg { position: absolute; inset: 0; overflow: hidden; }
+    .glow { position: absolute; border-radius: 50%; }
+    .glow-a { width: 1300px; height: 1300px; left: -380px; top: -420px; background: radial-gradient(circle, rgba(108,92,231,0.30) 0%, rgba(108,92,231,0) 65%); }
+    .glow-b { width: 1200px; height: 1200px; right: -420px; bottom: -380px; background: radial-gradient(circle, rgba(162,155,254,0.20) 0%, rgba(162,155,254,0) 65%); }
+    .ghost { position: absolute; left: -40px; bottom: 120px; font-family: "Instrument Serif", serif; font-style: italic; font-size: 380px; line-height: 0.8; color: #F4F2FF; opacity: 0.06; white-space: nowrap; }
+    .hair { position: absolute; left: 90px; right: 90px; height: 2px; background: #F4F2FF; opacity: 0.16; }
+    .hair-top { top: 96px; } .hair-bot { bottom: 96px; }
+    .meta-top { position: absolute; top: 56px; left: 90px; right: 90px; display: flex; justify-content: space-between; font-family: "JetBrains Mono", monospace; font-size: 22px; letter-spacing: 0.08em; color: #BDB6E8; }
+    .progress { position: absolute; bottom: 94px; left: 90px; height: 6px; width: 900px; background: #8F7BFF; transform-origin: left center; border-radius: 3px; }
+    .scene { position: absolute; top: 0; left: 0; width: 1080px; height: 1920px; overflow: hidden; }
+    .scene + .scene { opacity: 0; }
+    .scene-content { width: 100%; height: 100%; padding: 170px 90px 150px; display: flex; flex-direction: column; gap: 48px; box-sizing: border-box; }
+    .center { justify-content: center; }
+    .kicker { font-family: "JetBrains Mono", monospace; font-size: 26px; letter-spacing: 0.1em; color: #8F7BFF; font-weight: 500; }
+    .cap { font-family: "Instrument Serif", serif; font-size: 92px; line-height: 0.98; letter-spacing: -0.02em; max-width: 880px; color: #F4F2FF; }
+    .title { font-family: "Instrument Serif", serif; font-size: 132px; line-height: 0.95; letter-spacing: -0.025em; max-width: 900px; }
+    .sub { font-size: 40px; line-height: 1.3; color: #BDB6E8; max-width: 860px; }
+    .meta { font-family: "JetBrains Mono", monospace; font-size: 24px; letter-spacing: 0.1em; color: #BDB6E8; }
+    .rule { width: 240px; height: 6px; background: #8F7BFF; border-radius: 3px; transform-origin: left center; }
+    .badge { width: 180px; height: 180px; border-radius: 44px; overflow: hidden; display: flex; align-items: center; justify-content: center; box-shadow: 0 30px 70px rgba(0,0,0,0.35); }
+    .badge img { width: 100%; height: 100%; object-fit: cover; }
+    .badge-flag { background: #FFFFFF; }
+    .badge-flag i { display: block; width: 110px; height: 64px; border-radius: 40px; background: linear-gradient(#CE2230 0 33%, #FFFFFF 33% 66%, #2148C6 66%); border: 3px solid rgba(16,24,43,0.12); }
+    .badge-veto { background: #0C0B10; border: 3px solid rgba(205,251,69,0.4); font-family: "Anton", "Instrument Sans", sans-serif; font-size: 70px; color: #CDFB45; letter-spacing: 0.02em; }
+    .head { display: flex; flex-direction: column; gap: 22px;  }
+    .shot-zone { flex: 1; position: relative; display: flex; align-items: flex-start; justify-content: center; min-height: 0; }
+    .shot-wrap { position: relative; height: 100%; max-height: 1240px; border-radius: 64px; overflow: hidden; box-shadow: 0 50px 120px rgba(0,0,0,0.38), 0 0 0 3px rgba(255,255,255,0.08); }
+    .shot-wrap img { display: block; height: 100%; width: auto; }
+    .mac .shot-wrap { height: auto; width: 100%; max-width: 900px; }
+    .mac .shot-wrap img { width: 100%; height: auto; }
+    .counter { position: absolute; right: 90px; bottom: 120px; font-family: "JetBrains Mono", monospace; font-size: 24px; color: #BDB6E8; letter-spacing: 0.08em; }
+    .dot { display: inline-block; width: 16px; height: 16px; border-radius: 50%; background: #36D399; margin-right: 14px; vertical-align: middle; }
+    /* panorama */
+    .pano-frame { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: hidden; }
+    .pano-strip { position: absolute; top: 0; left: 0; height: 1920px; display: flex; }
+    .pano-strip img { height: 1920px; width: 1080px; display: block; }
+    .pano-label { position: absolute; left: 90px; bottom: 150px; padding: 18px 28px; border-radius: 999px; background: #130F2E; color: #F4F2FF; font-family: "JetBrains Mono", monospace; font-size: 28px; letter-spacing: 0.08em; box-shadow: 0 20px 50px rgba(0,0,0,0.35); }
+    .pano-label b { color: #8F7BFF; font-weight: 500; }
+  </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="17.8" data-width="1080" data-height="1920">
+      
+      <div class="bg" data-layout-ignore>
+        <div class="glow glow-a"></div><div class="glow glow-b"></div>
+        <div class="ghost">POP</div>
+      </div>
+      <div class="scene" id="s0"><div class="scene-content center">
+        <div class="badge" id="i-badge"><img src="assets/pop-icon.png" alt=""></div>
+        <div class="rule" id="i-rule"></div>
+        <h1 class="title" id="i-title">Two apps. One people-ops platform.</h1>
+        <p class="sub" id="i-sub">POP by Gemo for employees. POP Manager for team leads.</p>
+        <p class="meta" id="i-meta">GEMOGRAPHY · IOS · ANDROID · 2019–2021</p>
+      </div></div><div class="scene" id="s1">
+        <div class="pano-frame"><div class="pano-strip" id="strip"><img src="assets/pop-1.jpg" alt=""><img src="assets/pop-2.jpg" alt=""><img src="assets/pop-3.jpg" alt=""><img src="assets/pop-4.jpg" alt=""><img src="assets/popmanager-1.jpg" alt=""><img src="assets/popmanager-2.jpg" alt=""><img src="assets/popmanager-3.jpg" alt=""><img src="assets/popmanager-4.jpg" alt=""><img src="assets/popmanager-5.jpg" alt=""></div></div>
+        <div class="pano-label" id="pl0"><b>01</b> &nbsp;POP BY GEMO · EMPLOYEES</div><div class="pano-label" id="pl1"><b>02</b> &nbsp;HOLIDAY ALERTS</div><div class="pano-label" id="pl2"><b>03</b> &nbsp;TEAM IN SYNC</div><div class="pano-label" id="pl3"><b>04</b> &nbsp;POP MANAGER · LEADS</div><div class="pano-label" id="pl4"><b>05</b> &nbsp;LEAVE CALENDAR</div><div class="pano-label" id="pl5"><b>06</b> &nbsp;APPROVE IN ONE TAP</div>
+      </div><div class="scene" id="so"><div class="scene-content center">
+        <div class="badge" id="o-badge"><img src="assets/pop-icon.png" alt=""></div>
+        <h2 class="title" id="o-title">One monorepo. Shared design system.</h2>
+        <p class="sub" id="o-sub">React Native · React Query · Restyle · Fastlane</p>
+      </div></div>
+      <div class="hair hair-top" data-layout-ignore></div>
+      <div class="meta-top" data-layout-ignore><span>AMINE BOUHLALI · APP PREVIEW</span><span>POP</span></div>
+      <div class="hair hair-bot" data-layout-ignore></div>
+      <div class="progress" id="progress" data-layout-ignore></div>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      
+      tl.fromTo(".glow-a", { x: 0, y: 0, scale: 1 }, { x: 120, y: 80, scale: 1.12, duration: 17.8, ease: "sine.inOut" }, 0);
+      tl.fromTo(".glow-b", { x: 0, y: 0 }, { x: -100, y: -60, duration: 17.8, ease: "sine.inOut" }, 0);
+      tl.fromTo(".ghost", { x: 0 }, { x: -260, duration: 17.8, ease: "none" }, 0);
+      tl.fromTo("#progress", { scaleX: 0 }, { scaleX: 1, duration: 17.8, ease: "none" }, 0);
+      tl.fromTo("#i-badge", { scale: 0.6, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.7, ease: "back.out(1.8)" }, 0.2);
+      tl.fromTo("#i-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "expo.out" }, 0.45);
+      tl.fromTo("#i-title", { y: 70, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: "power4.out" }, 0.5);
+      tl.fromTo("#i-sub", { x: -40, opacity: 0 }, { x: 0, opacity: 1, duration: 0.6, ease: "power2.out" }, 0.8);
+      tl.fromTo("#i-meta", { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.7, ease: "sine.out" }, 1.0);
+      tl.to("#s0", { y: -1920, duration: 0.5, ease: "power3.inOut" }, 2.1);
+      tl.fromTo("#s1", { y: 1920, opacity: 1 }, { y: 0, duration: 0.5, ease: "power3.inOut" }, 2.1);
+      tl.fromTo("#pl0", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "back.out(1.6)" }, 2.75);
+      tl.to("#pl0", { opacity: 0, duration: 0.2, ease: "power2.in" }, 4.1);
+      tl.set("#pl0", { opacity: 0, visibility: "hidden" }, 4.3);
+      tl.to("#strip", { x: -2160, duration: 0.85, ease: "expo.inOut" }, 4.1499999999999995);
+      tl.fromTo("#pl1", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "back.out(1.6)" }, 4.75);
+      tl.to("#pl1", { opacity: 0, duration: 0.2, ease: "power2.in" }, 6.1);
+      tl.set("#pl1", { opacity: 0, visibility: "hidden" }, 6.3);
+      tl.to("#strip", { x: -3240, duration: 0.85, ease: "expo.inOut" }, 6.1499999999999995);
+      tl.fromTo("#pl2", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "back.out(1.6)" }, 6.75);
+      tl.to("#pl2", { opacity: 0, duration: 0.2, ease: "power2.in" }, 8.1);
+      tl.set("#pl2", { opacity: 0, visibility: "hidden" }, 8.299999999999999);
+      tl.to("#strip", { x: -4320, duration: 0.85, ease: "expo.inOut" }, 8.15);
+      tl.fromTo("#pl3", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "back.out(1.6)" }, 8.75);
+      tl.to("#pl3", { opacity: 0, duration: 0.2, ease: "power2.in" }, 10.1);
+      tl.set("#pl3", { opacity: 0, visibility: "hidden" }, 10.299999999999999);
+      tl.to("#strip", { x: -6480, duration: 0.85, ease: "expo.inOut" }, 10.15);
+      tl.fromTo("#pl4", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "back.out(1.6)" }, 10.75);
+      tl.to("#pl4", { opacity: 0, duration: 0.2, ease: "power2.in" }, 12.1);
+      tl.set("#pl4", { opacity: 0, visibility: "hidden" }, 12.299999999999999);
+      tl.to("#strip", { x: -7560, duration: 0.85, ease: "expo.inOut" }, 12.15);
+      tl.fromTo("#pl5", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "back.out(1.6)" }, 12.75);
+      tl.to("#s1", { opacity: 0, filter: "blur(18px)", duration: 0.6, ease: "sine.inOut" }, 14.899999999999999);
+      tl.fromTo("#so", { opacity: 0, filter: "blur(18px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.6, ease: "sine.inOut" }, 15);
+      tl.fromTo("#o-badge", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.6, ease: "back.out(1.7)" }, 15.299999999999999);
+      tl.fromTo("#o-title", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: "power4.out" }, 15.45);
+      tl.fromTo("#o-sub", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "sine.out" }, 15.75);
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

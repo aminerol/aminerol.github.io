@@ -1,0 +1,7 @@
+.DS_Store
+node_modules/
+
+# HyperFrames: raw renders + studio artifacts (compressed copies live in assets/video)
+video-src/out/
+video-src/*/.hyperframes/
+video-src/fonts/g.css

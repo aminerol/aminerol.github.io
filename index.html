@@ -1,0 +1,624 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Amine Bouhlali — React Native Engineer</title>
+  <meta name="description" content="Amine Bouhlali — React Native engineer from Rabat. 5 years shipping mobile apps: real-time chat, gesture-driven UI, native modules, New Architecture migrations.">
+  <meta name="theme-color" content="#07070b" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#f3f3f6" media="(prefers-color-scheme: light)">
+  <meta property="og:title" content="Amine Bouhlali — React Native Engineer">
+  <meta property="og:description" content="Mobile apps people love to touch. Case studies, gesture lab and side projects.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='14' y='4' width='36' height='56' rx='10' fill='%237c6cff'/%3E%3Crect x='25' y='9' width='14' height='4' rx='2' fill='%2307070b'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=10">
+  <script>
+    // apply saved theme before paint
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (!t) t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+      document.documentElement.classList.add('js');
+    })();
+  </script>
+</head>
+<body>
+  <!-- SVG icon sprite -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8.5 7V5.5A1.5 1.5 0 0 1 10 4h4a1.5 1.5 0 0 1 1.5 1.5V7M3 12.5h18" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+    <symbol id="i-hand" viewBox="0 0 24 24"><path d="M8 13V5.5a1.5 1.5 0 0 1 3 0V11m0-1.5V4a1.5 1.5 0 0 1 3 0v6m0-4.5a1.5 1.5 0 0 1 3 0V12m0-3.5a1.5 1.5 0 0 1 3 0V15a6 6 0 0 1-6 6h-1.6a6 6 0 0 1-4.6-2.2L4.4 15a1.6 1.6 0 0 1 2.4-2.1L8 14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="13.5" y="3.5" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="3.5" y="13.5" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="13.5" y="13.5" width="7" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 1 3.3 6.5L4 19.5l1-3.2A7.9 7.9 0 0 1 4 12z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-ext" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-share" viewBox="0 0 24 24"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-github" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.4-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.4 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.2-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.6 9.6 0 0 1 5 0c1.9-1.3 2.8-1 2.8-1 .5 1.4.2 2.5.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.3 4.7-4.6 5 .4.3.7.9.7 1.9V21c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></symbol>
+    <symbol id="i-apple" viewBox="0 0 24 24"><path fill="currentColor" d="M16.4 12.6c0-2.5 2-3.6 2.1-3.7-1.2-1.7-3-1.9-3.6-2-1.5-.2-3 .9-3.8.9s-2-.9-3.3-.9C6.1 7 4.5 8 3.6 9.6c-1.9 3.2-.5 8 1.3 10.6.9 1.3 2 2.7 3.3 2.7 1.3-.1 1.8-.9 3.4-.9s2 .9 3.4.8c1.4 0 2.3-1.3 3.1-2.6 1-1.5 1.4-2.9 1.4-3-.1 0-2.9-1.1-3.1-4.6zM13.9 5.1c.7-.9 1.2-2 1-3.1-1 0-2.2.7-2.9 1.5-.6.7-1.2 1.9-1 3 1.1.1 2.2-.6 2.9-1.4z"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path fill="currentColor" d="M4.6 2.4 13.8 12l-9.2 9.6c-.4-.2-.6-.6-.6-1.1V3.5c0-.5.2-.9.6-1.1zm10.6 8.2 2.6-2.7 3.1 1.8c.9.5.9 1.8 0 2.3l-3.1 1.8-2.6-2.7v-.5zM5.9 1.6l10.8 6.2-2.3 2.4zm0 20.8 8.5-8.6 2.3 2.4z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m4 7 8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8zM14 3v5h5M9 13h6M9 17h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24"><path d="M12 19V5m0 0-6 6m6-6 6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2.5v2M12 19.5v2M4.5 12h-2M21.5 12h-2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M5.6 18.4 7 17M17 7l1.4-1.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2.5" fill="currentColor"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7.5V12l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-power" viewBox="0 0 24 24"><path d="M12 3v8M7 6.3a7.5 7.5 0 1 0 10 0" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.3" fill="currentColor"/></symbol>
+  </svg>
+
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- Ambient background -->
+  <div class="aurora" aria-hidden="true">
+    <span class="aurora__blob aurora__blob--a"></span>
+    <span class="aurora__blob aurora__blob--b"></span>
+    <span class="aurora__blob aurora__blob--c"></span>
+    <span class="aurora__grain"></span>
+  </div>
+
+  <!-- Status bar: Dynamic-Island style live activity -->
+  <header class="statusbar" id="statusbar">
+    <div class="island" id="island">
+      <button class="island__compact" id="islandBtn" aria-expanded="false" aria-controls="islandPanel" aria-label="Open quick navigation">
+        <span class="island__lead" id="islandLead"><span class="island__dot"></span></span>
+        <span class="island__label" id="islandLabel">Open to React Native roles</span>
+        <span class="island__ring" aria-hidden="true"><svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" class="ring-bg"/><circle cx="10" cy="10" r="8" class="ring-fg" id="islandRing"/></svg></span>
+      </button>
+      <div class="island__panel" id="islandPanel" hidden>
+        <p class="island__title"><span class="island__dot"></span>Amine Bouhlali · React Native Engineer</p>
+        <nav class="island__nav">
+          <a href="#work" data-jump><svg class="ic"><use href="#i-briefcase"/></svg>Experience</a>
+          <a href="#lab" data-jump><svg class="ic"><use href="#i-hand"/></svg>Gesture Lab</a>
+          <a href="#projects" data-jump><svg class="ic"><use href="#i-grid"/></svg>Projects</a>
+          <a href="#contact" data-jump><svg class="ic"><use href="#i-chat"/></svg>Contact</a>
+        </nav>
+        <div class="island__actions">
+          <button type="button" id="islandEmail"><svg class="ic"><use href="#i-copy"/></svg>Copy email</button>
+          <a href="assets/Amine-Bouhlali-Resume.pdf" target="_blank" rel="noopener"><svg class="ic"><use href="#i-doc"/></svg>Résumé</a>
+        </div>
+      </div>
+    </div>
+    <button class="icon-btn icon-btn--glass theme-btn" id="themeToggle" aria-label="Toggle light and dark theme">
+      <svg class="ic ic--sun"><use href="#i-sun"/></svg>
+      <svg class="ic ic--moon"><use href="#i-moon"/></svg>
+    </button>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero section" id="top" data-island="Hello">
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <p class="eyebrow reveal"><span class="live-dot"></span>React Native Engineer</p>
+          <h1 class="hero__title reveal">
+            I build mobile apps people <em class="serif">love</em> to <span class="touch" id="touchWord">touch.</span>
+          </h1>
+          <p class="hero__lead reveal">
+            Five years shipping React Native at scale — real-time chat, gesture-driven UI,
+            native modules, and the unglamorous migrations that keep an app shippable.
+          </p>
+          <div class="hero__cta reveal">
+            <a class="btn btn--primary magnetic" href="#work">See the work <svg class="ic"><use href="#i-arrow"/></svg></a>
+            <a class="btn btn--ghost magnetic" href="#contact">Say hi</a>
+          </div>
+          <dl class="stats reveal">
+            <div><dt>Years in React Native</dt><dd data-count="5">5</dd></div>
+            <div><dt>Years writing software</dt><dd data-count="10" data-suffix="+">10+</dd></div>
+            <div><dt>Sircles on the App Store</dt><dd>4.7<small>★</small></dd></div>
+          </dl>
+        </div>
+
+        <div class="hero__device reveal" data-delay="2">
+          <div class="device-stage" id="deviceStage">
+            <div class="phone phone--hero" id="heroPhone">
+              <div class="phone__btn phone__btn--a"></div>
+              <div class="phone__btn phone__btn--b"></div>
+              <div class="phone__btn phone__btn--c"></div>
+              <div class="phone__screen lockscreen">
+                <div class="lockscreen__wall"></div>
+                <div class="phone__island"><span class="phone__cam"></span></div>
+                <div class="lockscreen__head">
+                  <svg class="lockscreen__lock"><use href="#i-lock"/></svg>
+                  <div class="lockscreen__date" id="lsDate">Friday 21 November</div>
+                  <div class="lockscreen__time" id="lsTime">9:41</div>
+                </div>
+                <div class="notifs" id="notifs" aria-label="Highlights, swipe to dismiss"></div>
+                <div class="notifs-empty" id="notifsEmpty" hidden>
+                  <p>You're all caught up.</p>
+                  <button class="chip-btn" id="notifsReplay">Replay</button>
+                </div>
+                <div class="lockscreen__foot">
+                  <span class="ls-round"><svg viewBox="0 0 24 24"><path d="M9 2h6l-1 6h-4zM10 8h4v13a2 2 0 0 1-4 0z" fill="currentColor"/></svg></span>
+                  <span class="ls-round"><svg viewBox="0 0 24 24"><path d="M4 8a2 2 0 0 1 2-2h2l1.5-2h5L16 6h2a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="13" r="3.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span>
+                </div>
+                <div class="home-indicator"></div>
+                <div class="phone__glare"></div>
+              </div>
+            </div>
+            <p class="device-hint mono"><svg class="ic"><use href="#i-hand"/></svg> tap to open an app · swipe to dismiss</p>
+          </div>
+        </div>
+      </div>
+      <div class="shiplog" aria-label="Ship log">
+        <div class="shiplog__track" id="shiplog"></div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="section" id="work" data-island="Experience">
+      <div class="container">
+        <header class="section__head">
+          <p class="eyebrow reveal">01 — Experience</p>
+          <h2 class="section__title reveal">Where I've <em class="serif">shipped</em>.</h2>
+          <p class="section__lead reveal">Two product teams, six years, apps in real people's pockets. Tap a card for the full case study.</p>
+        </header>
+
+        <div class="xp-grid">
+          <article class="xp-card reveal tilt" data-open-xp="sircles" tabindex="0" role="button" aria-label="Open Sircles case study">
+            <div class="xp-card__glow" style="--g1:#33b6ff;--g2:#ff5b8a"></div>
+            <div class="xp-card__head">
+              <img class="app-icon" src="assets/img/sircles/icon.jpg" alt="" width="56" height="56" loading="lazy">
+              <div>
+                <h3>Sircles</h3>
+                <p class="muted">React Native Engineer · Feb 2022 – Jun 2026 · iOS + Android</p>
+              </div>
+            </div>
+            <p class="xp-card__copy">A social app built around your closest friends — check-ins, trusted recommendations, gamified badges and real-time chat.</p>
+            <ul class="chips">
+              <li>RN 0.79 · New Architecture</li><li>Real-time chat</li><li>Gesture UI</li><li>4.7★ · 927 ratings</li>
+            </ul>
+            <div class="fan" aria-hidden="true">
+              <img src="assets/img/sircles/3.webp" alt="" loading="lazy">
+              <img src="assets/img/sircles/1.webp" alt="" loading="lazy">
+              <img src="assets/img/sircles/6.webp" alt="" loading="lazy">
+            </div>
+            <span class="xp-card__cta">Open case study <svg class="ic"><use href="#i-arrow"/></svg></span>
+          </article>
+
+          <article class="xp-card reveal tilt" data-delay="1" data-open-xp="gemography" tabindex="0" role="button" aria-label="Open Gemography case study">
+            <div class="xp-card__glow" style="--g1:#6c5ce7;--g2:#a29bfe"></div>
+            <div class="xp-card__head">
+              <div class="icon-pair"><img class="app-icon" src="assets/img/pop/icon.jpg" alt="" width="56" height="56" loading="lazy"><img class="app-icon" src="assets/img/popmanager/icon.jpg" alt="" width="56" height="56" loading="lazy"></div>
+              <div>
+                <h3>Gemography</h3>
+                <p class="muted">Lead React Native Engineer · Nov 2019 – Dec 2021</p>
+              </div>
+            </div>
+            <p class="xp-card__copy">A people-ops platform shipped as two apps from one shared codebase.</p>
+            <div class="app-duo">
+              <div><img src="assets/img/pop/icon.jpg" alt=""><span><b>POP by Gemo</b>Employees request &amp; track leave</span></div>
+              <div><img src="assets/img/popmanager/icon.jpg" alt=""><span><b>POP Manager</b>Leads approve from the notification</span></div>
+            </div>
+            <div class="fan fan--duo" aria-hidden="true">
+              <img src="assets/img/pop/2.webp" alt="" loading="lazy">
+              <img src="assets/img/popmanager/2.webp" alt="" loading="lazy">
+              <img src="assets/img/popmanager/4.webp" alt="" loading="lazy">
+            </div>
+            <span class="xp-card__cta">Open case study <svg class="ic"><use href="#i-arrow"/></svg></span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- GESTURE LAB -->
+    <section class="section" id="lab" data-island="Gesture Lab">
+      <div class="container">
+        <header class="section__head">
+          <p class="eyebrow reveal">02 — Gesture Lab</p>
+          <h2 class="section__title reveal">Eight things I built in React Native, <em class="serif">rebuilt</em> here.</h2>
+          <p class="section__lead reveal">Interaction work from Sircles and Gemography, re-implemented in plain JavaScript so you can play with it. Same math, no native code.</p>
+        </header>
+
+        <div class="lab-grid">
+          <!-- Rotary wheel -->
+          <figure class="lab-card reveal">
+            <div class="lab-card__stage stage--wheel" data-prod>
+              <div class="wheel-wrap">
+                <div class="wheel__pointer"></div>
+                <div class="wheel" id="wheel" role="slider" aria-label="Category wheel" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0" tabindex="0"></div>
+                <div class="wheel__hub"><span id="wheelLabel">Movies</span><small>drag to spin</small></div>
+              </div>
+              <img class="lab-card__prod" src="assets/img/lab/sircles-wheel.webp" alt="The rotary wheel in the Sircles app (App Store screenshot)" loading="lazy">
+              <button class="prod-btn" type="button" aria-pressed="false"><span>See it in Sircles</span><span>Back to demo</span></button>
+            </div>
+            <figcaption>
+              <span class="lab-tag">Sircles</span>
+              <h3>Rotary category wheel</h3>
+              <p>Follows the finger in polar coordinates, carries momentum, snaps to the nearest slice and ticks a haptic on every boundary.</p>
+              <ul class="chips chips--sm"><li>atan2</li><li>velocity projection</li><li>snap points</li></ul>
+            </figcaption>
+          </figure>
+
+          <!-- Reorder grid -->
+          <figure class="lab-card reveal" data-delay="1">
+            <div class="lab-card__stage stage--grid">
+              <div class="reorder" id="reorder" aria-label="Reorderable circles grid"></div>
+            </div>
+            <figcaption>
+              <span class="lab-tag">Sircles</span>
+              <h3>Drag-to-reorder grid</h3>
+              <p>Press, lift, drag. Neighbours slide out of the way with springy repositioning while the dragged tile stays glued to your pointer.</p>
+              <ul class="chips chips--sm"><li>hit-testing</li><li>slot swapping</li><li>layout animation</li></ul>
+            </figcaption>
+          </figure>
+
+          <!-- Topic chat -->
+          <figure class="lab-card reveal" data-delay="2">
+            <div class="lab-card__stage stage--chat">
+              <div class="chat" id="chat">
+                <div class="chat__head">
+                  <div class="chat__avatars"><span style="--c:#ff7a59">S</span><span style="--c:#33b6ff">Y</span><span style="--c:#36d399">K</span></div>
+                  <div><strong>Besties</strong><small>3 friends</small></div>
+                </div>
+                <div class="chat__topics" id="chatTopics" role="tablist"></div>
+                <div class="chat__list" id="chatList" aria-live="polite"></div>
+                <form class="chat__composer" id="chatForm" autocomplete="off">
+                  <input id="chatInput" type="text" placeholder="Message #topic" maxlength="120" aria-label="Message">
+                  <button type="submit" aria-label="Send"><svg class="ic"><use href="#i-send"/></svg></button>
+                </form>
+              </div>
+            </div>
+            <figcaption>
+              <span class="lab-tag">Sircles</span>
+              <h3>Topic-threaded chat</h3>
+              <p>Conversations organised by subject inside one chat. Optimistic sends, typing indicators, unread badges. Double-tap a bubble to react.</p>
+              <ul class="chips chips--sm"><li>optimistic UI</li><li>subscriptions</li><li>threading</li></ul>
+            </figcaption>
+          </figure>
+
+          <!-- Actionable notification -->
+          <figure class="lab-card reveal" data-delay="3">
+            <div class="lab-card__stage stage--notif" data-prod>
+              <div class="mini-lock">
+                <div class="mini-lock__time" id="miniTime">9:41</div>
+                <div class="action-notif" id="actionNotif"></div>
+                <div class="mini-lock__toast" id="miniToast"></div>
+                <div class="mini-lock__counter mono" id="miniCounter">0 handled without opening the app</div>
+              </div>
+              <img class="lab-card__prod" src="assets/img/lab/pop-approve.webp" alt="Approve and deny in POP Manager (App Store screenshot)" loading="lazy">
+              <button class="prod-btn" type="button" aria-pressed="false"><span>See it in POP Manager</span><span>Back to demo</span></button>
+            </div>
+            <figcaption>
+              <span class="lab-tag">Gemography</span>
+              <h3>Approve from the lock screen</h3>
+              <p>A native notification module let managers approve or decline leave without opening the app. Press and hold (or tap) to expand.</p>
+              <ul class="chips chips--sm"><li>notification actions</li><li>native module</li></ul>
+            </figcaption>
+          </figure>
+
+          <!-- OTP -->
+          <figure class="lab-card reveal">
+            <div class="lab-card__stage stage--otp">
+              <div class="otp" id="otp">
+                <button type="button" class="otp__sms" id="otpSms" aria-label="Autofill code from SMS">
+                  <span class="otp__sms-ic">💬</span><span><b>Messages · now</b><span id="otpSmsText">Your Sircles code is 482913</span></span><em>Fill</em>
+                </button>
+                <p class="otp__title">Enter the code</p>
+                <p class="otp__sub">Sent to +212 6•• ••• 812</p>
+                <div class="otp__boxes" id="otpBoxes"></div>
+                <p class="otp__meta"><span id="otpStatus">Code expires in <b id="otpTimer">0:30</b></span> <button type="button" id="otpResend" disabled>Resend</button></p>
+                <div class="otp__done" id="otpDone"><span><svg class="ic"><use href="#i-check"/></svg></span>Verified</div>
+              </div>
+            </div>
+            <figcaption>
+              <span class="lab-tag">Sircles · onboarding</span>
+              <h3>Phone verification</h3>
+              <p>Auto-advancing boxes, paste and SMS autofill, a shake on wrong codes, expiry countdown and rate-limited resend. Tap the banner to autofill.</p>
+              <ul class="chips chips--sm"><li>code expiry</li><li>rate limiting</li><li>error recovery</li></ul>
+            </figcaption>
+          </figure>
+
+          <!-- Offline first -->
+          <figure class="lab-card reveal" data-delay="1">
+            <div class="lab-card__stage stage--offline">
+              <div class="offline" id="offline">
+                <div class="offline__bar">
+                  <strong>My leaves</strong>
+                  <label class="switch"><input type="checkbox" id="netToggle" checked><span></span><em id="netLabel">Online</em></label>
+                </div>
+                <div class="offline__banner" id="netBanner">Offline · showing cached data. Changes will sync.</div>
+                <ul class="offline__list" id="leaveList"></ul>
+                <button type="button" class="offline__cta" id="leaveAdd">+ Request leave</button>
+              </div>
+            </div>
+            <figcaption>
+              <span class="lab-tag">Gemography</span>
+              <h3>Offline-first data</h3>
+              <p>Flip the network off. Cached data stays on screen, new requests queue up, and everything syncs in order when you’re back online.</p>
+              <ul class="chips chips--sm"><li>hydrate / dehydrate</li><li>mutation queue</li><li>optimistic</li></ul>
+            </figcaption>
+          </figure>
+
+          <!-- Deep links -->
+          <figure class="lab-card reveal" data-delay="2">
+            <div class="lab-card__stage stage--links">
+              <div class="links" id="links">
+                <div class="links__urls" id="linkUrls"></div>
+                <div class="links__phone">
+                  <div class="links__screen" id="linkScreen"><span class="links__crumbs" id="linkCrumbs">Home</span><strong id="linkTitle">Feed</strong><small id="linkSub">Tap a link above</small></div>
+                </div>
+                <div class="links__foot">
+                  <label class="switch switch--sm"><input type="checkbox" id="authToggle" checked><span></span><em id="authLabel">Signed in</em></label>
+                  <button type="button" class="links__signin" id="linkSignin" hidden>Sign in</button>
+                </div>
+              </div>
+            </div>
+            <figcaption>
+              <span class="lab-tag">Sircles</span>
+              <h3>Deep-link router</h3>
+              <p>Universal Links, App Links and custom schemes resolved into one screen stack. Signed out? The route waits and replays after sign-in.</p>
+              <ul class="chips chips--sm"><li>10+ entity types</li><li>deferred routing</li></ul>
+            </figcaption>
+          </figure>
+
+          <!-- Bottom sheet -->
+          <figure class="lab-card reveal" data-delay="3">
+            <div class="lab-card__stage stage--sheet">
+              <div class="bs" id="bs">
+                <div class="bs__map"><span class="bs__pin" style="left:30%;top:24%">6 free · Agdal</span><span class="bs__pin" style="left:56%;top:44%">5 free · Hassan</span><span class="bs__me"></span></div>
+                <div class="bs__sheet" id="bsSheet">
+                  <div class="bs__handle"></div>
+                  <div class="bs__head"><strong>Barbers nearby</strong><span class="mono" id="bsSnap">peek</span></div>
+                  <ul class="bs__list">
+                    <li><b>Youssef B.</b><span>4.9★ · 400 m · 40 MAD</span></li>
+                    <li><b>Mehdi C.</b><span>4.7★ · 1.4 km · 35 MAD</span></li>
+                    <li><b>Hamza O.</b><span>4.8★ · 2.1 km · 50 MAD</span></li>
+                    <li><b>Salon Benali</b><span>4.6★ · 2.6 km · 45 MAD</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <figcaption>
+              <span class="lab-tag">OpenChair</span>
+              <h3>Snapping bottom sheet</h3>
+              <p>Three snap points, velocity-aware flings and rubber-banding past the edges — the sheet pattern behind OpenChair’s outcome sheets.</p>
+              <ul class="chips chips--sm"><li>snap points</li><li>fling</li><li>rubber band</li></ul>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section" id="projects" data-island="Projects">
+      <div class="container">
+        <header class="section__head">
+          <p class="eyebrow reveal">03 — Projects</p>
+          <h2 class="section__title reveal">Products I've <em class="serif">made</em> on the side.</h2>
+          <p class="section__lead reveal">Marketplaces, viral loops, AI tooling and a VPN from the early days. Each one opens like an app.</p>
+        </header>
+
+        <div class="proj-grid" id="projGrid">
+          <article class="proj-card proj-card--wide reveal tilt" data-open-project="openchair" tabindex="0" role="button" style="--tint:#e7eaf1;--ink:#10182b">
+            <div class="proj-card__visual vis-openchair">
+              <img class="vis-phone vis-phone--a" src="assets/img/openchair/customer-04-home_live.webp" alt="OpenChair customer home with live barber request" loading="lazy">
+              <img class="vis-phone vis-phone--b" src="assets/img/openchair/barber-09-request.webp" alt="OpenChair barber incoming request" loading="lazy">
+              <img class="vis-phone vis-phone--c" src="assets/img/openchair/customer-21-job_matched.webp" alt="" loading="lazy">
+            </div>
+            <div class="proj-card__meta">
+              <span class="proj-icon proj-icon--openchair"><i></i></span>
+              <div>
+                <h3>OpenChair</h3>
+                <p>A barber, right now. On-demand barber marketplace.</p>
+              </div>
+              <ul class="badges"><li>iOS</li><li>Android</li><li>2026</li></ul>
+            </div>
+          </article>
+
+          <article class="proj-card reveal tilt" data-delay="1" data-open-project="veto" tabindex="0" role="button" style="--tint:#0c0b10;--ink:#cdfb45">
+            <div class="proj-card__visual vis-veto">
+              <img class="vis-phone vis-phone--a" src="assets/img/veto/home.webp" alt="RAP Veto leaderboard" loading="lazy">
+              <img class="vis-phone vis-phone--b" src="assets/img/veto/song.webp" alt="RAP Veto song page" loading="lazy">
+            </div>
+            <div class="proj-card__meta">
+              <span class="proj-icon proj-icon--veto">RV</span>
+              <div>
+                <h3>RAP Veto</h3>
+                <p>The people's chart for Moroccan rap.</p>
+              </div>
+              <ul class="badges"><li>Mobile web</li><li>2026</li></ul>
+            </div>
+          </article>
+
+          <article class="proj-card reveal tilt" data-open-project="resumebyjob" tabindex="0" role="button" style="--tint:#f6f5f2;--ink:#1a1a1a">
+            <div class="proj-card__visual vis-browser">
+              <div class="browser">
+                <div class="browser__bar"><i></i><i></i><i></i><span>resumebyjob.com</span></div>
+                <img src="assets/img/resumebyjob/desktop.webp" alt="ResumeByJob home page" loading="lazy">
+              </div>
+            </div>
+            <div class="proj-card__meta">
+              <span class="proj-icon proj-icon--rbj"><b></b></span>
+              <div>
+                <h3>ResumeByJob</h3>
+                <p>Tailor a resume to a job — without inventing anything.</p>
+              </div>
+              <ul class="badges"><li>Web</li><li>AI</li></ul>
+            </div>
+          </article>
+
+          <article class="proj-card reveal tilt" data-delay="1" data-open-project="shorts" tabindex="0" role="button" style="--tint:#141a2e;--ink:#a5b4fc">
+            <div class="proj-card__visual vis-mac">
+              <div class="macwin">
+                <img src="assets/img/shorts/editor.webp" alt="Shorts Gen AI reel editor" loading="lazy">
+              </div>
+            </div>
+            <div class="proj-card__meta">
+              <img class="proj-icon proj-icon--img" src="assets/img/shorts/icon.webp" alt="" loading="lazy">
+              <div>
+                <h3>Shorts Gen</h3>
+                <p>AI short-form video studio for macOS.</p>
+              </div>
+              <ul class="badges"><li>macOS</li><li>Electron</li></ul>
+            </div>
+          </article>
+
+          <article class="proj-card reveal tilt" data-open-project="gymo" tabindex="0" role="button" style="--tint:#201844;--ink:#fff">
+            <div class="proj-card__visual vis-gymo">
+              <img class="vis-gymo__photo" src="assets/img/gymo/login.webp" alt="" loading="lazy">
+              <img class="vis-gymo__icon" src="assets/img/gymo/icon.webp" alt="Gymo icon" loading="lazy">
+              <span class="float-chip" style="--x:12%;--y:18%;--d:0s" dir="rtl">بناء العضلات</span>
+              <span class="float-chip" style="--x:58%;--y:12%;--d:-2s" dir="rtl">انقاص الوزن</span>
+              <span class="float-chip" style="--x:60%;--y:74%;--d:-4s" dir="rtl">الحفاظ على اللياقة</span>
+              <span class="float-chip" style="--x:8%;--y:70%;--d:-1s" dir="rtl">جدول الحصص</span>
+            </div>
+            <div class="proj-card__meta">
+              <img class="proj-icon proj-icon--img" src="assets/img/gymo/icon.webp" alt="" loading="lazy">
+              <div>
+                <h3>Gymo</h3>
+                <p>Arabic-first gym app for members and managers.</p>
+              </div>
+              <ul class="badges"><li>iOS</li><li>Android</li><li>Open source</li></ul>
+            </div>
+          </article>
+
+          <article class="proj-card proj-card--wide reveal tilt" data-delay="1" data-open-project="vpn" tabindex="0" role="button" style="--tint:#03163a;--ink:#5ec2ff">
+            <div class="proj-card__visual vis-vpn">
+              <div class="browser browser--dark">
+                <div class="browser__bar"><i></i><i></i><i></i><span>vpn.express · 2018</span></div>
+                <img src="assets/img/vpn/site.webp" alt="VPN.Express website in 2018" loading="lazy">
+              </div>
+              <img class="vis-vpn__shield" src="assets/img/vpn/logo-head.webp" alt="" loading="lazy">
+            </div>
+            <div class="proj-card__meta">
+              <span class="proj-icon proj-icon--vpn"><svg><use href="#i-power"/></svg></span>
+              <div>
+                <h3>VPN.Express</h3>
+                <p>Fast, safe and simple VPN — Windows, iOS and Android.</p>
+              </div>
+              <ul class="badges"><li>Windows</li><li>iOS</li><li>Android</li><li>2016–19</li></ul>
+            </div>
+          </article>
+        </div>
+
+        <div class="oss reveal">
+          <p class="eyebrow">Open source</p>
+          <div class="oss__list">
+            <a href="https://github.com/aminerol/jotai-recoil-adapter" target="_blank" rel="noopener"><strong>jotai-recoil-adapter</strong><span>Recoil-shaped API on top of Jotai — the bridge behind an incremental state migration.</span></a>
+            <a href="https://github.com/aminerol/react-query-firestore" target="_blank" rel="noopener"><strong>react-query-firestore <em>★ 103</em></strong><span>React Query for Firestore that you can actually use in production.</span></a>
+            <a href="https://github.com/aminerol/react-native-capture-traffic" target="_blank" rel="noopener"><strong>react-native-capture-traffic</strong><span>Capture, intercept and tamper with device HTTP(S) traffic from React Native.</span></a>
+            <a href="https://github.com/aminerol/react-native-sliding-panels" target="_blank" rel="noopener"><strong>react-native-sliding-panels</strong><span>Fully customisable sliding panels, pure JavaScript.</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STACK -->
+    <section class="section" id="stack" data-island="Toolbox">
+      <div class="container">
+        <header class="section__head">
+          <p class="eyebrow reveal">04 — Toolbox</p>
+          <h2 class="section__title reveal">What I reach for <em class="serif">daily</em>.</h2>
+        </header>
+        <div class="cc-grid" id="ccGrid">
+          <div class="cc-tile cc-tile--big reveal">
+            <h3>Mobile</h3>
+            <ul class="chips"><li>React Native</li><li>Expo</li><li>Reanimated</li><li>Gesture Handler</li><li>New Architecture</li><li>Native modules</li><li>Swift</li><li>Java</li><li>Mapbox</li></ul>
+          </div>
+          <div class="cc-tile reveal" data-delay="1">
+            <h3>State &amp; data</h3>
+            <ul class="chips"><li>GraphQL</li><li>React Query</li><li>Jotai</li><li>Recoil</li><li>Firebase</li><li>Supabase</li></ul>
+          </div>
+          <div class="cc-tile reveal" data-delay="2">
+            <h3>Shipping</h3>
+            <ul class="chips"><li>Fastlane</li><li>EAS</li><li>TestFlight</li><li>App Store Connect API</li><li>LaunchDarkly</li></ul>
+          </div>
+          <div class="cc-tile reveal" data-delay="1">
+            <h3>Quality</h3>
+            <ul class="chips"><li>Detox</li><li>Jest</li><li>Storybook</li><li>Profiling</li></ul>
+          </div>
+          <div class="cc-tile reveal" data-delay="2">
+            <h3>Web &amp; desktop</h3>
+            <ul class="chips"><li>TypeScript</li><li>React</li><li>Next.js</li><li>Electron</li><li>Node.js</li><li>Tailwind</li></ul>
+          </div>
+          <div class="cc-tile cc-tile--slider reveal" data-delay="3">
+            <h3>Frame budget</h3>
+            <div class="fps-meter">
+              <span class="fps-meter__val mono" id="fpsVal">60</span><span class="mono">fps · this page</span>
+            </div>
+            <div class="fps-bars" id="fpsBars" aria-hidden="true"></div>
+            <p class="muted small">16.7 ms per frame. I treat it like a deadline.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section section--contact" id="contact" data-island="Say hi">
+      <div class="container contact">
+        <div class="contact__copy">
+          <p class="eyebrow reveal">05 — Contact</p>
+          <h2 class="section__title reveal">Let's build something people <em class="serif">keep</em> on their home screen.</h2>
+          <p class="section__lead reveal">Open to React Native roles — remote or on-site. The quickest way to reach me is email.</p>
+          <div class="contact__links reveal">
+            <button class="btn btn--ghost magnetic" id="copyEmail"><svg class="ic"><use href="#i-copy"/></svg><span>atlasbytezz@gmail.com</span></button>
+            <a class="btn btn--ghost magnetic" href="https://github.com/aminerol" target="_blank" rel="noopener"><svg class="ic"><use href="#i-github"/></svg>GitHub</a>
+            <a class="btn btn--ghost magnetic" href="assets/Amine-Bouhlali-Resume.pdf" target="_blank" rel="noopener"><svg class="ic"><use href="#i-doc"/></svg>Résumé</a>
+          </div>
+        </div>
+        <div class="imessage reveal" data-delay="1">
+          <div class="imessage__head">
+            <span class="imessage__avatar">AB</span>
+            <strong>Amine</strong>
+            <small class="muted">usually replies within a day</small>
+          </div>
+          <div class="imessage__list" id="imList" aria-live="polite">
+            <div class="bubble bubble--in">Hey 👋 thanks for scrolling all the way down.</div>
+            <div class="bubble bubble--in">Type a message below — I'll drop it into an email for you.</div>
+          </div>
+          <form class="imessage__composer" id="imForm" autocomplete="off">
+            <input id="imInput" type="text" placeholder="iMessage" maxlength="400" aria-label="Your message">
+            <button type="submit" aria-label="Send"><svg class="ic"><use href="#i-send"/></svg></button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Bottom tab bar -->
+  <nav class="tabbar" id="tabbar" aria-label="Sections">
+    <span class="tabbar__pill" id="tabPill"></span>
+    <a href="#top" data-tab="top"><svg class="ic"><use href="#i-home"/></svg><span>Home</span></a>
+    <a href="#work" data-tab="work"><svg class="ic"><use href="#i-briefcase"/></svg><span>Work</span></a>
+    <a href="#lab" data-tab="lab"><svg class="ic"><use href="#i-hand"/></svg><span>Lab</span></a>
+    <a href="#projects" data-tab="projects"><svg class="ic"><use href="#i-grid"/></svg><span>Projects</span></a>
+    <a href="#contact" data-tab="contact"><svg class="ic"><use href="#i-chat"/></svg><span>Contact</span></a>
+  </nav>
+
+  <!-- Sheet (case studies + projects) -->
+  <div class="sheet" id="sheet" aria-hidden="true">
+    <div class="sheet__backdrop" data-close></div>
+    <div class="sheet__panel" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" tabindex="-1">
+      <div class="sheet__grabber" id="sheetGrabber"><span></span></div>
+      <div class="sheet__actions">
+        <button class="icon-btn icon-btn--glass" id="sheetShare" aria-label="Share"><svg class="ic"><use href="#i-share"/></svg></button>
+        <button class="icon-btn icon-btn--glass" data-close aria-label="Close"><svg class="ic"><use href="#i-close"/></svg></button>
+      </div>
+      <div class="sheet__scroll" id="sheetScroll">
+        <div class="sheet__content" id="sheetContent"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="icon-btn icon-btn--glass lightbox__close" aria-label="Close image"><svg class="ic"><use href="#i-close"/></svg></button>
+    <img alt="" id="lightboxImg">
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/data.js?v=10" defer></script>
+  <script src="js/app.js?v=10" defer></script>
+</body>
+</html>
