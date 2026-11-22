@@ -7,7 +7,7 @@ window.PORTFOLIO = {
     { app: 'RAP Veto', iconHTML: 'veto', time: '9m ago', title: 'You pushed OBSESSED to #1 🔥', body: 'Your share link brought 12 new votes tonight.', open: ['project', 'veto'] },
     { app: 'POP by Gemo', icon: 'assets/img/pop/icon.jpg', time: '20m ago', title: 'Holiday alert 🎉', body: 'Independence Day is coming up in 2 days.', open: ['xp', 'gemography'] },
     { app: 'Shorts Gen', icon: 'assets/img/shorts/icon.webp', time: '32m ago', title: 'Render finished', body: '“5 quick tips for phone photography” · 0:42 · ready to publish.', open: ['project', 'shorts'] },
-    { app: 'ResumeByJob', iconHTML: 'resumebyjob', time: '1h ago', title: 'Resume tailored ✓', body: '14 suggestions ready to review for Senior React Native Engineer.', open: ['project', 'resumebyjob'] },
+    { app: 'ResumeByJob', iconHTML: 'resumebyjob', time: '1h ago', title: 'Resume tailored ✓', body: '14 suggestions ready to review for Senior Mobile Engineer.', open: ['project', 'resumebyjob'] },
     { app: 'Gymo', icon: 'assets/img/gymo/icon.webp', time: '2h ago', title: 'Leg day at 18:00 💪', body: 'Your coach added a new workout to this week’s plan.', open: ['project', 'gymo'] },
     { app: 'VPN.Express', iconHTML: 'vpn', time: 'yesterday', title: 'You’re protected 🛡️', body: 'Connected to Amsterdam · your real IP is hidden.', open: ['project', 'vpn'] }
   ],

@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Amine Bouhlali — React Native Engineer</title>
-  <meta name="description" content="Amine Bouhlali — React Native engineer from Rabat. 5 years shipping mobile apps: real-time chat, gesture-driven UI, native modules, New Architecture migrations.">
+  <title>Amine Bouhlali — Mobile Engineer</title>
+  <meta name="description" content="Amine Bouhlali — mobile engineer. 5 years shipping apps people love: real-time chat, gesture-driven UI, native modules, New Architecture migrations.">
   <meta name="theme-color" content="#07070b" media="(prefers-color-scheme: dark)">
   <meta name="theme-color" content="#f3f3f6" media="(prefers-color-scheme: light)">
-  <meta property="og:title" content="Amine Bouhlali — React Native Engineer">
+  <meta property="og:title" content="Amine Bouhlali — Mobile Engineer">
   <meta property="og:description" content="Mobile apps people love to touch. Case studies, gesture lab and side projects.">
   <meta property="og:type" content="website">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='14' y='4' width='36' height='56' rx='10' fill='%237c6cff'/%3E%3Crect x='25' y='9' width='14' height='4' rx='2' fill='%2307070b'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=10">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@500&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=28">
   <script>
     // apply saved theme before paint
     (function () {
@@ -71,11 +71,11 @@
     <div class="island" id="island">
       <button class="island__compact" id="islandBtn" aria-expanded="false" aria-controls="islandPanel" aria-label="Open quick navigation">
         <span class="island__lead" id="islandLead"><span class="island__dot"></span></span>
-        <span class="island__label" id="islandLabel">Open to React Native roles</span>
+        <span class="island__label" id="islandLabel">Available for hire</span>
         <span class="island__ring" aria-hidden="true"><svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" class="ring-bg"/><circle cx="10" cy="10" r="8" class="ring-fg" id="islandRing"/></svg></span>
       </button>
       <div class="island__panel" id="islandPanel" hidden>
-        <p class="island__title"><span class="island__dot"></span>Amine Bouhlali · React Native Engineer</p>
+        <p class="island__title"><span class="island__dot"></span>Amine Bouhlali · Mobile Engineer</p>
         <nav class="island__nav">
           <a href="#work" data-jump><svg class="ic"><use href="#i-briefcase"/></svg>Experience</a>
           <a href="#lab" data-jump><svg class="ic"><use href="#i-hand"/></svg>Gesture Lab</a>
@@ -99,12 +99,11 @@
     <section class="hero section" id="top" data-island="Hello">
       <div class="container hero__grid">
         <div class="hero__copy">
-          <p class="eyebrow reveal"><span class="live-dot"></span>React Native Engineer</p>
           <h1 class="hero__title reveal">
             I build mobile apps people <em class="serif">love</em> to <span class="touch" id="touchWord">touch.</span>
           </h1>
           <p class="hero__lead reveal">
-            Five years shipping React Native at scale — real-time chat, gesture-driven UI,
+            Five years shipping mobile apps at scale — real-time chat, gesture-driven UI,
             native modules, and the unglamorous migrations that keep an app shippable.
           </p>
           <div class="hero__cta reveal">
@@ -112,7 +111,7 @@
             <a class="btn btn--ghost magnetic" href="#contact">Say hi</a>
           </div>
           <dl class="stats reveal">
-            <div><dt>Years in React Native</dt><dd data-count="5">5</dd></div>
+            <div><dt>Years in mobile</dt><dd data-count="5">5</dd></div>
             <div><dt>Years writing software</dt><dd data-count="10" data-suffix="+">10+</dd></div>
             <div><dt>Sircles on the App Store</dt><dd>4.7<small>★</small></dd></div>
           </dl>
@@ -188,7 +187,7 @@
           <article class="xp-card reveal tilt" data-delay="1" data-open-xp="gemography" tabindex="0" role="button" aria-label="Open Gemography case study">
             <div class="xp-card__glow" style="--g1:#6c5ce7;--g2:#a29bfe"></div>
             <div class="xp-card__head">
-              <div class="icon-pair"><img class="app-icon" src="assets/img/pop/icon.jpg" alt="" width="56" height="56" loading="lazy"><img class="app-icon" src="assets/img/popmanager/icon.jpg" alt="" width="56" height="56" loading="lazy"></div>
+              <img class="app-icon" src="assets/img/pop/icon.jpg" alt="" width="56" height="56" loading="lazy">
               <div>
                 <h3>Gemography</h3>
                 <p class="muted">Lead React Native Engineer · Nov 2019 – Dec 2021</p>
@@ -222,71 +221,78 @@
         <div class="lab-grid">
           <!-- Rotary wheel -->
           <figure class="lab-card reveal">
-            <div class="lab-card__stage stage--wheel" data-prod>
-              <div class="wheel-wrap">
-                <div class="wheel__pointer"></div>
-                <div class="wheel" id="wheel" role="slider" aria-label="Category wheel" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0" tabindex="0"></div>
-                <div class="wheel__hub"><span id="wheelLabel">Movies</span><small>drag to spin</small></div>
+            <div class="lab-card__stage stage--swheel">
+              <div class="sw2-sheet">
+                <div class="swheel sw2" id="swheel" role="slider" aria-label="Category wheel" aria-valuemin="0" aria-valuemax="14" aria-valuenow="0" tabindex="0">
+                  <span class="sw2-handle"></span>
+                  <div class="sw2-doodles" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" style="left:7%;top:16%"><path d="M5 9h11v5a5 5 0 0 1-5 5H10a5 5 0 0 1-5-5zM16 10h2a2 2 0 0 1 0 4h-2M8 3v3M11 3v3"/></svg>
+                    <svg viewBox="0 0 24 24" style="right:9%;top:13%"><path d="M12 20s-7-4.3-7-9.2A4 4 0 0 1 12 8a4 4 0 0 1 7 2.8C19 15.7 12 20 12 20z"/></svg>
+                    <svg viewBox="0 0 24 24" style="left:5%;top:52%"><path d="M4 7l16-3-3 16zM9 9h.01M12 13h.01"/></svg>
+                    <svg viewBox="0 0 24 24" style="right:6%;top:48%"><circle cx="12" cy="12" r="8"/><path d="M8 13s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg>
+                    <svg viewBox="0 0 24 24" style="left:10%;bottom:9%"><path d="M12 20s-7-4.3-7-9.2A4 4 0 0 1 12 8a4 4 0 0 1 7 2.8C19 15.7 12 20 12 20z"/></svg>
+                    <svg viewBox="0 0 24 24" style="right:12%;bottom:7%"><path d="M6 4h12l-1.5 16h-9zM6 8h12"/></svg>
+                  </div>
+                  <div class="swheel__title"><span id="swTitle">Food &amp; Drink</span></div>
+                  <div class="sw2-ring" id="swRing">
+                    <div class="sw2-center"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="20" cy="20" r="12.5" fill="#fff" stroke="#fff" stroke-width="3.5"/><circle cx="20" cy="20" r="12.5" fill="none" stroke="#2f8fd8" stroke-width="3"/><path d="M29.5 29.5l9 9" stroke="#fff" stroke-width="6" stroke-linecap="round"/><path d="M29.5 29.5l9 9" stroke="#2f8fd8" stroke-width="3.2" stroke-linecap="round"/><circle cx="18.5" cy="17" r="3.4" fill="#2f8fd8"/><path d="M12.5 26.5a6 6 0 0 1 12 0z" fill="#2f8fd8"/><circle cx="34" cy="13" r="6" fill="#fff"/><path d="M34 9.6v6.8M30.6 13h6.8" stroke="#2f8fd8" stroke-width="2.4" stroke-linecap="round"/></svg></div>
+                  </div>
+                </div>
               </div>
-              <img class="lab-card__prod" src="assets/img/lab/sircles-wheel.webp" alt="The rotary wheel in the Sircles app (App Store screenshot)" loading="lazy">
-              <button class="prod-btn" type="button" aria-pressed="false"><span>See it in Sircles</span><span>Back to demo</span></button>
             </div>
             <figcaption>
               <span class="lab-tag">Sircles</span>
               <h3>Rotary category wheel</h3>
-              <p>Follows the finger in polar coordinates, carries momentum, snaps to the nearest slice and ticks a haptic on every boundary.</p>
-              <ul class="chips chips--sm"><li>atan2</li><li>velocity projection</li><li>snap points</li></ul>
+              <p>The home bottom-sheet wheel. Fifteen categories orbit the ring and follow your finger in polar coordinates. The top one grows, the title slides in from the side you spin, and it springs into place with a haptic tick.</p>
+              <ul class="chips chips--sm"><li>polar coordinates</li><li>scale by position</li><li>spring snap</li></ul>
             </figcaption>
           </figure>
 
           <!-- Reorder grid -->
           <figure class="lab-card reveal" data-delay="1">
-            <div class="lab-card__stage stage--grid">
-              <div class="reorder" id="reorder" aria-label="Reorderable circles grid"></div>
+            <div class="lab-card__stage stage--sot">
+              <div class="sotw2 sotw2--bare is-editing" id="sotw">
+                <div class="sot" id="sot" aria-label="Sircle of Trust grid"></div>
+              </div>
             </div>
             <figcaption>
               <span class="lab-tag">Sircles</span>
-              <h3>Drag-to-reorder grid</h3>
-              <p>Press, lift, drag. Neighbours slide out of the way with springy repositioning while the dragged tile stays glued to your pointer.</p>
-              <ul class="chips chips--sm"><li>hit-testing</li><li>slot swapping</li><li>layout animation</li></ul>
+              <h3>Sircle of Trust grid</h3>
+              <p>Drag a friend to swap places with whoever sits in the target slot. Tap × to free an Invite slot, tap Invite to fill it. Locked slots stay put.</p>
+              <ul class="chips chips--sm"><li>slot swapping</li><li>spring layout</li><li>slot states</li></ul>
             </figcaption>
           </figure>
 
-          <!-- Topic chat -->
+
+          <!-- Sircles topic-threaded chat (in-chat topic pager) -->
           <figure class="lab-card reveal" data-delay="2">
-            <div class="lab-card__stage stage--chat">
-              <div class="chat" id="chat">
-                <div class="chat__head">
-                  <div class="chat__avatars"><span style="--c:#ff7a59">S</span><span style="--c:#33b6ff">Y</span><span style="--c:#36d399">K</span></div>
-                  <div><strong>Besties</strong><small>3 friends</small></div>
-                </div>
-                <div class="chat__topics" id="chatTopics" role="tablist"></div>
-                <div class="chat__list" id="chatList" aria-live="polite"></div>
-                <form class="chat__composer" id="chatForm" autocomplete="off">
-                  <input id="chatInput" type="text" placeholder="Message #topic" maxlength="120" aria-label="Message">
+            <div class="lab-card__stage stage--pager">
+              <div class="tpager" id="tpager">
+                <div class="tpager__rail" id="tpRail"><div class="tpager__row" id="tpRow"></div><span class="tpager__ind" id="tpInd"></span></div>
+                <div class="tpager__viewport" id="tpView"><div class="tpager__pages" id="tpPages"></div></div>
+                <form class="tpager__composer" id="tpForm" autocomplete="off">
+                  <input id="tpInput" type="text" placeholder="Message main chat" maxlength="120" aria-label="Message">
                   <button type="submit" aria-label="Send"><svg class="ic"><use href="#i-send"/></svg></button>
                 </form>
               </div>
             </div>
             <figcaption>
-              <span class="lab-tag">Sircles</span>
+              <span class="lab-tag">Sircles · in-chat topics</span>
               <h3>Topic-threaded chat</h3>
-              <p>Conversations organised by subject inside one chat. Optimistic sends, typing indicators, unread badges. Double-tap a bubble to react.</p>
-              <ul class="chips chips--sm"><li>optimistic UI</li><li>subscriptions</li><li>threading</li></ul>
+              <p>One chat, many topics. Swipe between them — the indicator tracks your finger and the active topic springs up. Send a message, watch it deliver, double-tap to react.</p>
+              <ul class="chips chips--sm"><li>topic pager</li><li>optimistic UI</li><li>unread + typing</li></ul>
             </figcaption>
           </figure>
 
           <!-- Actionable notification -->
           <figure class="lab-card reveal" data-delay="3">
-            <div class="lab-card__stage stage--notif" data-prod>
+            <div class="lab-card__stage stage--notif">
               <div class="mini-lock">
                 <div class="mini-lock__time" id="miniTime">9:41</div>
                 <div class="action-notif" id="actionNotif"></div>
                 <div class="mini-lock__toast" id="miniToast"></div>
                 <div class="mini-lock__counter mono" id="miniCounter">0 handled without opening the app</div>
               </div>
-              <img class="lab-card__prod" src="assets/img/lab/pop-approve.webp" alt="Approve and deny in POP Manager (App Store screenshot)" loading="lazy">
-              <button class="prod-btn" type="button" aria-pressed="false"><span>See it in POP Manager</span><span>Back to demo</span></button>
             </div>
             <figcaption>
               <span class="lab-tag">Gemography</span>
@@ -296,93 +302,87 @@
             </figcaption>
           </figure>
 
-          <!-- OTP -->
+          <!-- Gemography leave calendar -->
           <figure class="lab-card reveal">
-            <div class="lab-card__stage stage--otp">
-              <div class="otp" id="otp">
-                <button type="button" class="otp__sms" id="otpSms" aria-label="Autofill code from SMS">
-                  <span class="otp__sms-ic">💬</span><span><b>Messages · now</b><span id="otpSmsText">Your Sircles code is 482913</span></span><em>Fill</em>
-                </button>
-                <p class="otp__title">Enter the code</p>
-                <p class="otp__sub">Sent to +212 6•• ••• 812</p>
-                <div class="otp__boxes" id="otpBoxes"></div>
-                <p class="otp__meta"><span id="otpStatus">Code expires in <b id="otpTimer">0:30</b></span> <button type="button" id="otpResend" disabled>Resend</button></p>
-                <div class="otp__done" id="otpDone"><span><svg class="ic"><use href="#i-check"/></svg></span>Verified</div>
+            <div class="lab-card__stage stage--cal">
+              <div class="lcal" id="lcal">
+                <div class="lcal__head">
+                  <button type="button" class="lcal__nav" id="lcalPrev" aria-label="Previous month"><svg class="ic" style="transform:scaleX(-1)"><use href="#i-chev"/></svg></button>
+                  <strong id="lcalTitle">July 2026</strong>
+                  <button type="button" class="lcal__nav" id="lcalNext" aria-label="Next month"><svg class="ic"><use href="#i-chev"/></svg></button>
+                </div>
+                <div class="lcal__week"><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span><span>Su</span></div>
+                <div class="lcal__grid" id="lcalGrid"></div>
+                <div class="lcal__foot"><p id="lcalSum">Pick your first day off</p><button type="button" id="lcalSend" disabled>Request</button></div>
               </div>
             </div>
             <figcaption>
-              <span class="lab-tag">Sircles · onboarding</span>
-              <h3>Phone verification</h3>
-              <p>Auto-advancing boxes, paste and SMS autofill, a shake on wrong codes, expiry countdown and rate-limited resend. Tap the banner to autofill.</p>
-              <ul class="chips chips--sm"><li>code expiry</li><li>rate limiting</li><li>error recovery</li></ul>
+              <span class="lab-tag">Gemography · POP</span>
+              <h3>Leave calendar</h3>
+              <p>Press and drag across days to pick a range. Weekends and public holidays are skipped from the count, months slide in, and the request goes straight to your manager.</p>
+              <ul class="chips chips--sm"><li>range selection</li><li>date maths</li><li>holiday calendar</li></ul>
             </figcaption>
           </figure>
 
-          <!-- Offline first -->
+          <!-- Gymo ruler picker -->
           <figure class="lab-card reveal" data-delay="1">
-            <div class="lab-card__stage stage--offline">
-              <div class="offline" id="offline">
-                <div class="offline__bar">
-                  <strong>My leaves</strong>
-                  <label class="switch"><input type="checkbox" id="netToggle" checked><span></span><em id="netLabel">Online</em></label>
+            <div class="lab-card__stage stage--ruler">
+              <div class="ruler" id="ruler">
+                <p class="ruler__q">What’s your weight?</p>
+                <p class="ruler__q-en">Step 2 of 4 · Body metrics</p>
+                <div class="ruler__value"><b id="rulerVal">72</b><span id="rulerUnit">kg</span></div>
+                <div class="ruler__units" role="tablist"><button type="button" class="is-active" data-unit="kg">kg</button><button type="button" data-unit="lb">lb</button></div>
+                <div class="ruler__track-wrap">
+                  <div class="ruler__track" id="rulerTrack" tabindex="0" aria-label="Weight ruler"><div class="ruler__ticks" id="rulerTicks"></div></div>
+                  <span class="ruler__needle"></span>
                 </div>
-                <div class="offline__banner" id="netBanner">Offline · showing cached data. Changes will sync.</div>
-                <ul class="offline__list" id="leaveList"></ul>
-                <button type="button" class="offline__cta" id="leaveAdd">+ Request leave</button>
               </div>
             </div>
             <figcaption>
-              <span class="lab-tag">Gemography</span>
-              <h3>Offline-first data</h3>
-              <p>Flip the network off. Cached data stays on screen, new requests queue up, and everything syncs in order when you’re back online.</p>
-              <ul class="chips chips--sm"><li>hydrate / dehydrate</li><li>mutation queue</li><li>optimistic</li></ul>
+              <span class="lab-tag">Gymo · onboarding</span>
+              <h3>Ruler picker</h3>
+              <p>Flick the ruler: native momentum, snap to every step, a haptic tick per mark, and a kg/lb switch that keeps your value.</p>
+              <ul class="chips chips--sm"><li>scroll physics</li><li>snapping</li><li>unit conversion</li></ul>
             </figcaption>
           </figure>
 
-          <!-- Deep links -->
+          <!-- RAP Veto live board -->
           <figure class="lab-card reveal" data-delay="2">
-            <div class="lab-card__stage stage--links">
-              <div class="links" id="links">
-                <div class="links__urls" id="linkUrls"></div>
-                <div class="links__phone">
-                  <div class="links__screen" id="linkScreen"><span class="links__crumbs" id="linkCrumbs">Home</span><strong id="linkTitle">Feed</strong><small id="linkSub">Tap a link above</small></div>
-                </div>
-                <div class="links__foot">
-                  <label class="switch switch--sm"><input type="checkbox" id="authToggle" checked><span></span><em id="authLabel">Signed in</em></label>
-                  <button type="button" class="links__signin" id="linkSignin" hidden>Sign in</button>
-                </div>
+            <div class="lab-card__stage stage--board">
+              <div class="board" id="board">
+                <div class="board__head"><span class="board__logo">RAP<b>VETO</b></span><span class="board__votes" id="boardLeft">5 votes left</span></div>
+                <ol class="board__list" id="boardList"></ol>
               </div>
             </div>
             <figcaption>
-              <span class="lab-tag">Sircles</span>
-              <h3>Deep-link router</h3>
-              <p>Universal Links, App Links and custom schemes resolved into one screen stack. Signed out? The route waits and replays after sign-in.</p>
-              <ul class="chips chips--sm"><li>10+ entity types</li><li>deferred routing</li></ul>
+              <span class="lab-tag">RAP Veto</span>
+              <h3>Live leaderboard voting</h3>
+              <p>Vote a track up: the count rolls, a +1 pops, and rows overtake each other with animated re-ranking. Run out and the buy prompt appears.</p>
+              <ul class="chips chips--sm"><li>optimistic votes</li><li>FLIP re-rank</li><li>vote economy</li></ul>
             </figcaption>
           </figure>
 
-          <!-- Bottom sheet -->
+          <!-- RAP Veto share card -->
           <figure class="lab-card reveal" data-delay="3">
-            <div class="lab-card__stage stage--sheet">
-              <div class="bs" id="bs">
-                <div class="bs__map"><span class="bs__pin" style="left:30%;top:24%">6 free · Agdal</span><span class="bs__pin" style="left:56%;top:44%">5 free · Hassan</span><span class="bs__me"></span></div>
-                <div class="bs__sheet" id="bsSheet">
-                  <div class="bs__handle"></div>
-                  <div class="bs__head"><strong>Barbers nearby</strong><span class="mono" id="bsSnap">peek</span></div>
-                  <ul class="bs__list">
-                    <li><b>Youssef B.</b><span>4.9★ · 400 m · 40 MAD</span></li>
-                    <li><b>Mehdi C.</b><span>4.7★ · 1.4 km · 35 MAD</span></li>
-                    <li><b>Hamza O.</b><span>4.8★ · 2.1 km · 50 MAD</span></li>
-                    <li><b>Salon Benali</b><span>4.6★ · 2.6 km · 45 MAD</span></li>
-                  </ul>
+            <div class="lab-card__stage stage--share">
+              <div class="share" id="share">
+                <div class="share__canvas"><div class="share__card" id="shareCard" data-v="story">
+                  <div class="share__cover"></div>
+                  <div class="share__meta"><span class="share__rank">#1</span><strong>OBSESSED</strong><small>U · Najm</small></div>
+                  <div class="share__stat"><b>12</b><span>votes from me</span></div>
+                  <div class="share__qr" aria-hidden="true"></div>
+                  <span class="share__brand">RAP<b>VETO</b></span>
+                </div></div>
+                <div class="share__tabs" id="shareTabs" role="tablist">
+                  <button type="button" class="is-active" data-v="story">Story</button><button type="button" data-v="portrait">Portrait</button><button type="button" data-v="square">Square</button><button type="button" data-v="sticker">Sticker</button>
                 </div>
               </div>
             </div>
             <figcaption>
-              <span class="lab-tag">OpenChair</span>
-              <h3>Snapping bottom sheet</h3>
-              <p>Three snap points, velocity-aware flings and rubber-banding past the edges — the sheet pattern behind OpenChair’s outcome sheets.</p>
-              <ul class="chips chips--sm"><li>snap points</li><li>fling</li><li>rubber band</li></ul>
+              <span class="lab-tag">RAP Veto</span>
+              <h3>Share card variants</h3>
+              <p>One card, four destinations. Story, portrait, square and sticker layouts re-flow the same content: rank, your votes and a QR back to the song.</p>
+              <ul class="chips chips--sm"><li>layout morphing</li><li>edge-rendered</li><li>growth loop</li></ul>
             </figcaption>
           </figure>
         </div>
@@ -467,10 +467,10 @@
             <div class="proj-card__visual vis-gymo">
               <img class="vis-gymo__photo" src="assets/img/gymo/login.webp" alt="" loading="lazy">
               <img class="vis-gymo__icon" src="assets/img/gymo/icon.webp" alt="Gymo icon" loading="lazy">
-              <span class="float-chip" style="--x:12%;--y:18%;--d:0s" dir="rtl">بناء العضلات</span>
-              <span class="float-chip" style="--x:58%;--y:12%;--d:-2s" dir="rtl">انقاص الوزن</span>
-              <span class="float-chip" style="--x:60%;--y:74%;--d:-4s" dir="rtl">الحفاظ على اللياقة</span>
-              <span class="float-chip" style="--x:8%;--y:70%;--d:-1s" dir="rtl">جدول الحصص</span>
+              <span class="float-chip" style="--x:10%;--y:18%;--d:0s">Build muscle</span>
+              <span class="float-chip" style="--x:60%;--y:12%;--d:-2s">Lose weight</span>
+              <span class="float-chip" style="--x:62%;--y:76%;--d:-4s">Stay fit</span>
+              <span class="float-chip" style="--x:8%;--y:72%;--d:-1s">Class schedule</span>
             </div>
             <div class="proj-card__meta">
               <img class="proj-icon proj-icon--img" src="assets/img/gymo/icon.webp" alt="" loading="lazy">
@@ -559,7 +559,7 @@
         <div class="contact__copy">
           <p class="eyebrow reveal">05 — Contact</p>
           <h2 class="section__title reveal">Let's build something people <em class="serif">keep</em> on their home screen.</h2>
-          <p class="section__lead reveal">Open to React Native roles — remote or on-site. The quickest way to reach me is email.</p>
+          <p class="section__lead reveal">Open to new roles — mobile, web or product engineering, remote or on-site. The quickest way to reach me is email.</p>
           <div class="contact__links reveal">
             <button class="btn btn--ghost magnetic" id="copyEmail"><svg class="ic"><use href="#i-copy"/></svg><span>atlasbytezz@gmail.com</span></button>
             <a class="btn btn--ghost magnetic" href="https://github.com/aminerol" target="_blank" rel="noopener"><svg class="ic"><use href="#i-github"/></svg>GitHub</a>
@@ -618,7 +618,7 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <script src="js/data.js?v=10" defer></script>
-  <script src="js/app.js?v=10" defer></script>
+  <script src="js/data.js?v=28" defer></script>
+  <script src="js/app.js?v=28" defer></script>
 </body>
 </html>
