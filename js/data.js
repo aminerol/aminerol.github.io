@@ -1,8 +1,8 @@
 /* Content for case-study and project sheets. */
 window.PORTFOLIO = {
   notifications: [
-    { app: 'POP Manager', icon: 'assets/img/popmanager/icon.jpg', time: 'now', title: 'New leave request', body: 'Jane Cooper requested 6 days off · Jun 03 → Jun 11. Approve?', open: ['xp', 'gemography'] },
-    { app: 'Sircles', icon: 'assets/img/sircles/icon.jpg', time: '2m ago', title: 'Sara checked in at Café Clock', body: '3 friends in your circle love this place. Tap to see why.', open: ['xp', 'sircles'] },
+    { app: 'Sircles', icon: 'assets/img/sircles/icon.jpg', time: 'now', title: 'Sara checked in at Café Clock', body: '3 friends in your circle love this place. Tap to see why.', open: ['xp', 'sircles'] },
+    { app: 'POP Manager', icon: 'assets/img/popmanager/icon.jpg', time: '2m ago', title: 'New leave request', body: 'Jane Cooper requested 6 days off · Jun 03 → Jun 11. Approve?', open: ['xp', 'gemography'] },
     { app: 'OpenChair', iconHTML: 'openchair', time: '4m ago', title: '2 barbers available', body: 'Haircut + Beard · right now. See who answered.', open: ['project', 'openchair'] },
     { app: 'RAP Veto', iconHTML: 'veto', time: '9m ago', title: 'You pushed OBSESSED to #1 🔥', body: 'Your share link brought 12 new votes tonight.', open: ['project', 'veto'] },
     { app: 'POP by Gemo', icon: 'assets/img/pop/icon.jpg', time: '20m ago', title: 'Holiday alert 🎉', body: 'Independence Day is coming up in 2 days.', open: ['xp', 'gemography'] },
@@ -13,17 +13,15 @@ window.PORTFOLIO = {
   ],
 
   shiplog: [
-    ['milestone', 'Sircles', '4.7★ from 927 App Store ratings', ['xp', 'sircles']],
-    ['shipped', 'Sircles', 'React Native 0.79 + New Architecture', ['xp', 'sircles']],
-    ['shipped', 'Sircles', 'Recoil → Jotai with zero feature freeze', ['xp', 'sircles']],
-    ['launch', 'POP Manager', 'Live on the App Store · Jun 2020', ['xp', 'gemography']],
-    ['launch', 'POP by Gemo', 'Live on the App Store · Jan 2021', ['xp', 'gemography']],
-    ['oss', 'react-query-firestore', '★ 103 on GitHub', ['project', 'gymo']],
-    ['design', 'OpenChair', '37 screens · 73 states, designed then built', ['project', 'openchair']],
-    ['launch', 'RAP Veto', 'Season one · 25K MAD prize pool', ['project', 'veto']],
-    ['shipped', 'Shorts Gen', 'FFmpeg + Remotion render engines', ['project', 'shorts']],
-    ['live', 'ResumeByJob', 'Tailored resumes, zero fabrication', ['project', 'resumebyjob']],
-    ['history', 'VPN.Express', '64 servers in 28 countries · 2016–19', ['project', 'vpn']]
+    ['shipped', 'Sircles', 'Real-time chat & gesture UI · 4.7★', ['xp', 'sircles']],
+    ['shipped', 'POP Manager', 'Managers handle their team’s leave requests', ['xp', 'gemography']],
+    ['shipped', 'POP by Gemo', 'Request & track time off', ['xp', 'gemography']],
+    ['oss', 'react-query-firestore', 'Firestore + React Query · ★ 103', ['project', 'gymo']],
+    ['built', 'OpenChair', 'On-demand barber marketplace', ['project', 'openchair']],
+    ['built', 'RAP Veto', 'Fan-voted chart for Moroccan rap', ['project', 'veto']],
+    ['built', 'Shorts Gen', 'Prompt → short video on macOS', ['project', 'shorts']],
+    ['live', 'ResumeByJob', 'Resumes tailored to each job', ['project', 'resumebyjob']],
+    ['history', 'VPN.Express', 'VPN apps for Windows, iOS & Android', ['project', 'vpn']]
   ],
 
   xp: {
@@ -82,7 +80,7 @@ window.PORTFOLIO = {
       icon: 'assets/img/pop/icon.jpg',
       accent: '#6c5ce7',
       accent2: '#a29bfe',
-      tagline: 'Two apps on one codebase — POP by Gemo for employees, POP Manager for team leads.',
+      tagline: 'Two apps on one codebase — POP by Gemo for employees, POP Manager for managers handling their team’s leave.',
       intro: 'POP is Gemography\'s people-operations platform. Employees request and track leave, see upcoming holidays and stay in sync with their team; managers see availability at a glance and approve requests. I was the lead React Native engineer across both the employee and manager apps — owning architecture, delivery and cross-platform consistency.',
       facts: [['Role', 'Lead React Native Engineer'], ['When', 'Nov 2019 – Dec 2021'], ['Apps', 'POP by Gemo · POP Manager'], ['Platforms', 'iOS · Android']],
       stack: ['React Native', 'TypeScript', 'React Query', 'Restyle by Shopify', 'Fastlane', 'Monorepo', 'Native modules'],
@@ -110,14 +108,14 @@ window.PORTFOLIO = {
           ]
         }
       ],
-      video: { src: 'assets/video/pop.mp4', poster: 'assets/video/pop.jpg', orient: 'portrait' },
+      video: { src: 'assets/video/pop.mp4?v=2', poster: 'assets/video/pop.jpg?v=2', orient: 'portrait' },
       apps: [
         { name: 'POP by Gemo', who: 'For employees', icon: 'assets/img/pop/icon.jpg', since: 'App Store · Jan 2021', href: 'https://apps.apple.com/us/app/pop-by-gemo/id1547411689',
           copy: 'Request a leave or report a past one in seconds, keep track of upcoming and previous leaves, get notified about holidays and request status, and stay in sync with teammates.',
           bullets: ['Leave requests & history', 'Holiday + status notifications', 'Team availability'],
           images: ['assets/img/pop/1.webp', 'assets/img/pop/2.webp', 'assets/img/pop/3.webp', 'assets/img/pop/4.webp'] },
-        { name: 'POP Manager', who: 'For team leads', icon: 'assets/img/popmanager/icon.jpg', since: 'App Store · Jun 2020', href: 'https://apps.apple.com/us/app/pop-manager/id1495368124',
-          copy: 'See the team’s availability at a glance, review profiles and leave calendars, and approve or decline requests — right from the notification when it’s quicker.',
+        { name: 'POP Manager', who: 'For managers', icon: 'assets/img/popmanager/icon.jpg', since: 'App Store · Jun 2020', href: 'https://apps.apple.com/us/app/pop-manager/id1495368124',
+          copy: 'Managers handle their employees’ leave: team availability at a glance, a leave calendar per person, and approve or decline requests — right from the notification when it’s quicker.',
           bullets: ['Instant request notifications', 'Leave calendar per teammate', 'Approve / decline in one tap'],
           images: ['assets/img/popmanager/1.webp', 'assets/img/popmanager/2.webp', 'assets/img/popmanager/3.webp', 'assets/img/popmanager/4.webp', 'assets/img/popmanager/5.webp'] }
       ],

@@ -121,7 +121,7 @@
   var sections = $$('main > section');
   var currentSection = null, baseLabel = 'Available for hire', baseLead = null, eventT = 0;
   var DOT = '<span class="island__dot"></span>';
-  var SECTION_LABELS = { top: 'Available for hire', work: 'Experience · 2 teams · 3 apps', lab: 'Gesture Lab · 8 live demos', projects: 'Projects · 6 products', stack: 'Toolbox', contact: 'Say hi · replies within a day' };
+  var SECTION_LABELS = { top: 'Available for hire', work: 'Experience · 2 teams · 3 apps', lab: 'Gesture Lab · 8 live demos', projects: 'Projects · 6 products', contact: 'Say hi · replies within a day' };
 
   function swapIsland(label, leadHTML) {
     if (!islandLabel) return;
@@ -167,7 +167,7 @@
     currentSection = id;
     baseLabel = SECTION_LABELS[id] || baseLabel; baseLead = null;
     if (!island.classList.contains('is-event')) swapIsland(baseLabel, baseLead);
-    var tabId = id === 'stack' ? 'projects' : id;
+    var tabId = id;
     tabs.forEach(function (a) {
       var on = a.getAttribute('data-tab') === tabId;
       a.classList.toggle('is-active', on);
@@ -250,10 +250,10 @@
       '<div class="notif__title">' + esc(n.title) + '</div><div class="notif__text">' + esc(n.body) + '</div></div>';
   }
   var queue = [], qi = 0, MAXN = 4;
-  function pushNotif(delay) {
+  function pushNotif(delay, idx) {
     var list = DATA.notifications || [];
     if (!list.length || !notifsEl) return;
-    var n = list[qi % list.length]; qi++;
+    var n = list[(idx == null ? qi++ : idx) % list.length];
     setTimeout(function () {
       var el = document.createElement('div');
       el.className = 'notif'; el.innerHTML = notifHTML(n); el.setAttribute('role', 'button'); el.tabIndex = 0;
@@ -266,7 +266,9 @@
     notifsEl.innerHTML = ''; notifsEmpty.hidden = true; qi = 0;
     var ph = $('#heroPhone');
     MAXN = (ph && ph.offsetHeight < 660) || innerHeight < 700 ? 3 : 4;
-    for (var i = 0; i < MAXN; i++) pushNotif(700 + i * 650);
+    // newest lands on top (column-reverse), so push the first batch backwards: item 0 ends up on top
+    for (var i = 0; i < MAXN; i++) pushNotif(700 + i * 650, MAXN - 1 - i);
+    qi = MAXN;
   }
   function openFromNotif(el, n) {
     if (!n.open) return;
@@ -322,7 +324,7 @@
   /* ---------------- Ship log ticker ---------------- */
   (function shiplog() {
     var track = $('#shiplog'); if (!track || !DATA.shiplog) return;
-    var TAG = { shipped: 'Shipped', launch: 'Launch', milestone: 'Milestone', oss: 'Open source', design: 'Design', live: 'Live', history: '2016–19' };
+    var TAG = { shipped: 'Shipped', built: 'Built', launch: 'Launch', milestone: 'Milestone', oss: 'Open source', design: 'Design', live: 'Live', history: '2016–19' };
     var html = DATA.shiplog.map(function (s) {
       return '<button type="button" class="ship" data-open="' + s[3].join('/') + '"><span class="ship__tag ship__tag--' + s[0] + '">' + TAG[s[0]] + '</span><b>' + esc(s[1]) + '</b>' + esc(s[2]) + '</button>';
     }).join('');
@@ -331,39 +333,6 @@
       b.addEventListener('click', function () { var o = b.getAttribute('data-open').split('/'); openSheet(o[0], o[1], b); });
     });
   })();
-
-  /* ---------------- Magnetic buttons ---------------- */
-  if (finePointer && !reduceMotion) {
-    $$('.magnetic').forEach(function (b) {
-      b.addEventListener('pointermove', function (e) {
-        var r = b.getBoundingClientRect();
-        var x = e.clientX - r.left - r.width / 2, y = e.clientY - r.top - r.height / 2;
-        b.style.transform = 'translate(' + (x * 0.22) + 'px,' + (y * 0.35) + 'px)';
-      });
-      b.addEventListener('pointerleave', function () { b.style.transform = ''; });
-    });
-  }
-
-  /* ---------------- Card tilt + pointer glow ---------------- */
-  if (finePointer && !reduceMotion) {
-    $$('.tilt').forEach(function (c) {
-      c.addEventListener('pointermove', function (e) {
-        if (c.classList.contains('reveal')) return;
-        var r = c.getBoundingClientRect();
-        var px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
-        c.style.transition = 'transform .2s ease-out, box-shadow .4s, border-color .3s';
-        c.style.transform = 'perspective(1200px) rotateX(' + ((0.5 - py) * 4) + 'deg) rotateY(' + ((px - 0.5) * 5) + 'deg) translateY(-4px)';
-        c.style.setProperty('--mx', (px * 100) + '%'); c.style.setProperty('--my', (py * 100) + '%');
-      });
-      c.addEventListener('pointerleave', function () { c.style.transition = ''; c.style.transform = ''; });
-    });
-    $$('.cc-tile').forEach(function (t) {
-      t.addEventListener('pointermove', function (e) {
-        var r = t.getBoundingClientRect();
-        t.style.setProperty('--mx', (e.clientX - r.left) + 'px'); t.style.setProperty('--my', (e.clientY - r.top) + 'px');
-      });
-    });
-  }
 
   /* =========================================================
      GESTURE LAB
@@ -1302,32 +1271,6 @@
   function openLightbox(src) { if (!lb) return; lbImg.src = src; lb.classList.add('is-open'); lb.setAttribute('aria-hidden', 'false'); }
   function closeLightbox() { lb.classList.remove('is-open'); lb.setAttribute('aria-hidden', 'true'); }
   if (lb) lb.addEventListener('click', closeLightbox);
-
-  /* ---------------- FPS meter ---------------- */
-  (function fps() {
-    var val = $('#fpsVal'), bars = $('#fpsBars');
-    if (!val) return;
-    var hist = [], N = 28, i, peak = 60, budget = $('.cc-tile--slider .small');
-    for (i = 0; i < N; i++) { var b = document.createElement('i'); b.style.height = '90%'; bars.appendChild(b); }
-    var frames = 0, last = performance.now(), visible = true;
-    if ('IntersectionObserver' in window) new IntersectionObserver(function (en) { visible = en[0].isIntersecting; }).observe(val);
-    function loop(now) {
-      frames++;
-      if (now - last >= 500) {
-        var f = Math.min(120, Math.round(frames * 1000 / (now - last)));
-        frames = 0; last = now;
-        if (visible) {
-          val.textContent = f; hist.push(f); if (hist.length > N) hist.shift();
-          var kids = bars.children, off = N - hist.length;
-          var hz = f > 100 ? 120 : f > 80 ? 90 : 60; peak = Math.max(peak, hz);
-          for (var k = 0; k < hist.length; k++) kids[off + k].style.height = clamp(hist[k] / peak * 95, 8, 100) + '%';
-          if (budget) budget.textContent = (1000 / peak).toFixed(1) + ' ms per frame at ' + peak + ' Hz. I treat it like a deadline.';
-        }
-      }
-      requestAnimationFrame(loop);
-    }
-    requestAnimationFrame(loop);
-  })();
 
   /* ---------------- Contact ---------------- */
   var EMAIL = 'atlasbytezz@gmail.com';

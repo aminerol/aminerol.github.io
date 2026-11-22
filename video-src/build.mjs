@@ -48,10 +48,10 @@ const VIDEOS = [
   {
     id: 'pop', w: 1080, h: 1920, kind: 'pano',
     pal: { bg: '#130F2E', ink: '#F4F2FF', sub: '#BDB6E8', accent: '#8F7BFF', hot: '#36D399', glow: 'rgba(108,92,231,0.30)', glow2: 'rgba(162,155,254,0.20)' },
-    intro: { badge: 'icon', icon: 'pop-icon', title: 'Two apps. One people-ops platform.', sub: 'POP by Gemo for employees. POP Manager for team leads.', meta: 'GEMOGRAPHY · IOS · ANDROID · 2019–2021' },
+    intro: { badge: 'icon', icon: 'pop-icon', title: 'Two apps. One people-ops platform.', sub: 'POP by Gemo for employees. POP Manager for managers.', meta: 'GEMOGRAPHY · IOS · ANDROID · 2019–2021' },
     ghost: 'POP',
     panels: ['pop-1', 'pop-2', 'pop-3', 'pop-4', 'popmanager-1', 'popmanager-2', 'popmanager-3', 'popmanager-4', 'popmanager-5'],
-    stops: [[0, 'POP BY GEMO · EMPLOYEES'], [2, 'HOLIDAY ALERTS'], [3, 'TEAM IN SYNC'], [4, 'POP MANAGER · LEADS'], [6, 'LEAVE CALENDAR'], [7, 'APPROVE IN ONE TAP']],
+    stops: [[0, 'POP BY GEMO · EMPLOYEES'], [2, 'HOLIDAY ALERTS'], [3, 'TEAM IN SYNC'], [4, 'POP MANAGER · MANAGERS'], [6, 'LEAVE CALENDAR'], [7, 'APPROVE IN ONE TAP']],
     outro: { title: 'One monorepo. Shared design system.', sub: 'React Native · React Query · Restyle · Fastlane' },
   },
   {
