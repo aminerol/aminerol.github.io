@@ -55,17 +55,51 @@ const VIDEOS = [
     outro: { title: 'One monorepo. Shared design system.', sub: 'React Native · React Query · Restyle · Fastlane' },
   },
   {
-    id: 'shorts', w: 1920, h: 1080, kind: 'mac',
-    pal: { bg: '#10142A', ink: '#F1F2FF', sub: '#AEB4DA', accent: '#7B6CFF', hot: '#A5B4FC', glow: 'rgba(91,75,230,0.34)', glow2: 'rgba(165,180,252,0.18)' },
-    intro: { badge: 'icon', icon: 'shorts-icon', title: 'An AI studio for short-form video.', sub: 'Script, voice, captions, footage and publishing — in one macOS app.', meta: 'MACOS · ELECTRON · FFMPEG · REMOTION' },
-    ghost: 'SHORTS',
+    id: 'resumebyjob', w: 1080, h: 1920, kind: 'device',
+    pal: { bg: '#F5EFE6', ink: '#1A1714', sub: '#6B5F55', accent: '#E8501A', hot: '#FF5A1F', glow: 'rgba(255,90,31,0.16)', glow2: 'rgba(255,170,90,0.16)' },
+    intro: { badge: 'rbj', title: 'Tailor your resume to the job.', sub: 'Same facts, better ordered, in the words the posting uses.', meta: 'WEB APP · AI · NEXT.JS · NO SIGN-UP' },
+    ghost: 'RESUMEBYJOB',
     scenes: [
-      ['home', 'STEP 01 · PROMPT', 'Describe the reel.'],
-      ['editor', 'STEP 02 · EDIT', 'Pick footage, voice and caption style.'],
-      ['slideshows', 'STEP 03 · FORMATS', 'Or build photo slideshows.'],
+      ['1', 'TAILOR · THE BRIEF', 'Paste the job. Attach your resume.'],
+      ['3', 'REVIEW · 97% MATCH', 'Every change marked. Nothing invented.'],
+      ['4', 'COVER LETTER', 'A letter that fits the company.'],
+      ['5', 'PORTFOLIO', 'Your resume, now a portfolio site.'],
+      ['6', 'PORTFOLIO · VOICES', 'Three voices. Same facts.'],
+    ],
+    src: (n) => `${process.env.SHOTS}/raw-rbj${n}.png`,
+    outro: { title: 'Your facts. Better told.', sub: 'Next.js · LLM generation · React PDF · resumebyjob.com' },
+  },
+  {
+    id: 'gymo', w: 1080, h: 1920, kind: 'device',
+    pal: { bg: '#1B1840', ink: '#F2F4FF', sub: '#AEB6DA', accent: '#4374FF', hot: '#F39C12', glow: 'rgba(67,116,255,0.28)', glow2: 'rgba(243,156,18,0.16)' },
+    intro: { badge: 'icon', icon: 'gymo-icon', title: 'Two apps. One monorepo.', sub: 'Gymo for members. Gymo Manager for gym owners. Shared core, UI and types.', meta: 'IOS · ANDROID · REACT NATIVE · OPEN SOURCE' },
+    ghost: 'GYMO',
+    scenes: [
+      ['goal', 'GYMO · FOR MEMBERS', 'Starts with your goal.'],
+      ['home', 'GYMO · FOR MEMBERS', 'Know when the gym is busy.'],
+      ['stats', 'GYMO MANAGER · FOR OWNERS', 'The whole gym at a glance.'],
+      ['members', 'GYMO MANAGER · FOR OWNERS', 'Every membership, one list.'],
+      ['notify', 'GYMO MANAGER · FOR OWNERS', 'Message members in seconds.'],
+    ],
+    src: (n) => `${process.env.SHOTS}/scr-${n}.png`,
+    outro: { title: 'Members and owners, in sync.', sub: 'Yarn workspaces · shared core/ui/types · react-query-firestore · Fastlane' },
+  },
+  {
+    id: 'shorts', w: 1920, h: 1080, kind: 'mac',
+    pal: { bg: '#10132A', ink: '#F3F2FF', sub: '#B3B0DA', accent: '#7B6BFF', hot: '#FF5FAE', glow: 'rgba(110,92,255,0.36)', glow2: 'rgba(255,95,174,0.18)' },
+    intro: { badge: 'icon', icon: 'shorts-icon', title: 'Reelmaxx. Short-form, maxxed.', sub: 'Research, create, publish, automate and learn — one macOS app for Shorts, TikToks and Reels.', meta: 'MACOS · ELECTRON · FFMPEG · REMOTION' },
+    ghost: 'REELMAXX',
+    scenes: [
+      ['win-research', 'STEP 01 · RESEARCH', 'Find what’s already winning.'],
+      ['win-ugc', 'STEP 02 · CREATE', 'UGC reels, no film crew.'],
+      ['win-slides', 'STEP 03 · SLIDESHOWS', 'Built to stop the scroll.'],
+      ['win-publish', 'STEP 04 · PUBLISH', 'Queue it. Post everywhere.'],
+      ['win-devices', 'STEP 05 · DEVICES', 'Drives real iPhones.'],
+      ['win-automation', 'STEP 06 · AUTOMATIONS', 'Accounts that warm up themselves.'],
+      ['win-insights', 'STEP 07 · INSIGHTS', 'See what actually performs.'],
     ],
     src: (n) => `${SITE}/assets/img/shorts/${n}.webp`,
-    outro: { title: 'Prompt → video → published.', sub: 'OpenAI · Gemini · ElevenLabs · tRPC over IPC' },
+    outro: { title: 'Prompt → video → posted.', sub: 'OpenAI · Gemini · ElevenLabs · tRPC over IPC' },
   },
 ];
 
@@ -90,7 +124,8 @@ function css(v) {
     .scene { position: absolute; top: 0; left: 0; width: ${v.w}px; height: ${v.h}px; overflow: hidden; }
     .scene + .scene { opacity: 0; }
     .scene-content { width: 100%; height: 100%; padding: ${port ? '170px 90px 150px' : '150px 120px 140px'}; display: flex; flex-direction: ${port ? 'column' : 'row'}; gap: ${port ? 48 : 80}px; box-sizing: border-box; }
-    .center { justify-content: center; }
+    .center { justify-content: center; flex-direction: column; }
+    .badge { flex: none; }
     .kicker { font-family: "JetBrains Mono", monospace; font-size: ${port ? 26 : 24}px; letter-spacing: 0.1em; color: ${p.accent}; font-weight: 500; }
     .cap { font-family: "Instrument Serif", serif; font-size: ${port ? 92 : 104}px; line-height: 0.98; letter-spacing: -0.02em; max-width: ${port ? 880 : 700}px; color: ${p.ink}; }
     .title { font-family: "Instrument Serif", serif; font-size: ${port ? 132 : 128}px; line-height: 0.95; letter-spacing: -0.025em; max-width: ${port ? 900 : 1300}px; }
@@ -102,6 +137,8 @@ function css(v) {
     .badge-flag { background: #FFFFFF; }
     .badge-flag i { display: block; width: 110px; height: 64px; border-radius: 40px; background: linear-gradient(#CE2230 0 33%, #FFFFFF 33% 66%, #2148C6 66%); border: 3px solid rgba(16,24,43,0.12); }
     .badge-veto { background: #0C0B10; border: 3px solid rgba(205,251,69,0.4); font-family: "Anton", "Instrument Sans", sans-serif; font-size: 70px; color: #CDFB45; letter-spacing: 0.02em; }
+    .badge-rbj { background: #FFFFFF; box-shadow: 0 30px 70px rgba(60,30,10,0.18); }
+    .badge-rbj i { display: block; width: 64px; height: 64px; border-radius: 14px; background: #FF5A1F; }
     .head { display: flex; flex-direction: column; gap: 22px; ${port ? '' : 'width: 640px; justify-content: center;'} }
     .shot-zone { flex: 1; position: relative; display: flex; align-items: ${port ? 'flex-start' : 'center'}; justify-content: center; min-height: 0; }
     .shot-wrap { position: relative; height: 100%; ${port ? 'max-height: 1240px;' : ''} border-radius: ${port ? 64 : 22}px; overflow: hidden; box-shadow: 0 50px 120px rgba(0,0,0,0.38), 0 0 0 3px rgba(255,255,255,0.08); }
@@ -131,6 +168,7 @@ function badge(v) {
   const b = v.intro.badge;
   if (b === 'flag') return `<div class="badge badge-flag" id="i-badge"><i></i></div>`;
   if (b === 'veto') return `<div class="badge badge-veto" id="i-badge">RV</div>`;
+  if (b === 'rbj') return `<div class="badge badge-rbj" id="i-badge"><i></i></div>`;
   return `<div class="badge" id="i-badge"><img src="assets/${v.intro.icon}.png" alt=""></div>`;
 }
 
@@ -236,7 +274,7 @@ function build(v) {
 
   // icons
   if (v.intro.icon) {
-    const src = { 'sircles-icon': `${SITE}/assets/img/sircles/icon.jpg`, 'pop-icon': `${SITE}/assets/img/pop/icon.jpg`, 'shorts-icon': `${SITE}/../shorts-gen-app/resources/icon.png` }[v.intro.icon];
+    const src = { 'sircles-icon': `${SITE}/assets/img/sircles/icon.jpg`, 'pop-icon': `${SITE}/assets/img/pop/icon.jpg`, 'shorts-icon': process.env.RMX_ICON, 'gymo-icon': `${SITE}/assets/img/gymo/icon.webp` }[v.intro.icon];
     fs.copyFileSync(src, path.join(adir, `${v.intro.icon}.png`));
   }
 

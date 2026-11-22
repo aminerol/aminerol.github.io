@@ -11,86 +11,113 @@
 @font-face { font-family: "Instrument Serif"; font-style: normal; font-weight: 400; src: url("fonts/InstrumentSerif-normal-400.woff2") format("woff2"); }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { width: 1920px; height: 1080px; overflow: hidden; background: #10142A; }
-    #root { position: relative; width: 100%; height: 100%; overflow: hidden; font-family: "Instrument Sans", sans-serif; color: #F1F2FF; background: #10142A; }
+    html, body { width: 1920px; height: 1080px; overflow: hidden; background: #10132A; }
+    #root { position: relative; width: 100%; height: 100%; overflow: hidden; font-family: "Instrument Sans", sans-serif; color: #F3F2FF; background: #10132A; }
     .bg { position: absolute; inset: 0; overflow: hidden; }
     .glow { position: absolute; border-radius: 50%; }
-    .glow-a { width: 1400px; height: 1400px; left: -380px; top: -420px; background: radial-gradient(circle, rgba(91,75,230,0.34) 0%, rgba(91,75,230,0) 65%); }
-    .glow-b { width: 1200px; height: 1200px; right: -420px; bottom: -380px; background: radial-gradient(circle, rgba(165,180,252,0.18) 0%, rgba(165,180,252,0) 65%); }
-    .ghost { position: absolute; left: -40px; bottom: 40px; font-family: "Instrument Serif", serif; font-style: italic; font-size: 420px; line-height: 0.8; color: #F1F2FF; opacity: 0.06; white-space: nowrap; }
-    .hair { position: absolute; left: 120px; right: 120px; height: 2px; background: #F1F2FF; opacity: 0.16; }
+    .glow-a { width: 1400px; height: 1400px; left: -380px; top: -420px; background: radial-gradient(circle, rgba(110,92,255,0.36) 0%, rgba(110,92,255,0) 65%); }
+    .glow-b { width: 1200px; height: 1200px; right: -420px; bottom: -380px; background: radial-gradient(circle, rgba(255,95,174,0.18) 0%, rgba(255,95,174,0) 65%); }
+    .ghost { position: absolute; left: -40px; bottom: 40px; font-family: "Instrument Serif", serif; font-style: italic; font-size: 420px; line-height: 0.8; color: #F3F2FF; opacity: 0.06; white-space: nowrap; }
+    .hair { position: absolute; left: 120px; right: 120px; height: 2px; background: #F3F2FF; opacity: 0.16; }
     .hair-top { top: 80px; } .hair-bot { bottom: 80px; }
-    .meta-top { position: absolute; top: 42px; left: 120px; right: 120px; display: flex; justify-content: space-between; font-family: "JetBrains Mono", monospace; font-size: 22px; letter-spacing: 0.08em; color: #AEB4DA; }
-    .progress { position: absolute; bottom: 78px; left: 120px; height: 6px; width: 1680px; background: #7B6CFF; transform-origin: left center; border-radius: 3px; }
+    .meta-top { position: absolute; top: 42px; left: 120px; right: 120px; display: flex; justify-content: space-between; font-family: "JetBrains Mono", monospace; font-size: 22px; letter-spacing: 0.08em; color: #B3B0DA; }
+    .progress { position: absolute; bottom: 78px; left: 120px; height: 6px; width: 1680px; background: #7B6BFF; transform-origin: left center; border-radius: 3px; }
     .scene { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px; overflow: hidden; }
     .scene + .scene { opacity: 0; }
     .scene-content { width: 100%; height: 100%; padding: 150px 120px 140px; display: flex; flex-direction: row; gap: 80px; box-sizing: border-box; }
-    .center { justify-content: center; }
-    .kicker { font-family: "JetBrains Mono", monospace; font-size: 24px; letter-spacing: 0.1em; color: #7B6CFF; font-weight: 500; }
-    .cap { font-family: "Instrument Serif", serif; font-size: 104px; line-height: 0.98; letter-spacing: -0.02em; max-width: 700px; color: #F1F2FF; }
+    .center { justify-content: center; flex-direction: column; }
+    .badge { flex: none; }
+    .kicker { font-family: "JetBrains Mono", monospace; font-size: 24px; letter-spacing: 0.1em; color: #7B6BFF; font-weight: 500; }
+    .cap { font-family: "Instrument Serif", serif; font-size: 104px; line-height: 0.98; letter-spacing: -0.02em; max-width: 700px; color: #F3F2FF; }
     .title { font-family: "Instrument Serif", serif; font-size: 128px; line-height: 0.95; letter-spacing: -0.025em; max-width: 1300px; }
-    .sub { font-size: 38px; line-height: 1.3; color: #AEB4DA; max-width: 1100px; }
-    .meta { font-family: "JetBrains Mono", monospace; font-size: 24px; letter-spacing: 0.1em; color: #AEB4DA; }
-    .rule { width: 240px; height: 6px; background: #7B6CFF; border-radius: 3px; transform-origin: left center; }
+    .sub { font-size: 38px; line-height: 1.3; color: #B3B0DA; max-width: 1100px; }
+    .meta { font-family: "JetBrains Mono", monospace; font-size: 24px; letter-spacing: 0.1em; color: #B3B0DA; }
+    .rule { width: 240px; height: 6px; background: #7B6BFF; border-radius: 3px; transform-origin: left center; }
     .badge { width: 180px; height: 180px; border-radius: 44px; overflow: hidden; display: flex; align-items: center; justify-content: center; box-shadow: 0 30px 70px rgba(0,0,0,0.35); }
     .badge img { width: 100%; height: 100%; object-fit: cover; }
     .badge-flag { background: #FFFFFF; }
     .badge-flag i { display: block; width: 110px; height: 64px; border-radius: 40px; background: linear-gradient(#CE2230 0 33%, #FFFFFF 33% 66%, #2148C6 66%); border: 3px solid rgba(16,24,43,0.12); }
     .badge-veto { background: #0C0B10; border: 3px solid rgba(205,251,69,0.4); font-family: "Anton", "Instrument Sans", sans-serif; font-size: 70px; color: #CDFB45; letter-spacing: 0.02em; }
+    .badge-rbj { background: #FFFFFF; box-shadow: 0 30px 70px rgba(60,30,10,0.18); }
+    .badge-rbj i { display: block; width: 64px; height: 64px; border-radius: 14px; background: #FF5A1F; }
     .head { display: flex; flex-direction: column; gap: 22px; width: 640px; justify-content: center; }
     .shot-zone { flex: 1; position: relative; display: flex; align-items: center; justify-content: center; min-height: 0; }
     .shot-wrap { position: relative; height: 100%;  border-radius: 22px; overflow: hidden; box-shadow: 0 50px 120px rgba(0,0,0,0.38), 0 0 0 3px rgba(255,255,255,0.08); }
     .shot-wrap img { display: block; height: 100%; width: auto; }
     .mac .shot-wrap { height: auto; width: 100%; max-width: 900px; }
     .mac .shot-wrap img { width: 100%; height: auto; }
-    .counter { position: absolute; right: 120px; bottom: 104px; font-family: "JetBrains Mono", monospace; font-size: 24px; color: #AEB4DA; letter-spacing: 0.08em; }
-    .dot { display: inline-block; width: 16px; height: 16px; border-radius: 50%; background: #A5B4FC; margin-right: 14px; vertical-align: middle; }
+    .counter { position: absolute; right: 120px; bottom: 104px; font-family: "JetBrains Mono", monospace; font-size: 24px; color: #B3B0DA; letter-spacing: 0.08em; }
+    .dot { display: inline-block; width: 16px; height: 16px; border-radius: 50%; background: #FF5FAE; margin-right: 14px; vertical-align: middle; }
     /* panorama */
     .pano-frame { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: hidden; }
     .pano-strip { position: absolute; top: 0; left: 0; height: 1080px; display: flex; }
     .pano-strip img { height: 1080px; width: 1920px; display: block; }
-    .pano-label { position: absolute; left: 90px; bottom: 150px; padding: 18px 28px; border-radius: 999px; background: #10142A; color: #F1F2FF; font-family: "JetBrains Mono", monospace; font-size: 28px; letter-spacing: 0.08em; box-shadow: 0 20px 50px rgba(0,0,0,0.35); }
-    .pano-label b { color: #7B6CFF; font-weight: 500; }
+    .pano-label { position: absolute; left: 90px; bottom: 150px; padding: 18px 28px; border-radius: 999px; background: #10132A; color: #F3F2FF; font-family: "JetBrains Mono", monospace; font-size: 28px; letter-spacing: 0.08em; box-shadow: 0 20px 50px rgba(0,0,0,0.35); }
+    .pano-label b { color: #7B6BFF; font-weight: 500; }
   </style>
   </head>
   <body>
-    <div id="root" data-composition-id="main" data-start="0" data-duration="12.1" data-width="1920" data-height="1080">
+    <div id="root" data-composition-id="main" data-start="0" data-duration="21.3" data-width="1920" data-height="1080">
       
       <div class="bg" data-layout-ignore>
         <div class="glow glow-a"></div><div class="glow glow-b"></div>
-        <div class="ghost">SHORTS</div>
+        <div class="ghost">REELMAXX</div>
       </div>
       <div class="scene" id="s0"><div class="scene-content center">
         <div class="badge" id="i-badge"><img src="assets/shorts-icon.png" alt=""></div>
         <div class="rule" id="i-rule"></div>
-        <h1 class="title" id="i-title">An AI studio for short-form video.</h1>
-        <p class="sub" id="i-sub">Script, voice, captions, footage and publishing — in one macOS app.</p>
+        <h1 class="title" id="i-title">Reelmaxx. Short-form, maxxed.</h1>
+        <p class="sub" id="i-sub">Research, create, publish, automate and learn — one macOS app for Shorts, TikToks and Reels.</p>
         <p class="meta" id="i-meta">MACOS · ELECTRON · FFMPEG · REMOTION</p>
       </div></div><div class="scene mac" id="s1"><div class="scene-content">
         <div class="head">
-          <p class="kicker" id="s1-k"><span class="dot"></span>STEP 01 · PROMPT</p>
-          <h2 class="cap" id="s1-c">Describe the reel.</h2>
+          <p class="kicker" id="s1-k"><span class="dot"></span>STEP 01 · RESEARCH</p>
+          <h2 class="cap" id="s1-c">Find what’s already winning.</h2>
         </div>
-        <div class="shot-zone"><div class="shot-wrap" id="s1-w"><img id="s1-img" src="assets/home.webp" alt=""></div></div>
-      </div><div class="counter" id="s1-n">01 / 03</div></div><div class="scene mac" id="s2"><div class="scene-content">
+        <div class="shot-zone"><div class="shot-wrap" id="s1-w"><img id="s1-img" src="assets/win-research.webp" alt=""></div></div>
+      </div><div class="counter" id="s1-n">01 / 07</div></div><div class="scene mac" id="s2"><div class="scene-content">
         <div class="head">
-          <p class="kicker" id="s2-k"><span class="dot"></span>STEP 02 · EDIT</p>
-          <h2 class="cap" id="s2-c">Pick footage, voice and caption style.</h2>
+          <p class="kicker" id="s2-k"><span class="dot"></span>STEP 02 · CREATE</p>
+          <h2 class="cap" id="s2-c">UGC reels, no film crew.</h2>
         </div>
-        <div class="shot-zone"><div class="shot-wrap" id="s2-w"><img id="s2-img" src="assets/editor.webp" alt=""></div></div>
-      </div><div class="counter" id="s2-n">02 / 03</div></div><div class="scene mac" id="s3"><div class="scene-content">
+        <div class="shot-zone"><div class="shot-wrap" id="s2-w"><img id="s2-img" src="assets/win-ugc.webp" alt=""></div></div>
+      </div><div class="counter" id="s2-n">02 / 07</div></div><div class="scene mac" id="s3"><div class="scene-content">
         <div class="head">
-          <p class="kicker" id="s3-k"><span class="dot"></span>STEP 03 · FORMATS</p>
-          <h2 class="cap" id="s3-c">Or build photo slideshows.</h2>
+          <p class="kicker" id="s3-k"><span class="dot"></span>STEP 03 · SLIDESHOWS</p>
+          <h2 class="cap" id="s3-c">Built to stop the scroll.</h2>
         </div>
-        <div class="shot-zone"><div class="shot-wrap" id="s3-w"><img id="s3-img" src="assets/slideshows.webp" alt=""></div></div>
-      </div><div class="counter" id="s3-n">03 / 03</div></div><div class="scene" id="so"><div class="scene-content center">
+        <div class="shot-zone"><div class="shot-wrap" id="s3-w"><img id="s3-img" src="assets/win-slides.webp" alt=""></div></div>
+      </div><div class="counter" id="s3-n">03 / 07</div></div><div class="scene mac" id="s4"><div class="scene-content">
+        <div class="head">
+          <p class="kicker" id="s4-k"><span class="dot"></span>STEP 04 · PUBLISH</p>
+          <h2 class="cap" id="s4-c">Queue it. Post everywhere.</h2>
+        </div>
+        <div class="shot-zone"><div class="shot-wrap" id="s4-w"><img id="s4-img" src="assets/win-publish.webp" alt=""></div></div>
+      </div><div class="counter" id="s4-n">04 / 07</div></div><div class="scene mac" id="s5"><div class="scene-content">
+        <div class="head">
+          <p class="kicker" id="s5-k"><span class="dot"></span>STEP 05 · DEVICES</p>
+          <h2 class="cap" id="s5-c">Drives real iPhones.</h2>
+        </div>
+        <div class="shot-zone"><div class="shot-wrap" id="s5-w"><img id="s5-img" src="assets/win-devices.webp" alt=""></div></div>
+      </div><div class="counter" id="s5-n">05 / 07</div></div><div class="scene mac" id="s6"><div class="scene-content">
+        <div class="head">
+          <p class="kicker" id="s6-k"><span class="dot"></span>STEP 06 · AUTOMATIONS</p>
+          <h2 class="cap" id="s6-c">Accounts that warm up themselves.</h2>
+        </div>
+        <div class="shot-zone"><div class="shot-wrap" id="s6-w"><img id="s6-img" src="assets/win-automation.webp" alt=""></div></div>
+      </div><div class="counter" id="s6-n">06 / 07</div></div><div class="scene mac" id="s7"><div class="scene-content">
+        <div class="head">
+          <p class="kicker" id="s7-k"><span class="dot"></span>STEP 07 · INSIGHTS</p>
+          <h2 class="cap" id="s7-c">See what actually performs.</h2>
+        </div>
+        <div class="shot-zone"><div class="shot-wrap" id="s7-w"><img id="s7-img" src="assets/win-insights.webp" alt=""></div></div>
+      </div><div class="counter" id="s7-n">07 / 07</div></div><div class="scene" id="so"><div class="scene-content center">
         <div class="badge" id="o-badge"><img src="assets/shorts-icon.png" alt=""></div>
-        <h2 class="title" id="o-title">Prompt → video → published.</h2>
+        <h2 class="title" id="o-title">Prompt → video → posted.</h2>
         <p class="sub" id="o-sub">OpenAI · Gemini · ElevenLabs · tRPC over IPC</p>
       </div></div>
       <div class="hair hair-top" data-layout-ignore></div>
-      <div class="meta-top" data-layout-ignore><span>AMINE BOUHLALI · APP PREVIEW</span><span>SHORTS</span></div>
+      <div class="meta-top" data-layout-ignore><span>AMINE BOUHLALI · APP PREVIEW</span><span>REELMAXX</span></div>
       <div class="hair hair-bot" data-layout-ignore></div>
       <div class="progress" id="progress" data-layout-ignore></div>
     </div>
@@ -98,10 +125,10 @@
       window.__timelines = window.__timelines || {};
       const tl = gsap.timeline({ paused: true });
       
-      tl.fromTo(".glow-a", { x: 0, y: 0, scale: 1 }, { x: 120, y: 80, scale: 1.12, duration: 12.1, ease: "sine.inOut" }, 0);
-      tl.fromTo(".glow-b", { x: 0, y: 0 }, { x: -100, y: -60, duration: 12.1, ease: "sine.inOut" }, 0);
-      tl.fromTo(".ghost", { x: 0 }, { x: -260, duration: 12.1, ease: "none" }, 0);
-      tl.fromTo("#progress", { scaleX: 0 }, { scaleX: 1, duration: 12.1, ease: "none" }, 0);
+      tl.fromTo(".glow-a", { x: 0, y: 0, scale: 1 }, { x: 120, y: 80, scale: 1.12, duration: 21.3, ease: "sine.inOut" }, 0);
+      tl.fromTo(".glow-b", { x: 0, y: 0 }, { x: -100, y: -60, duration: 21.3, ease: "sine.inOut" }, 0);
+      tl.fromTo(".ghost", { x: 0 }, { x: -260, duration: 21.3, ease: "none" }, 0);
+      tl.fromTo("#progress", { scaleX: 0 }, { scaleX: 1, duration: 21.3, ease: "none" }, 0);
       tl.fromTo("#i-badge", { scale: 0.6, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.7, ease: "back.out(1.8)" }, 0.2);
       tl.fromTo("#i-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "expo.out" }, 0.45);
       tl.fromTo("#i-title", { y: 70, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: "power4.out" }, 0.5);
@@ -128,11 +155,39 @@
       tl.fromTo("#s3-w", { opacity: 0, y: 0, x: 120, rotation: -3 }, { opacity: 1, y: 0, x: 0, rotation: 0, duration: 0.9, ease: "expo.out" }, 7.3);
       tl.fromTo("#s3-img", { scale: 1.0 }, { scale: 1.05, duration: 2.8, ease: "none" }, 7.25);
       tl.fromTo("#s3-n", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "sine.out" }, 7.65);
-      tl.to("#s3", { opacity: 0, filter: "blur(18px)", duration: 0.6, ease: "sine.inOut" }, 9.2);
-      tl.fromTo("#so", { opacity: 0, filter: "blur(18px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.6, ease: "sine.inOut" }, 9.3);
-      tl.fromTo("#o-badge", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.6, ease: "back.out(1.7)" }, 9.6);
-      tl.fromTo("#o-title", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: "power4.out" }, 9.75);
-      tl.fromTo("#o-sub", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "sine.out" }, 10.05);
+      tl.to("#s3", { x: -1920, duration: 0.5, ease: "power3.inOut" }, 9);
+      tl.fromTo("#s4", { x: 1920, opacity: 1 }, { x: 0, duration: 0.5, ease: "power3.inOut" }, 9);
+      tl.fromTo("#s4-k", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.45, ease: "power2.out" }, 9.65);
+      tl.fromTo("#s4-c", { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.65, ease: "power4.out" }, 9.73);
+      tl.fromTo("#s4-w", { opacity: 0, y: 0, x: 120, rotation: 3 }, { opacity: 1, y: 0, x: 0, rotation: 0, duration: 0.9, ease: "expo.out" }, 9.600000000000001);
+      tl.fromTo("#s4-img", { scale: 1.0 }, { scale: 1.05, duration: 2.8, ease: "none" }, 9.55);
+      tl.fromTo("#s4-n", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "sine.out" }, 9.950000000000001);
+      tl.to("#s4", { x: -1920, duration: 0.5, ease: "power3.inOut" }, 11.3);
+      tl.fromTo("#s5", { x: 1920, opacity: 1 }, { x: 0, duration: 0.5, ease: "power3.inOut" }, 11.3);
+      tl.fromTo("#s5-k", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.45, ease: "power2.out" }, 11.950000000000001);
+      tl.fromTo("#s5-c", { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.65, ease: "power4.out" }, 12.030000000000001);
+      tl.fromTo("#s5-w", { opacity: 0, y: 0, x: 120, rotation: -3 }, { opacity: 1, y: 0, x: 0, rotation: 0, duration: 0.9, ease: "expo.out" }, 11.900000000000002);
+      tl.fromTo("#s5-img", { scale: 1.0 }, { scale: 1.05, duration: 2.8, ease: "none" }, 11.850000000000001);
+      tl.fromTo("#s5-n", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "sine.out" }, 12.250000000000002);
+      tl.to("#s5", { x: -1920, duration: 0.5, ease: "power3.inOut" }, 13.600000000000001);
+      tl.fromTo("#s6", { x: 1920, opacity: 1 }, { x: 0, duration: 0.5, ease: "power3.inOut" }, 13.600000000000001);
+      tl.fromTo("#s6-k", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.45, ease: "power2.out" }, 14.250000000000002);
+      tl.fromTo("#s6-c", { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.65, ease: "power4.out" }, 14.330000000000002);
+      tl.fromTo("#s6-w", { opacity: 0, y: 0, x: 120, rotation: 3 }, { opacity: 1, y: 0, x: 0, rotation: 0, duration: 0.9, ease: "expo.out" }, 14.200000000000003);
+      tl.fromTo("#s6-img", { scale: 1.0 }, { scale: 1.05, duration: 2.8, ease: "none" }, 14.150000000000002);
+      tl.fromTo("#s6-n", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "sine.out" }, 14.550000000000002);
+      tl.to("#s6", { x: -1920, duration: 0.5, ease: "power3.inOut" }, 15.900000000000002);
+      tl.fromTo("#s7", { x: 1920, opacity: 1 }, { x: 0, duration: 0.5, ease: "power3.inOut" }, 15.900000000000002);
+      tl.fromTo("#s7-k", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.45, ease: "power2.out" }, 16.550000000000004);
+      tl.fromTo("#s7-c", { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.65, ease: "power4.out" }, 16.630000000000003);
+      tl.fromTo("#s7-w", { opacity: 0, y: 0, x: 120, rotation: -3 }, { opacity: 1, y: 0, x: 0, rotation: 0, duration: 0.9, ease: "expo.out" }, 16.500000000000004);
+      tl.fromTo("#s7-img", { scale: 1.0 }, { scale: 1.05, duration: 2.8, ease: "none" }, 16.450000000000003);
+      tl.fromTo("#s7-n", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "sine.out" }, 16.85);
+      tl.to("#s7", { opacity: 0, filter: "blur(18px)", duration: 0.6, ease: "sine.inOut" }, 18.400000000000002);
+      tl.fromTo("#so", { opacity: 0, filter: "blur(18px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.6, ease: "sine.inOut" }, 18.500000000000004);
+      tl.fromTo("#o-badge", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.6, ease: "back.out(1.7)" }, 18.800000000000004);
+      tl.fromTo("#o-title", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: "power4.out" }, 18.950000000000003);
+      tl.fromTo("#o-sub", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "sine.out" }, 19.250000000000004);
       window.__timelines["main"] = tl;
       tl.seek(0);
     </script>

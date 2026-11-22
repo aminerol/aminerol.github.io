@@ -239,7 +239,7 @@
     openchair: '<span class="proj-icon proj-icon--openchair"><i></i></span>',
     veto: '<span class="proj-icon proj-icon--veto">RV</span>',
     resumebyjob: '<span class="proj-icon proj-icon--rbj"><b></b></span>',
-    vpn: '<span class="proj-icon proj-icon--vpn"><svg><use href="#i-power"/></svg></span>'
+    vpn: '<span class="proj-icon proj-icon--vpn"><img src="assets/img/vpn/logo.svg" alt=""></span>'
   };
   function appIcon(n, cls) {
     if (n.icon) return '<img class="' + (cls || '') + '" src="' + n.icon + '" alt="">';
@@ -400,7 +400,7 @@
       var step = function (now) {
         var dt = Math.min(0.032, (now - last) / 1000); last = now;
         v += (-170 * (A - target) - 22 * v) * dt; A += v * dt; render();
-        if (Math.abs(A - target) < 0.05 && Math.abs(v) < 0.05) { A = target; render(); if (window.__liveActivity) window.__liveActivity(CATS[sel][0], '<img src="assets/img/sircles/icon.jpg" alt="">', 1300); return; }
+        if (Math.abs(A - target) < 0.05 && Math.abs(v) < 0.05) { A = target; render(); return; }
         raf = requestAnimationFrame(step);
       };
       raf = requestAnimationFrame(step);
@@ -489,7 +489,6 @@
       if (s.kind === 'invite' || s.kind === 'plus') {
         var name = EXTRA[ex++ % EXTRA.length]; haptic([8, 30, 8]);
         s.kind = 'user'; s.name = name; s.pal = PALETTE[(ex + 3) % PALETTE.length]; paintSlot(s, true);
-        if (window.__liveActivity) window.__liveActivity(name + ' joined your Sircle of Trust', '<img src="assets/img/sircles/icon.jpg" alt="">', 1600);
         return;
       }
       if (!movable(s)) return;
@@ -568,7 +567,6 @@
           toastBox.innerHTML = ok ? '<svg class="ic"><use href="#i-check"/></svg> Approved · ' + esc(r.name) + ' notified' : 'Declined · ' + esc(r.name) + ' notified';
           toastBox.classList.add('is-in');
           setTimeout(function () { toastBox.classList.remove('is-in'); }, 1600);
-          if (window.__liveActivity) window.__liveActivity((ok ? 'Approved · ' : 'Declined · ') + r.name, '<img src="assets/img/popmanager/icon.jpg" alt="">', 1800);
           setTimeout(show, 1500);
         });
       });
@@ -692,7 +690,7 @@
       input.value = ''; haptic(6);
       var ti = idx, t = TOPICS[ti], pg = pages[ti];
       var el = bubble('me', text, true); pg.appendChild(el); scrollEnd(pg);
-      setTimeout(function () { var m = el.querySelector('.tp-meta'); if (m) m.innerHTML = '<svg class="ic"><use href="#i-check"/></svg>'; if (window.__liveActivity) window.__liveActivity('Delivered to ' + (t.main ? 'main chat' : '#' + t.name.toLowerCase()), '<span style="font-size:15px">💬</span>', 1400); }, 600);
+      setTimeout(function () { var m = el.querySelector('.tp-meta'); if (m) m.innerHTML = '<svg class="ic"><use href="#i-check"/></svg>'; }, 600);
       clearTimeout(replyT);
       replyT = setTimeout(function () {
         items[ti].classList.add('is-typing');
@@ -804,7 +802,6 @@
     send.addEventListener('click', function () {
       if (!start) return;
       haptic([10, 40, 10]);
-      if (window.__liveActivity) window.__liveActivity('Leave request sent to your manager', '<img src="assets/img/pop/icon.jpg" alt="">', 1800);
       send.textContent = 'Sent ✓'; send.disabled = true;
       setTimeout(function () { start = end = null; send.textContent = 'Request'; paint(); }, 1600);
     });
@@ -919,7 +916,6 @@
       var plus = document.createElement('span'); plus.className = 'board__plus'; plus.textContent = '+1'; c.appendChild(plus);
       setTimeout(function () { plus.remove(); }, 800);
       haptic(8); layout();
-      if (s.rank < before && window.__liveActivity) window.__liveActivity(s.n + ' climbs to #' + (s.rank + 1) + (s.rank === 0 ? ' 🔥' : ''), '<span class="proj-icon proj-icon--veto">RV</span>', 1600);
       if (votes === 0) setTimeout(function () { buy.classList.add('is-in'); }, 500);
     }
     layout(); updateLeft();
@@ -990,13 +986,15 @@
   function mediaItems(d) {
     var out = [];
     if (d.video) out.push({ t: 'video', src: d.video.src, poster: d.video.poster, orient: d.video.orient });
-    if (d.apps) d.apps.forEach(function (a) { a.images.forEach(function (im, i) { out.push({ t: 'phone', src: im, label: i === 0 ? a.name : '' }); }); });
-    if (d.gallery) d.gallery.images.forEach(function (im) {
+    var gal = function () { if (d.gallery) d.gallery.images.forEach(function (im) {
       var g = d.gallery;
       if (g.type === 'mixed') out.push({ t: im[0], src: im[1], label: '', bar: im[2] || '' });
       else if (g.type === 'browser') out.push({ t: 'browser', src: im[0], bar: im[1] });
       else out.push({ t: g.type, src: im });
-    });
+    }); };
+    if (d.galleryFirst) gal();
+    if (d.apps) d.apps.forEach(function (a) { a.images.forEach(function (im, i) { out.push({ t: 'phone', src: im, label: i === 0 ? a.name : '' }); }); });
+    if (!d.galleryFirst) gal();
     return out;
   }
   function mediaHTML(d) {
@@ -1016,7 +1014,7 @@
     if (!apps) return '';
     return '<div class="sh-appcards">' + apps.map(function (a) {
       return '<div class="sh-appcard"><header><img src="' + a.icon + '" alt=""><div><h4>' + esc(a.name) + '</h4><small>' + esc(a.who) + ' · ' + esc(a.since) + '</small></div></header>' +
-        '<p>' + esc(a.copy) + '</p><a class="btn btn--ghost btn--sm" href="' + a.href + '" target="_blank" rel="noopener"><svg class="ic"><use href="#i-apple"/></svg>App Store</a></div>';
+        '<p>' + esc(a.copy) + '</p><a class="btn btn--ghost btn--sm" href="' + a.href + '" target="_blank" rel="noopener"><svg class="ic"><use href="#i-' + (a.linkIcon || 'apple') + '"/></svg>' + esc(a.linkLabel || 'App Store') + '</a></div>';
     }).join('') + '</div>';
   }
   function mainHTML(left, right) {
@@ -1035,54 +1033,24 @@
     openchair: '<span class="proj-icon proj-icon--openchair"><i></i></span>',
     veto: '<span class="proj-icon proj-icon--veto">RV</span>',
     resumebyjob: '<span class="proj-icon proj-icon--rbj"><b></b></span>',
-    shorts: '<img src="assets/img/shorts/icon.webp" alt="">',
+    shorts: '<img src="assets/img/shorts/icon.webp?v=2" alt="">',
     gymo: '<img src="assets/img/gymo/icon.webp" alt="">',
-    vpn: '<span class="proj-icon proj-icon--vpn"><svg><use href="#i-power"/></svg></span>'
+    vpn: '<span class="proj-icon proj-icon--vpn"><img src="assets/img/vpn/logo.svg" alt=""></span>'
   };
   function gymoMap() {
     var cols = [
       ['Onboarding', [['Goal', 'build · lose · maintain'], ['Body metrics', 'ruler pickers'], ['Profile', 'photo + name'], ['Schedule', 'training days']]],
-      ['Member app', [['Home · workout', 'today’s plan'], ['Stats', 'donut charts'], ['Chat', 'with the gym'], ['Notifications', 'push + inbox']]],
-      ['Manager app', [['Members', 'active · inactive'], ['Subscriptions', 'edit + renew'], ['New members', 'join date'], ['Broadcast', 'filters + search']]]
+      ['Gymo · members', [['Home · workout', 'today’s plan'], ['Gym crowd', 'donut by muscle'], ['Chat', 'with the gym'], ['Notifications', 'push + inbox']]],
+      ['Gymo Manager · owners', [['Dashboard', 'vs last month'], ['Members', 'active · inactive'], ['Memberships', 'classic · gold · premium'], ['Broadcast', 'filters + search']]]
     ];
     return '<p class="sh-label" style="margin-top:44px">Screen map</p><div class="screenmap" style="margin-top:0">' + cols.map(function (c) {
       return '<div class="screenmap__col"><h4>' + c[0] + '</h4><ul>' + c[1].map(function (s) { return '<li>' + s[0] + '<span>' + s[1] + '</span></li>'; }).join('') + '</ul></div>';
     }).join('') + '</div>';
   }
-  function vpnDemoHTML() {
-    var servers = [['🇳🇱', 'Amsterdam', '185.194.143.'], ['🇩🇪', 'Frankfurt', '91.218.114.'], ['🇺🇸', 'New York', '104.200.31.'], ['🇸🇬', 'Singapore', '139.59.240.'], ['🇯🇵', 'Tokyo', '45.76.98.'], ['🇨🇦', 'Toronto', '158.69.4.']];
-    return '<div class="vpn-demo" id="vpnDemo"><button class="vpn-power" id="vpnPower" aria-label="Connect"><svg><use href="#i-power"/></svg></button>' +
-      '<div><div class="vpn-status" id="vpnStatus">Not protected<small>Tap to connect — a tiny homage to the 2016 client</small></div>' +
-      '<div class="vpn-ip"><span>IP <b id="vpnIp">105.158.22.41</b></span><span id="vpnLoc">📍 Rabat, MA</span></div>' +
-      '<div class="vpn-servers" id="vpnServers">' + servers.map(function (s, i) { return '<button type="button" data-i="' + i + '" class="' + (i ? '' : 'is-active') + '">' + s[0] + ' ' + s[1] + '</button>'; }).join('') + '</div></div></div>';
-  }
-  function bindVpn() {
-    var box = $('#vpnDemo'); if (!box) return;
-    var servers = [['🇳🇱', 'Amsterdam, NL', '185.194.143.'], ['🇩🇪', 'Frankfurt, DE', '91.218.114.'], ['🇺🇸', 'New York, US', '104.200.31.'], ['🇸🇬', 'Singapore, SG', '139.59.240.'], ['🇯🇵', 'Tokyo, JP', '45.76.98.'], ['🇨🇦', 'Toronto, CA', '158.69.4.']];
-    var sel = 0, state = 'off', t;
-    var status = $('#vpnStatus'), ip = $('#vpnIp'), loc = $('#vpnLoc');
-    function set(s) {
-      state = s; box.classList.toggle('is-connecting', s === 'connecting'); box.classList.toggle('is-on', s === 'on');
-      if (s === 'off') { status.innerHTML = 'Not protected<small>Your real IP is visible</small>'; ip.textContent = '105.158.22.41'; loc.textContent = '📍 Rabat, MA'; }
-      if (s === 'connecting') status.innerHTML = 'Connecting…<small>Handshaking with ' + servers[sel][1] + '</small>';
-      if (s === 'on' && window.__liveActivity) window.__liveActivity('VPN on · ' + servers[sel][1], '<span class="proj-icon proj-icon--vpn"><svg><use href="#i-power"/></svg></span>', 1800);
-      if (s === 'on') { status.innerHTML = 'Protected<small>Encrypted tunnel via ' + servers[sel][1] + '</small>'; ip.textContent = servers[sel][2] + (10 + Math.floor(Math.random() * 240)); loc.textContent = servers[sel][0] + ' ' + servers[sel][1]; haptic([8, 30, 8]); }
-    }
-    $('#vpnPower').addEventListener('click', function () {
-      clearTimeout(t); haptic(10);
-      if (state === 'off') { set('connecting'); t = setTimeout(function () { set('on'); }, 1500); } else set('off');
-    });
-    $$('#vpnServers button').forEach(function (b) {
-      b.addEventListener('click', function () {
-        sel = +b.getAttribute('data-i'); $$('#vpnServers button').forEach(function (x) { x.classList.toggle('is-active', x === b); }); haptic(4);
-        if (state !== 'off') { clearTimeout(t); set('connecting'); t = setTimeout(function () { set('on'); }, 1100); }
-      });
-    });
-  }
   function buildProject(key, d) {
     var sections = d.sections.map(function (x) { return '<div class="sh-section"><h3>' + esc(x[0]) + '</h3><p>' + esc(x[1]) + '</p></div>'; }).join('');
     return heroHTML(d, PROJECT_ICONS[key] || '') + mediaHTML(d) +
-      mainHTML('<p class="sh-intro">' + esc(d.intro) + '</p>' + sections + (d.vpnDemo ? vpnDemoHTML() : '') + (key === 'gymo' ? gymoMap() : ''),
+      mainHTML('<p class="sh-intro">' + esc(d.intro) + '</p>' + appCardsHTML(d.apps) + sections + (key === 'gymo' ? gymoMap() : ''),
         factsHTML(d.facts) + '<div><p class="sh-label">Highlights</p><ul class="sh-bullets">' + d.bullets.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul></div>' +
         '<div><p class="sh-label">Stack</p>' + chipsHTML(d.stack) + '</div>');
   }
@@ -1182,7 +1150,6 @@
       });
       $$('.sh-media__item[data-src]', m).forEach(function (it) { it.addEventListener('click', function () { openLightbox(it.getAttribute('data-src')); }); });
     });
-    bindVpn();
   }
 
   // open triggers

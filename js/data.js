@@ -6,7 +6,7 @@ window.PORTFOLIO = {
     { app: 'OpenChair', iconHTML: 'openchair', time: '4m ago', title: '2 barbers available', body: 'Haircut + Beard · right now. See who answered.', open: ['project', 'openchair'] },
     { app: 'RAP Veto', iconHTML: 'veto', time: '9m ago', title: 'You pushed OBSESSED to #1 🔥', body: 'Your share link brought 12 new votes tonight.', open: ['project', 'veto'] },
     { app: 'POP by Gemo', icon: 'assets/img/pop/icon.jpg', time: '20m ago', title: 'Holiday alert 🎉', body: 'Independence Day is coming up in 2 days.', open: ['xp', 'gemography'] },
-    { app: 'Shorts Gen', icon: 'assets/img/shorts/icon.webp', time: '32m ago', title: 'Render finished', body: '“5 quick tips for phone photography” · 0:42 · ready to publish.', open: ['project', 'shorts'] },
+    { app: 'Reelmaxx', icon: 'assets/img/shorts/icon.webp?v=2', time: '32m ago', title: 'Render finished', body: '“5 quick tips for phone photography” · 0:42 · ready to publish.', open: ['project', 'shorts'] },
     { app: 'ResumeByJob', iconHTML: 'resumebyjob', time: '1h ago', title: 'Resume tailored ✓', body: '14 suggestions ready to review for Senior Mobile Engineer.', open: ['project', 'resumebyjob'] },
     { app: 'Gymo', icon: 'assets/img/gymo/icon.webp', time: '2h ago', title: 'Leg day at 18:00 💪', body: 'Your coach added a new workout to this week’s plan.', open: ['project', 'gymo'] },
     { app: 'VPN.Express', iconHTML: 'vpn', time: 'yesterday', title: 'You’re protected 🛡️', body: 'Connected to Amsterdam · your real IP is hidden.', open: ['project', 'vpn'] }
@@ -19,7 +19,7 @@ window.PORTFOLIO = {
     ['oss', 'react-query-firestore', 'Firestore + React Query · ★ 103', ['project', 'gymo']],
     ['built', 'OpenChair', 'On-demand barber marketplace', ['project', 'openchair']],
     ['built', 'RAP Veto', 'Fan-voted chart for Moroccan rap', ['project', 'veto']],
-    ['built', 'Shorts Gen', 'Prompt → short video on macOS', ['project', 'shorts']],
+    ['built', 'Reelmaxx', 'Prompt → short video on macOS', ['project', 'shorts']],
     ['live', 'ResumeByJob', 'Resumes tailored to each job', ['project', 'resumebyjob']],
     ['history', 'VPN.Express', 'VPN apps for Windows, iOS & Android', ['project', 'vpn']]
   ],
@@ -185,17 +185,18 @@ window.PORTFOLIO = {
       bullets: ['PDF in, one-page PDF out', 'Reviewable diff for every change', 'No fabricated experience — enforced', 'Browser-only storage, no sign-up', 'Cover letters + SEO guides'],
       facts: [['Role', 'Design + engineering'], ['Platform', 'Web'], ['Status', 'Live']],
       stack: ['Next.js', 'React', 'TypeScript', 'LLM generation', 'React PDF', 'Headless UI', 'Vaul', 'PostHog'],
-      gallery: { type: 'mixed', images: [['browser', 'assets/img/resumebyjob/desktop.webp', 'resumebyjob.com'], ['phone', 'assets/img/resumebyjob/mobile.webp']], caption: 'Live site' },
+      video: { src: 'assets/video/resumebyjob.mp4', poster: 'assets/video/resumebyjob.jpg', orient: 'portrait' },
+      gallery: { type: 'mixed', images: [['phone', 'assets/img/resumebyjob/shot-1.webp?v=2'], ['phone', 'assets/img/resumebyjob/shot-3.webp?v=2'], ['phone', 'assets/img/resumebyjob/shot-4.webp?v=2'], ['phone', 'assets/img/resumebyjob/shot-5.webp?v=2'], ['phone', 'assets/img/resumebyjob/shot-6.webp?v=2']], caption: 'Real runs: tailoring a resume, writing a cover letter, turning a resume into a portfolio' },
       links: [{ label: 'Open ResumeByJob', href: 'https://www.resumebyjob.com/', icon: 'ext' }]
     },
 
     shorts: {
       kind: 'macOS app · Electron',
-      title: 'Shorts Gen',
+      title: 'Reelmaxx',
       tagline: 'An AI studio that writes, voices, edits and publishes short-form video.',
       accent: '#5b4be6',
       accent2: '#a5b4fc',
-      intro: 'Shorts Gen is a macOS desktop app for producing YouTube Shorts, TikToks and Reels end to end. Describe the reel or pick a topic idea, and the pipeline handles the script, voiceover, captions, background footage, music and export — then helps you research what works and publish it.',
+      intro: 'Reelmaxx is a macOS desktop app for producing YouTube Shorts, TikToks and Reels end to end. Describe the reel or pick a topic idea, and the pipeline handles the script, voiceover, captions, background footage, music and export — then helps you research what works and publish it.',
       sections: [
         ['The pipeline', 'AI script generation with OpenAI and Gemini, voices from ElevenLabs, TikTok TTS or OpenAI, word-timed captions converted to styled ASS subtitles, and two render engines: FFmpeg for raw speed and Remotion for React-driven compositions. Formats include brainrot gameplay, UGC and photo slideshows.'],
         ['Beyond editing', 'A Research tab that searches TikTok for winning content, a Publish queue, Insights for post analytics, a media Library, multi-account management and reusable presets. It can even drive real iPhones through WebDriverAgent for automations.'],
@@ -204,27 +205,39 @@ window.PORTFOLIO = {
       bullets: ['Prompt → script → voice → captions → video', 'FFmpeg + Remotion render engines', 'Brainrot, UGC and slideshow formats', 'TikTok research + publishing queue', 'Multi-window Electron, tRPC over IPC'],
       facts: [['Role', 'Solo developer'], ['Platform', 'macOS (Electron)'], ['Status', 'Personal tool, in use']],
       stack: ['Electron', 'React', 'TypeScript', 'tRPC', 'FFmpeg', 'Remotion', 'OpenAI', 'Gemini', 'ElevenLabs', 'Tailwind', 'LowDB'],
-      video: { src: 'assets/video/shorts.mp4', poster: 'assets/video/shorts.jpg', orient: 'landscape' },
-      gallery: { type: 'mac', images: ['assets/img/shorts/editor.webp', 'assets/img/shorts/slideshows.webp', 'assets/img/shorts/home.webp'], caption: 'Editor, slideshow packs and the prompt home' },
+      video: { src: 'assets/video/shorts.mp4?v=3', poster: 'assets/video/shorts.jpg?v=3', orient: 'landscape' },
+      gallery: { type: 'mac', images: ['assets/img/shorts/mk-home.webp', 'assets/img/shorts/mk-research.webp', 'assets/img/shorts/mk-ugc.webp', 'assets/img/shorts/mk-slides.webp', 'assets/img/shorts/mk-publish.webp', 'assets/img/shorts/mk-devices.webp', 'assets/img/shorts/mk-automation.webp', 'assets/img/shorts/mk-insights.webp'], caption: 'Prompt home, research, UGC and slideshow editors, publishing, real-iPhone automations and insights' },
+
+
       links: []
     },
 
     gymo: {
-      kind: 'Mobile apps · Open source',
+      kind: 'Two mobile apps · Open source',
       title: 'Gymo',
-      tagline: 'An Arabic-first gym platform: one app for members, one for managers.',
+      tagline: 'Two apps, one monorepo: Gymo for members, Gymo Manager for gym owners.',
       accent: '#6f5cff',
       accent2: '#201844',
-      intro: 'Gymo gives a neighbourhood gym a proper digital front desk. Members onboard with a goal — build muscle, lose weight, stay fit — then follow workouts, track their stats and chat with the gym. Managers run memberships, subscriptions, class schedules and broadcast notifications from their own app.',
-      sections: [
-        ['Member app', 'A goal-driven onboarding (goal, body metrics, profile, schedule), workouts and progress stats on the home screen, chat with the gym, and notifications. Arabic-first with right-to-left layouts throughout.'],
-        ['Manager app', 'Member lists filtered by active, inactive, new and deleted; subscription editing; a class schedule; a notification composer with filters and search; threaded chat with members; and a stats dashboard.'],
-        ['Monorepo', 'Two React Native apps in Yarn workspaces sharing core, ui and types packages, a Next.js API backend, and react-query-firestore — my own package for using Firestore through React Query, later published on its own. Builds and releases through Fastlane.']
+      intro: 'Gymo gives a neighbourhood gym a proper digital front desk, split into two apps that share one codebase. Members get Gymo: onboard with a goal, see how busy the gym is, book today’s workout and chat with the gym. Gym owners get Gymo Manager: track members and memberships, see how the month compares, and message members in a few taps.',
+      apps: [
+        { name: 'Gymo', who: 'For members', icon: 'assets/img/gymo/icon.webp?v=2', since: 'iOS · Android', href: 'https://github.com/aminerol/gymo/tree/develop/apps/client', linkIcon: 'github', linkLabel: 'apps/client',
+          copy: 'Goal-driven onboarding (goal, body metrics, profile, training days), a home with the gym crowd by muscle and hour, today’s workout to book or skip, chat with the gym and notifications.',
+          images: ['assets/img/gymo/shot-1.webp?v=2', 'assets/img/gymo/shot-metrics.webp', 'assets/img/gymo/shot-2.webp?v=2', 'assets/img/gymo/shot-membership.webp', 'assets/img/gymo/shot-chat.webp'] },
+        { name: 'Gymo Manager', who: 'For gym owners', icon: 'assets/img/gymo/icon-manager.webp', since: 'iOS · Android', href: 'https://github.com/aminerol/gymo/tree/develop/apps/manager', linkIcon: 'github', linkLabel: 'apps/manager',
+          copy: 'A dashboard compared with last month, members filtered by new, active, inactive and deleted, Classic, Gold and Premium memberships, class schedules, threaded chat and a notification composer with audience filters.',
+          images: ['assets/img/gymo/shot-3.webp?v=2', 'assets/img/gymo/shot-4.webp?v=2', 'assets/img/gymo/shot-profile.webp', 'assets/img/gymo/shot-renew.webp', 'assets/img/gymo/shot-5.webp?v=2', 'assets/img/gymo/shot-inbox.webp'] }
       ],
-      bullets: ['Members + managers, two apps', 'Shared core/ui/types packages', 'Firestore through React Query', 'RTL Arabic UI', 'Fastlane beta + production lanes'],
-      facts: [['Role', 'Solo developer'], ['Platforms', 'iOS · Android'], ['Code', 'Public on GitHub']],
-      stack: ['React Native', 'Expo', 'TypeScript', 'Firebase', 'Firestore', 'React Query', 'Reanimated', 'Next.js', 'Fastlane', 'Yarn workspaces'],
-      gallery: null,
+      sections: [
+        ['One monorepo, two apps', 'Both React Native apps live in Yarn workspaces and share core (API hooks, auth, notifications), ui (theme and components) and types packages, so a feature like memberships is modelled once and shows up correctly on both sides.'],
+        ['Shared backend', 'A Next.js API and Firestore behind both apps, read through react-query-firestore — my own package for using Firestore with React Query, later published on its own.'],
+        ['Shipping both', 'Each app has its own identity, icon and Fastlane beta and production lanes, built from the same commit. Arabic-first, with right-to-left layouts throughout.']
+      ],
+      bullets: ['Two apps: members + gym owners', 'One monorepo, shared core/ui/types', 'Firestore through React Query', 'RTL layouts', 'Fastlane lanes per app'],
+      facts: [['Role', 'Solo developer'], ['Apps', 'Gymo · Gymo Manager'], ['Platforms', 'iOS · Android'], ['Code', 'Public on GitHub']],
+      stack: ['React Native', 'Expo', 'TypeScript', 'Yarn workspaces', 'Firebase', 'Firestore', 'React Query', 'Reanimated', 'Next.js', 'Fastlane'],
+      video: { src: 'assets/video/gymo.mp4?v=2', poster: 'assets/video/gymo.jpg?v=2', orient: 'portrait' },
+      galleryFirst: true,
+      gallery: { type: 'phone', images: ['assets/img/gymo/shot-duo.webp?v=2'], caption: 'Screens rebuilt from the open-source code: Gymo for members (blue) and Gymo Manager for gym owners (orange)' },
       links: [{ label: 'GitHub', href: 'https://github.com/aminerol/gymo', icon: 'github' }, { label: 'react-query-firestore', href: 'https://github.com/aminerol/react-query-firestore', icon: 'github' }]
     },
 
@@ -243,8 +256,7 @@ window.PORTFOLIO = {
       bullets: ['Windows, iOS and Android clients', 'WCF networking service over IPC', 'Low-level OpenVPN on iOS', 'Reconnect + stability on mobile networks'],
       facts: [['Role', 'Software engineer · platform lead'], ['Platforms', 'Windows · iOS · Android'], ['When', 'Jul 2016 – Aug 2019']],
       stack: ['C#', 'WPF', 'WCF', 'Swift', 'Java', 'OpenVPN', 'MVVM'],
-      vpnDemo: true,
-      gallery: { type: 'mixed', images: [['phone', 'assets/img/vpn/android.webp'], ['browser', 'assets/img/vpn/site.webp', 'vpn.express · home · 2018'], ['browser', 'assets/img/vpn/servers.webp', 'vpn.express/servers · 2019'], ['browser', 'assets/img/vpn/pricing.webp', 'vpn.express/pricing · 2019']], caption: 'The Android client and the web app, recovered from the Wayback Machine' },
+      gallery: { type: 'mixed', images: [['phone', 'assets/img/vpn/shot-3.webp?v=2'], ['phone', 'assets/img/vpn/shot-4.webp?v=2'], ['phone', 'assets/img/vpn/shot-5.webp?v=2'], ['phone', 'assets/img/vpn/shot-1.webp?v=2'], ['phone', 'assets/img/vpn/shot-2.webp?v=2']], caption: 'iOS and Android screens recreated, then the Windows client (real screenshots)' },
       links: [{ label: 'View on Wayback Machine', href: 'https://web.archive.org/web/20180617181449/https://vpn.express/', icon: 'ext' }]
     }
   }

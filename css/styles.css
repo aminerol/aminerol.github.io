@@ -710,22 +710,7 @@ h1, h2, h3, p, figure, dl, dd { margin: 0; }
 .gallery__item--mac img { border-radius: 12px; box-shadow: var(--shadow-md); }
 .gallery__item .browser { max-width: none; border-radius: 12px; }
 
-.vpn-demo { margin-top: 44px; border-radius: var(--r-lg); padding: 28px; background: radial-gradient(70% 80% at 50% 0%, rgba(30,136,229,.35), transparent 70%), #061430; color: #fff; display: grid; gap: 22px; align-items: center; }
-@media (min-width: 760px) { .vpn-demo { grid-template-columns: auto 1fr; gap: 36px; } }
-.vpn-power { position: relative; width: 150px; height: 150px; border-radius: 50%; display: grid; place-items: center; margin: 0 auto; background: radial-gradient(circle at 35% 30%, #2a3c66, #0b1834); box-shadow: 0 14px 40px -10px rgba(0,0,0,.6), inset 0 0 0 1px rgba(255,255,255,.08); transition: transform .5s var(--spring), box-shadow .5s; color: #6b7a9e; }
-.vpn-power svg { width: 52px; height: 52px; transition: color .4s; }
-.vpn-power:active { transform: scale(.93); }
-.vpn-power::before { content: ''; position: absolute; inset: -10px; border-radius: 50%; border: 3px solid transparent; }
-.vpn-demo.is-connecting .vpn-power::before { border-top-color: #5ec2ff; animation: spin 1s linear infinite; }
-.vpn-demo.is-on .vpn-power { color: #3ee8b5; box-shadow: 0 0 0 10px rgba(62,232,181,.1), 0 0 60px -6px rgba(62,232,181,.6), inset 0 0 0 1px rgba(62,232,181,.4); }
 @keyframes spin { to { transform: rotate(360deg); } }
-.vpn-status { font-size: 22px; font-weight: 600; letter-spacing: -.02em; }
-.vpn-status small { display: block; font-size: 13px; font-weight: 400; opacity: .7; margin-top: 2px; }
-.vpn-ip { margin-top: 14px; font-family: var(--mono); font-size: 13px; display: flex; flex-wrap: wrap; gap: 8px 18px; opacity: .85; }
-.vpn-servers { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
-.vpn-servers button { font-size: 12px; padding: 5px 10px; border-radius: 999px; background: rgba(255,255,255,.08); color: #fff; transition: background-color .2s, transform .35s var(--spring); }
-.vpn-servers button.is-active { background: #1e88e5; }
-.vpn-servers button:active { transform: scale(.92); }
 
 /* Lightbox */
 .lightbox { position: fixed; inset: 0; z-index: 90; display: grid; place-items: center; padding: 30px; background: rgba(0,0,0,.85); opacity: 0; visibility: hidden; transition: opacity .3s, visibility .3s; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); cursor: zoom-out; }
@@ -1336,3 +1321,78 @@ html { scrollbar-gutter: stable; }
 .ship__tag--launch, .ship__tag--built { background: rgba(139,123,255,.18); color: #8b7bff; }
 [data-theme="light"] .ship__tag--shipped { color: #0fb68a; }
 [data-theme="light"] .ship__tag--launch, [data-theme="light"] .ship__tag--built { color: #5b4be6; }
+
+/* VPN card: the three clients fanned out */
+.vis-vpn { display: block; padding: 0; }
+.vis-vpn .vis-phone { width: 168px; border-radius: 18px; }
+.vis-vpn .vis-phone--a { left: calc(50% - 262px); top: 46px; transform: rotate(-6deg); }
+.vis-vpn .vis-phone--b { left: calc(50% - 84px); top: 26px; z-index: 2; }
+.vis-vpn .vis-phone--c { left: calc(50% + 94px); top: 54px; transform: rotate(6deg); }
+.proj-card:hover .vis-vpn .vis-phone--a { transform: rotate(-6deg) translateY(-6px); }
+.proj-card:hover .vis-vpn .vis-phone--b { transform: translateY(-6px); }
+.proj-card:hover .vis-vpn .vis-phone--c { transform: rotate(6deg) translateY(-6px); }
+@media (max-width: 520px) {
+  .vis-vpn .vis-phone { width: 124px; border-radius: 14px; }
+  .vis-vpn .vis-phone--a { left: calc(50% - 176px); top: 56px; }
+  .vis-vpn .vis-phone--b { left: calc(50% - 62px); top: 30px; }
+  .vis-vpn .vis-phone--c { left: calc(50% + 52px); top: 64px; }
+}
+
+/* ResumeByJob card: two real screens, same fan as RAP Veto */
+.vis-rbj { background: radial-gradient(70% 80% at 50% 20%, rgba(255,90,31,.14), transparent 70%), var(--tint); }
+.vis-rbj .vis-phone { width: 140px; }
+.vis-rbj .vis-phone--a { left: calc(50% - 150px); top: 40px; transform: rotate(-5deg); }
+.vis-rbj .vis-phone--b { left: calc(50% + 6px); top: 60px; transform: rotate(5deg); }
+.proj-card:hover .vis-rbj .vis-phone--a { transform: rotate(-5deg) translateY(-6px); }
+.proj-card:hover .vis-rbj .vis-phone--b { transform: rotate(5deg) translateY(-6px); }
+/* VPN.Express mark */
+.proj-icon--vpn { background: #fff; box-shadow: inset 0 0 0 1px rgba(16,40,70,.08); }
+.proj-icon--vpn img { width: 74%; height: 74%; display: block; }
+
+/* projects grid: 6-col on desktop so the last two cards split the row */
+@media (min-width: 1100px) {
+  .proj-grid { grid-template-columns: repeat(6, 1fr); }
+  .proj-grid > .proj-card { grid-column: span 2; }
+  .proj-grid > .proj-card--wide { grid-column: span 4; }
+  .proj-grid > .proj-card--half { grid-column: span 3; }
+}
+/* Reelmaxx card: window rises from the bottom, title bar visible */
+.vis-mac { align-items: flex-start; padding-top: 34px; }
+.vis-mac .macwin { max-width: 520px; }
+
+/* Reelmaxx card: create → automate → learn, three windows fanned */
+.vis-rmx { background: radial-gradient(60% 70% at 50% 0%, rgba(110,92,255,.35), transparent 70%), var(--tint); }
+.rmx-w { position: absolute; width: 58%; border-radius: 10px; box-shadow: 0 24px 50px -16px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.08); transition: transform .8s cubic-bezier(.22,1,.36,1); }
+.rmx-w--a { left: 2%; top: 64px; transform: rotate(-4deg); }
+.rmx-w--c { right: 2%; top: 64px; transform: rotate(4deg); }
+.rmx-w--b { left: 21%; top: 30px; z-index: 2; }
+.proj-card:hover .rmx-w--a { transform: rotate(-6deg) translate(-8px, -6px); }
+.proj-card:hover .rmx-w--c { transform: rotate(6deg) translate(8px, -6px); }
+.proj-card:hover .rmx-w--b { transform: translateY(-8px); }
+
+/* Gymo card: member onboarding → member home → manager dashboard */
+.vis-gymo { display: block; background: radial-gradient(60% 70% at 50% 10%, rgba(67,116,255,.30), transparent 70%), linear-gradient(170deg, #201844, #1E2C51); }
+.vis-gymo .vis-phone { width: 150px; }
+.vis-gymo .vis-phone--a { left: calc(50% - 232px); top: 46px; transform: rotate(-6deg); }
+.vis-gymo .vis-phone--b { left: calc(50% - 75px); top: 26px; z-index: 2; }
+.vis-gymo .vis-phone--c { left: calc(50% + 82px); top: 54px; transform: rotate(6deg); }
+.proj-card:hover .vis-gymo .vis-phone--a { transform: rotate(-6deg) translateY(-6px); }
+.proj-card:hover .vis-gymo .vis-phone--b { transform: translateY(-6px); }
+.proj-card:hover .vis-gymo .vis-phone--c { transform: rotate(6deg) translateY(-6px); }
+@media (max-width: 520px) {
+  .vis-gymo .vis-phone { width: 118px; }
+  .vis-gymo .vis-phone--a { left: calc(50% - 172px); }
+  .vis-gymo .vis-phone--b { left: calc(50% - 59px); }
+  .vis-gymo .vis-phone--c { left: calc(50% + 54px); }
+}
+
+/* Gymo card v2: the two apps side by side, each labelled */
+.vis-gymo .gymo-app { position: absolute; margin: 0; top: 22px; width: 160px; display: flex; flex-direction: column; align-items: center; gap: 10px; transition: transform .8s cubic-bezier(.22,1,.36,1); }
+.vis-gymo .gymo-app--a { left: calc(50% - 186px); transform: rotate(-4deg); }
+.vis-gymo .gymo-app--b { left: calc(50% + 26px); transform: rotate(4deg); top: 34px; }
+.vis-gymo .gymo-app .vis-phone { position: static; width: 160px; transform: none !important; }
+.vis-gymo figcaption { display: inline-flex; align-items: center; gap: 8px; padding: 5px 12px 5px 5px; border-radius: 999px; background: rgba(255,255,255,.1); color: #fff; font-size: 12px; font-weight: 600; white-space: nowrap; }
+.vis-gymo figcaption img { width: 22px; height: 22px; border-radius: 6px; }
+.proj-card:hover .vis-gymo .gymo-app--a { transform: rotate(-6deg) translateY(-6px); }
+.proj-card:hover .vis-gymo .gymo-app--b { transform: rotate(6deg) translateY(-6px); }
+@media (max-width: 520px) { .vis-gymo .gymo-app, .vis-gymo .gymo-app .vis-phone { width: 128px; } .vis-gymo .gymo-app--a { left: calc(50% - 146px); } .vis-gymo .gymo-app--b { left: calc(50% + 18px); } }
