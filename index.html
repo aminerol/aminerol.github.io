@@ -27,6 +27,30 @@
       content="Mobile apps people love to touch. Case studies, gesture lab and side projects."
     />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://aminerol.github.io/" />
+    <meta property="og:site_name" content="Amine Bouhlali" />
+    <meta property="og:image" content="https://aminerol.github.io/assets/og.jpg" />
+    <meta property="og:image:width" content="2400" />
+    <meta property="og:image:height" content="1260" />
+    <meta property="og:image:alt" content="Amine Bouhlali, mobile engineer: I build mobile apps people love to touch." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Amine Bouhlali — Mobile Engineer" />
+    <meta name="twitter:description" content="Mobile apps people love to touch. Case studies, gesture lab and side projects." />
+    <meta name="twitter:image" content="https://aminerol.github.io/assets/og.jpg" />
+    <link rel="canonical" href="https://aminerol.github.io/" />
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Amine Bouhlali",
+        "jobTitle": "Mobile Engineer",
+        "url": "https://aminerol.github.io/",
+        "image": "https://aminerol.github.io/assets/og.jpg",
+        "sameAs": ["https://github.com/aminerol"],
+        "knowsAbout": ["Mobile development", "React Native", "iOS", "Android", "Real-time chat", "Gesture-driven UI"]
+      }
+    </script>
     <link
       rel="icon"
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='14' y='4' width='36' height='56' rx='10' fill='%237c6cff'/%3E%3Crect x='25' y='9' width='14' height='4' rx='2' fill='%2307070b'/%3E%3C/svg%3E"
@@ -37,7 +61,7 @@
       href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@500&family=Nunito:wght@600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/styles.css?v=53" />
+    <link rel="stylesheet" href="css/styles.css?v=56" />
     <script>
       // apply saved theme before paint
       (function () {
@@ -374,12 +398,11 @@
           id="islandBtn"
           aria-expanded="false"
           aria-controls="islandPanel"
-          aria-label="Open quick navigation"
         >
           <span class="island__lead" id="islandLead"
             ><span class="island__dot"></span
           ></span>
-          <span class="island__label" id="islandLabel">Available for hire</span>
+          <span class="island__label" id="islandLabel">Available for hire</span><span class="sr-only"> — open quick navigation</span>
           <span class="island__ring" aria-hidden="true"
             ><svg viewBox="0 0 20 20">
               <circle cx="10" cy="10" r="8" class="ring-bg" />
@@ -451,6 +474,9 @@
               <a class="btn btn--primary magnetic" href="#work"
                 >See the work <svg class="ic"><use href="#i-arrow" /></svg
               ></a>
+              <a class="btn btn--ghost magnetic" href="https://github.com/aminerol" target="_blank" rel="noopener"
+                ><svg class="ic"><use href="#i-github" /></svg>GitHub</a
+              >
               <a class="btn btn--ghost magnetic" href="#contact">Say hi</a>
             </div>
             <dl class="stats reveal">
@@ -553,7 +579,7 @@
           </header>
 
           <div class="xp-grid">
-            <article
+            <div
               class="xp-card reveal tilt"
               data-open-xp="sircles"
               tabindex="0"
@@ -598,9 +624,9 @@
               <span class="xp-card__cta"
                 >Open case study <svg class="ic"><use href="#i-arrow" /></svg
               ></span>
-            </article>
+            </div>
 
-            <article
+            <div
               class="xp-card reveal tilt"
               data-delay="1"
               data-open-xp="gemography"
@@ -652,7 +678,7 @@
               <span class="xp-card__cta"
                 >Open case study <svg class="ic"><use href="#i-arrow" /></svg
               ></span>
-            </article>
+            </div>
           </div>
         </div>
       </section>
@@ -941,9 +967,9 @@
                     <b id="rulerVal">72</b><span id="rulerUnit">kg</span>
                   </div>
                   <div class="ruler__units" role="tablist">
-                    <button type="button" class="is-active" data-unit="kg">
+                    <button role="tab" type="button" class="is-active" data-unit="kg">
                       kg</button
-                    ><button type="button" data-unit="lb">lb</button>
+                    ><button role="tab" type="button" data-unit="lb">lb</button>
                   </div>
                   <div class="ruler__track-wrap">
                     <div
@@ -1021,11 +1047,11 @@
                     </div>
                   </div>
                   <div class="share__tabs" id="shareTabs" role="tablist">
-                    <button type="button" class="is-active" data-v="story">
+                    <button role="tab" type="button" class="is-active" data-v="story">
                       Story</button
-                    ><button type="button" data-v="portrait">Portrait</button
-                    ><button type="button" data-v="square">Square</button
-                    ><button type="button" data-v="sticker">Sticker</button>
+                    ><button role="tab" type="button" data-v="portrait">Portrait</button
+                    ><button role="tab" type="button" data-v="square">Square</button
+                    ><button role="tab" type="button" data-v="sticker">Sticker</button>
                   </div>
                 </div>
               </div>
@@ -1063,7 +1089,7 @@
           </header>
 
           <div class="proj-grid" id="projGrid">
-            <article
+            <div
               class="proj-card proj-card--wide reveal tilt"
               data-open-project="openchair"
               tabindex="0"
@@ -1102,9 +1128,9 @@
                   <li>2026</li>
                 </ul>
               </div>
-            </article>
+            </div>
 
-            <article
+            <div
               class="proj-card reveal tilt"
               data-delay="1"
               data-open-project="veto"
@@ -1137,9 +1163,9 @@
                   <li>2026</li>
                 </ul>
               </div>
-            </article>
+            </div>
 
-            <article
+            <div
               class="proj-card reveal tilt"
               data-open-project="resumebyjob"
               tabindex="0"
@@ -1171,9 +1197,9 @@
                   <li>AI</li>
                 </ul>
               </div>
-            </article>
+            </div>
 
-            <article
+            <div
               class="proj-card proj-card--wide reveal tilt"
               data-delay="1"
               data-open-project="vpn"
@@ -1216,9 +1242,9 @@
                   <li>2016–19</li>
                 </ul>
               </div>
-            </article>
+            </div>
 
-            <article
+            <div
               class="proj-card proj-card--half reveal tilt"
               data-delay="1"
               data-open-project="shorts"
@@ -1262,9 +1288,9 @@
                   <li>Electron</li>
                 </ul>
               </div>
-            </article>
+            </div>
 
-            <article
+            <div
               class="proj-card proj-card--half reveal tilt"
               data-open-project="gymo"
               tabindex="0"
@@ -1277,7 +1303,7 @@
                     <img src="assets/img/gymo/icon.webp?v=2" alt="" />Members
                   </figcaption>
                   <img
-                    class="vis-phone"
+                    class="vis-phone" width="600" height="1300"
                     src="assets/img/gymo/screen-home.webp"
                     alt="Gymo, the members app: gym crowd and today's workout"
                     loading="lazy"
@@ -1289,7 +1315,7 @@
                     owners
                   </figcaption>
                   <img
-                    class="vis-phone"
+                    class="vis-phone" width="600" height="1300"
                     src="assets/img/gymo/screen-stats.webp"
                     alt="Gymo Manager, the gym owners app: dashboard"
                     loading="lazy"
@@ -1313,7 +1339,7 @@
                   <li>Open source</li>
                 </ul>
               </div>
-            </article>
+            </div>
           </div>
         </div>
       </section>
@@ -1340,13 +1366,6 @@
                 <svg class="ic"><use href="#i-copy" /></svg
                 ><span>atlasbytezz@gmail.com</span>
               </button>
-              <a
-                class="btn btn--ghost magnetic"
-                href="https://github.com/aminerol"
-                target="_blank"
-                rel="noopener"
-                ><svg class="ic"><use href="#i-github" /></svg>GitHub</a
-              >
               <a
                 class="btn btn--ghost magnetic"
                 href="assets/Amine-Bouhlali-Resume.pdf"
@@ -1452,7 +1471,7 @@
 
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-    <script src="js/data.js?v=53" defer></script>
-    <script src="js/app.js?v=53" defer></script>
+    <script src="js/data.js?v=56" defer></script>
+    <script src="js/app.js?v=56" defer></script>
   </body>
 </html>

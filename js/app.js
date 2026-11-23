@@ -257,7 +257,7 @@
     setTimeout(function () {
       var el = document.createElement('div');
       el.className = 'notif'; el.innerHTML = notifHTML(n); el.setAttribute('role', 'button'); el.tabIndex = 0;
-      el.setAttribute('aria-label', n.app + ': ' + n.title + '. Press Enter to open, Delete to dismiss.');
+      el.insertAdjacentHTML('beforeend', '<span class="sr-only">. Press Enter to open, Delete to dismiss.</span>');
       notifsEl.appendChild(el); bindSwipe(el, n); haptic(4); notifsEmpty.hidden = true;
     }, delay || 0);
   }
