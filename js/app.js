@@ -121,7 +121,7 @@
   var sections = $$('main > section');
   var currentSection = null, baseLabel = 'Available for hire', baseLead = null, eventT = 0;
   var DOT = '<span class="island__dot"></span>';
-  var SECTION_LABELS = { top: 'Available for hire', work: 'Experience · 2 teams · 3 apps', lab: 'Gesture Lab · 8 live demos', projects: 'Projects · 6 products', contact: 'Say hi · replies within a day' };
+  var SECTION_LABELS = { top: 'Available for hire', work: 'Experience · 2 teams · 3 apps', lab: 'Interaction Lab · 8 live demos', projects: 'Projects · 6 products', contact: 'Say hi · replies within a day' };
 
   function swapIsland(label, leadHTML) {
     if (!islandLabel) return;
@@ -324,7 +324,7 @@
   /* ---------------- Ship log ticker ---------------- */
   (function shiplog() {
     var track = $('#shiplog'); if (!track || !DATA.shiplog) return;
-    var TAG = { shipped: 'Shipped', built: 'Built', launch: 'Launch', milestone: 'Milestone', oss: 'Open source', design: 'Design', live: 'Live', history: '2016–19' };
+    var TAG = { shipped: 'Shipped', built: 'Built', launch: 'Launch', milestone: 'Milestone', oss: 'Open source', design: 'Design', live: 'Live', history: '2016-19' };
     var html = DATA.shiplog.map(function (s) {
       return '<button type="button" class="ship" data-open="' + s[3].join('/') + '"><span class="ship__tag ship__tag--' + s[0] + '">' + TAG[s[0]] + '</span><b>' + esc(s[1]) + '</b>' + esc(s[2]) + '</button>';
     }).join('');
@@ -1017,17 +1017,36 @@
         '<p>' + esc(a.copy) + '</p><a class="btn btn--ghost btn--sm" href="' + a.href + '" target="_blank" rel="noopener"><svg class="ic"><use href="#i-' + (a.linkIcon || 'apple') + '"/></svg>' + esc(a.linkLabel || 'App Store') + '</a></div>';
     }).join('') + '</div>';
   }
-  function mainHTML(left, right) {
-    return '<div class="sh-body"><div class="sh-main"><div>' + left + '</div><aside class="sh-aside sh-aside--sticky">' + right + '</aside></div></div>';
+  function mainHTML(left, right, d) {
+    var accent = d && d.accent ? ' style="--sh-accent:' + d.accent + '"' : '';
+    return '<div class="sh-body"' + accent + '><div class="sh-main"><div class="sh-article">' + left + '</div><aside class="sh-aside sh-aside--sticky">' + right + '</aside></div></div>';
   }
-  function buildXP(d) {
-    var groups = d.groups.map(function (g) {
-      return '<div class="sh-group"><p class="sh-group__name">' + esc(g.name) + '</p><div class="sh-items">' +
-        g.items.map(function (it) { return '<div class="sh-item"><h4>' + esc(it[0]) + '</h4><p>' + esc(it[1]) + '</p></div>'; }).join('') + '</div></div>';
+  function parasHTML(body) { return String(body).split('\n\n').map(function (p) { return '<p>' + esc(p) + '</p>'; }).join(''); }
+  function storyHTML(it, tag) {
+    return '<article class="sh-story"><' + tag + ' class="sh-story__title">' + esc(it[0]) + '</' + tag + '>' + parasHTML(it[1]) +
+      (it[2] ? '<p class="sh-result">' + esc(it[2]) + '</p>' : '') + '</article>';
+  }
+  function tldrHTML(list) {
+    if (!list || !list.length) return '';
+    return '<div class="sh-tldr"><p class="sh-label">In short</p><ul>' + list.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul></div>';
+  }
+  function num(i) { return (i < 9 ? '0' : '') + (i + 1); }
+  function tocHTML(names) {
+    return '<div><p class="sh-label">In this case study</p><ol class="sh-toc">' + names.map(function (n, i) {
+      return '<li><button type="button" data-ch="' + i + '"><span>' + num(i) + '</span>' + esc(n) + '</button></li>';
+    }).join('') + '</ol></div>';
+  }
+  function chaptersHTML(groups) {
+    return groups.map(function (g, i) {
+      return '<section class="sh-chapter" data-chapter="' + i + '"><h3 class="sh-chapter__title"><span>' + num(i) + '</span>' + esc(g.name) + '</h3>' +
+        g.items.map(function (it) { return storyHTML(it, 'h4'); }).join('') + '</section>';
     }).join('');
+  }
+  function groupNames(groups) { return groups.map(function (g) { return g.name; }); }
+  function buildXP(d) {
     return heroHTML(d, '<img src="' + d.icon + '" alt="">') + mediaHTML(d) +
-      mainHTML('<p class="sh-intro">' + esc(d.intro) + '</p>' + appCardsHTML(d.apps) + '<div class="sh-groups">' + groups + '</div>',
-        factsHTML(d.facts) + '<div><p class="sh-label">Stack</p>' + chipsHTML(d.stack) + '</div>');
+      mainHTML('<p class="sh-intro">' + esc(d.intro) + '</p>' + tldrHTML(d.tldr) + appCardsHTML(d.apps) + chaptersHTML(d.groups),
+        factsHTML(d.facts) + tocHTML(groupNames(d.groups)) + '<div><p class="sh-label">Stack</p>' + chipsHTML(d.stack) + '</div>', d);
   }
   var PROJECT_ICONS = {
     openchair: '<span class="proj-icon proj-icon--openchair"><i></i></span>',
@@ -1037,22 +1056,12 @@
     gymo: '<img src="assets/img/gymo/icon.webp" alt="">',
     vpn: '<span class="proj-icon proj-icon--vpn"><img src="assets/img/vpn/logo.svg" alt=""></span>'
   };
-  function gymoMap() {
-    var cols = [
-      ['Onboarding', [['Goal', 'build · lose · maintain'], ['Body metrics', 'ruler pickers'], ['Profile', 'photo + name'], ['Schedule', 'training days']]],
-      ['Gymo · members', [['Home · workout', 'today’s plan'], ['Gym crowd', 'donut by muscle'], ['Chat', 'with the gym'], ['Notifications', 'push + inbox']]],
-      ['Gymo Manager · owners', [['Dashboard', 'vs last month'], ['Members', 'active · inactive'], ['Memberships', 'classic · gold · premium'], ['Broadcast', 'filters + search']]]
-    ];
-    return '<p class="sh-label" style="margin-top:44px">Screen map</p><div class="screenmap" style="margin-top:0">' + cols.map(function (c) {
-      return '<div class="screenmap__col"><h4>' + c[0] + '</h4><ul>' + c[1].map(function (s) { return '<li>' + s[0] + '<span>' + s[1] + '</span></li>'; }).join('') + '</ul></div>';
-    }).join('') + '</div>';
-  }
   function buildProject(key, d) {
-    var sections = d.sections.map(function (x) { return '<div class="sh-section"><h3>' + esc(x[0]) + '</h3><p>' + esc(x[1]) + '</p></div>'; }).join('');
+    var body = d.groups ? chaptersHTML(d.groups)
+      : '<div class="sh-chapter sh-chapter--flat">' + d.sections.map(function (x) { return storyHTML(x, 'h3'); }).join('') + '</div>';
     return heroHTML(d, PROJECT_ICONS[key] || '') + mediaHTML(d) +
-      mainHTML('<p class="sh-intro">' + esc(d.intro) + '</p>' + appCardsHTML(d.apps) + sections + (key === 'gymo' ? gymoMap() : ''),
-        factsHTML(d.facts) + '<div><p class="sh-label">Highlights</p><ul class="sh-bullets">' + d.bullets.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul></div>' +
-        '<div><p class="sh-label">Stack</p>' + chipsHTML(d.stack) + '</div>');
+      mainHTML('<p class="sh-intro">' + esc(d.intro) + '</p>' + tldrHTML(d.tldr) + appCardsHTML(d.apps) + body,
+        factsHTML(d.facts) + (d.groups ? tocHTML(groupNames(d.groups)) : '') + '<div><p class="sh-label">Stack</p>' + chipsHTML(d.stack) + '</div>', d);
   }
 
   function lockBody(on) {
@@ -1072,7 +1081,7 @@
     sheet.classList.add('is-open'); sheet.setAttribute('aria-hidden', 'false'); lockBody(true);
     haptic(10);
     if (!opts.noHistory && history.pushState) { history.pushState({ sheet: openKey }, '', '#' + openKey); pushed = true; }
-    document.title = d.title + ' — Amine Bouhlali';
+    document.title = d.title + ' · Amine Bouhlali';
     var lead = type === 'xp' ? '<img src="' + (d.apps ? d.apps[0].icon : d.icon) + '" alt="">' : (PROJECT_ICONS[key] || '');
     liveActivity('Opened ' + d.title, lead, 1800);
 
@@ -1118,7 +1127,7 @@
       sheet.classList.remove('is-open'); sheet.setAttribute('aria-hidden', 'true'); lockBody(false);
       panel.style.transform = ''; panel.style.transition = ''; panel.style.clipPath = '';
       content.innerHTML = ''; animating = false;
-      document.title = 'Amine Bouhlali — Mobile Engineer';
+      document.title = 'Amine Bouhlali · Senior Software Engineer';
       if (opener && opener.focus) opener.focus({ preventScroll: true });
     };
     if (!opts.fromPop && pushed) { pushed = false; history.back(); }
@@ -1149,6 +1158,12 @@
         btn.addEventListener('click', function () { track.scrollBy({ left: +btn.getAttribute('data-media') * track.clientWidth * 0.7, behavior: 'smooth' }); });
       });
       $$('.sh-media__item[data-src]', m).forEach(function (it) { it.addEventListener('click', function () { openLightbox(it.getAttribute('data-src')); }); });
+    });
+    $$('[data-ch]', content).forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var ch = $('[data-chapter="' + btn.getAttribute('data-ch') + '"]', content);
+        if (ch) ch.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+      });
     });
   }
 
