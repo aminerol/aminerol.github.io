@@ -246,8 +246,6 @@ h1, h2, h3, p, figure, dl, dd { margin: 0; }
 
 .hero__device { display: flex; justify-content: center; }
 .device-stage { perspective: 1400px; display: flex; flex-direction: column; align-items: center; gap: 18px; }
-.device-hint { display: inline-flex; gap: 6px; align-items: center; color: var(--text-3); }
-.device-hint .ic { width: 15px; height: 15px; animation: wave 2.4s ease-in-out infinite; transform-origin: 70% 90%; }
 @keyframes wave { 0%, 60%, 100% { transform: rotate(0); } 10%, 30% { transform: rotate(14deg); } 20%, 40% { transform: rotate(-8deg); } }
 
 /* ---------- Phone ---------- */
@@ -1010,7 +1008,7 @@ html { scrollbar-gutter: stable; }
 .chips--sm li { border-radius: 6px; }
 .sh-links .btn { border-radius: 12px; }
 
-/* 9 · Motion — no decorative loops, no cursor-chasing, .lockscreen__wall, .device-hint .ic { animation: none !important; }
+/* 9 · Motion — no decorative loops, no cursor-chasing, .lockscreen__wall { animation: none !important; }
 .btn, .icon-btn, .chips li, .proj-card, .xp-card, .tabbar a, .icon-btn:active { transition-timing-function: cubic-bezier(.22,1,.36,1); }
 .btn { transition: background-color .16s cubic-bezier(.22,1,.36,1), border-color .16s cubic-bezier(.22,1,.36,1), transform .16s cubic-bezier(.22,1,.36,1); }
 .btn:hover .ic { transform: translateX(2px); }

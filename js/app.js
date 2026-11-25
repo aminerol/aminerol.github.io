@@ -121,7 +121,7 @@
   var sections = $$('main > section');
   var currentSection = null, baseLabel = 'Available for hire', baseLead = null, eventT = 0;
   var DOT = '<span class="island__dot"></span>';
-  var SECTION_LABELS = { top: 'Available for hire', work: 'Experience · 2 teams · 3 apps', lab: 'Interaction Lab · 8 live demos', projects: 'Projects · 6 products', contact: 'Say hi · replies within a day' };
+  var SECTION_LABELS = { top: 'Available for hire', work: 'Experience · 2 teams · 3 apps', lab: 'Interaction Lab · 8 components', projects: 'Projects · 6 products', contact: 'Say hi · replies within a day' };
 
   function swapIsland(label, leadHTML) {
     if (!islandLabel) return;
@@ -1002,7 +1002,7 @@
     if (!items.length) return '';
     var html = items.map(function (it) {
       var label = it.label ? '<span class="sh-media__label">' + esc(it.label) + '</span>' : '';
-      if (it.t === 'video') return '<div class="sh-media__item sh-media__item--video ' + it.orient + '"><video data-src="' + it.src + '" poster="' + it.poster + '" muted loop playsinline preload="none"></video><span class="sh-media__badge">App preview · HyperFrames</span></div>';
+      if (it.t === 'video') return '<div class="sh-media__item sh-media__item--video ' + it.orient + '"><video data-src="' + it.src + '" poster="' + it.poster + '" muted loop playsinline preload="none"></video><span class="sh-media__badge">App preview</span></div>';
       if (it.t === 'browser') return '<div class="sh-media__item sh-media__item--browser" data-src="' + it.src + '"><div class="browser__bar"><i></i><i></i><i></i><span>' + esc(it.bar || '') + '</span></div><img src="' + it.src + '" alt="" loading="lazy" decoding="async"></div>';
       if (it.t === 'mac') return '<div class="sh-media__item sh-media__item--mac" data-src="' + it.src + '">' + label + '<img src="' + it.src + '" alt="" loading="lazy" decoding="async"></div>';
       return '<div class="sh-media__item" data-src="' + it.src + '">' + label + '<img src="' + it.src + '" alt="" loading="lazy" decoding="async"></div>';
