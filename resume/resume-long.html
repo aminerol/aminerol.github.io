@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Amine Bouhlali · Senior Software Engineer · Full resume</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 12mm 15mm 11mm; }
+  * { box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { margin: 0; font-family: 'Inter', Arial, Helvetica, sans-serif; font-size: 9.8pt; line-height: 1.4; color: #17171f; }
+  a { color: #3f33c9; text-decoration: underline; text-decoration-thickness: .6pt; text-underline-offset: 1.6pt; font-weight: 600; }
+  header { padding-bottom: 10px; border-bottom: 1.2pt solid #17171f; }
+  h1 { margin: 0; font-size: 24pt; line-height: 1.05; font-weight: 700; letter-spacing: -.01em; }
+  .title { margin-top: 4px; font-size: 12pt; font-weight: 600; color: #3f33c9; }
+  .contact { margin-top: 6px; font-size: 10pt; color: #33333d; }
+  .contact span + span::before { content: "·"; margin: 0 8px; color: #9a9aa6; }
+  .summary { margin: 12px 0 0; font-size: 10.4pt; color: #26262f; }
+  .summary + .summary { margin-top: 6px; }
+  h2 { break-after: avoid; margin: 16px 0 7px; padding-bottom: 3px; font-size: 10.2pt; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #17171f; border-bottom: .6pt solid #d6d5df; }
+  .item { margin-bottom: 12px; }
+  .item:last-child { margin-bottom: 0; }
+  .head { break-after: avoid; display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  .head h3 { margin: 0; font-size: 11.4pt; font-weight: 700; }
+  .head h3 .sep { margin: 0 6px; color: #9a9aa6; font-weight: 400; }
+  .head h3 a { font-size: 10pt; margin-left: 7px; }
+  .head .when { flex: none; font-size: 9.8pt; color: #4a4a56; }
+  .ctx { margin: 2px 0 6px; font-size: 10pt; color: #45454f; }
+  h4 { break-after: avoid; margin: 7px 0 2px; font-size: 9.6pt; font-weight: 600; color: #3f33c9; }
+  ul { margin: 0; padding-left: 15px; }
+  li { margin: 0 0 3px; }
+  li { break-inside: avoid; }
+  .ctx { break-after: avoid; }
+  .stack { margin-top: 5px; font-size: 9.4pt; color: #5a5a66; }
+  .stack b { font-weight: 600; color: #45454f; }
+  .skills p { margin: 0 0 4px; }
+  .skills b { font-weight: 700; }
+  .plain p { margin: 0 0 3px; }
+</style>
+</head>
+<body>
+  <header>
+    <h1>Amine Bouhlali</h1>
+    <div class="title">Senior Software Engineer · Mobile, Web and Desktop</div>
+    <div class="contact">
+      <span><a href="mailto:atlasbytezz@gmail.com">atlasbytezz@gmail.com</a></span>
+      <span><a href="https://aminerol.github.io">aminerol.github.io</a></span>
+      <span><a href="https://github.com/aminerol">github.com/aminerol</a></span>
+    </div>
+  </header>
+
+  <p class="summary">Senior software engineer with ten years shipping products on mobile, web and desktop. For the last six years I've worked in React Native: keeping a 4.7-star social app easy to change while it kept shipping, and leading two HR apps built from one codebase. Before that, I owned VPN clients for Windows, iOS and Android.</p>
+  <p class="summary">I care about how a product feels in your hand and how easy the code is for the next person to change.</p>
+
+  <h2>Experience</h2>
+
+  <section class="item">
+    <div class="head">
+      <h3>Sircles<span class="sep">|</span>React Native Engineer <a href="https://apps.apple.com/us/app/sircles/id1213538655">App Store</a> <a href="https://aminerol.github.io/#xp/sircles">Case study</a></h3>
+      <span class="when">Feb 2022 to Jun 2026</span>
+    </div>
+    <p class="ctx">A location-based social app built around your closest friends, with real-time chat, check-ins, badges and streaks. Rated 4.7 on the App Store. I worked across the whole mobile app, from build pipelines and native modules to the screens people open every day.</p>
+
+    <h4>Making the app easier to change</h4>
+    <ul>
+      <li>Made the case for moving the mobile app out of a repository it shared with the backend, led the split, and had automated iOS and Android builds running within days.</li>
+      <li>Upgraded React Native to the New Architecture in stages so releases never paused. When the first rollout broke a few things, I switched it off, fixed them properly, and turned it back on once it was solid.</li>
+      <li>Replaced an unmaintained state library with a maintained one while the move was still a manageable size, so new features stopped landing on a dead end.</li>
+      <li>Set up over-the-air updates, so fixes reach testers and users as soon as they're ready instead of waiting on app store review.</li>
+    </ul>
+
+    <h4>Features people use every day</h4>
+    <ul>
+      <li>Built topic-based group chat: one chat split by subject, with messages that appear the moment you hit send and sync with the server in the background.</li>
+      <li>Built gesture-driven screens, including a rotary category wheel and a drag-to-swap friend grid, with animations that stay smooth while the app is busy.</li>
+      <li>Built one deep-linking layer behind groups, chats, profiles, check-ins and more, so a friend who doesn't have the app yet lands on what was shared right after sign-up.</li>
+      <li>Built a twelve-step onboarding that forgives real life: expired codes, mistyped numbers and interruptions are handled, and permissions are asked one at a time.</li>
+    </ul>
+
+    <h4>Stability and native work</h4>
+    <ul>
+      <li>Stopped busy chats from jumping while people read by tracking down each trigger and fixing it, instead of hiding the symptom behind one workaround.</li>
+      <li>Wrote the app's native iOS and Android modules so notifications open the right screen and badge counts match what's actually unread.</li>
+      <li>Looked after crash reporting and session recording, keeping recording off on older phones so monitoring never made the app worse for them.</li>
+    </ul>
+    <p class="stack"><b>Stack:</b> React Native, Expo, New Architecture, TypeScript, GraphQL, Reanimated, Gesture Handler, Jotai, Firebase, Mapbox, Swift, Kotlin, Sentry</p>
+  </section>
+
+  <section class="item">
+    <div class="head">
+      <h3>Gemography<span class="sep">|</span>Lead React Native Engineer <a href="https://apps.apple.com/us/app/pop-by-gemo/id1547411689">POP by Gemo</a> <a href="https://apps.apple.com/us/app/pop-manager/id1495368124">POP Manager</a></h3>
+      <span class="when">Nov 2019 to Dec 2021</span>
+    </div>
+    <p class="ctx">A people-ops platform shipped as two apps: POP by Gemo for employees, POP Manager for managers handling their team's leave. I was the lead React Native engineer on both, owning the architecture, the features and consistency across iOS and Android.</p>
+
+    <h4>Architecture</h4>
+    <ul>
+      <li>Set up one shared codebase for both apps instead of building them twice, so a fix in shared code reached both apps in the next release.</li>
+      <li>Built a design system from scratch, so the two apps looked like one product and new screens came together from parts that already worked.</li>
+      <li>Moved server data from Redux to React Query, ending stale-screen bugs at the root instead of fixing them one screen at a time.</li>
+      <li>Made leave data work offline, and fixed an out-of-memory crash in how the app wrote to storage.</li>
+    </ul>
+
+    <h4>Product and releases</h4>
+    <ul>
+      <li>Built an iOS notification extension that shows a leave request inside the notification, so managers approve or decline from the lock screen.</li>
+      <li>Kept the leave calendar smooth despite heavy date math across months, weekends and public holidays.</li>
+      <li>Added each colleague's local time to the team screen, and a recovery screen that turns a crash into a bug report instead of a dead app.</li>
+      <li>Automated releases for both apps, with fully separate testing and production setups, so QA never touched real employee data.</li>
+    </ul>
+    <p class="stack"><b>Stack:</b> React Native, TypeScript, React Query, Restyle, Fastlane, Sentry, native modules</p>
+  </section>
+
+  <section class="item">
+    <div class="head">
+      <h3>VPN.Express<span class="sep">|</span>Software Engineer, Platform Lead <a href="https://aminerol.github.io/#project/vpn">Case study</a></h3>
+      <span class="when">Jul 2016 to Aug 2019</span>
+    </div>
+    <p class="ctx">A fast, simple VPN for private browsing, with apps for Windows, iOS and Android. My first product team.</p>
+    <ul>
+      <li>Owned the Windows, iOS and Android apps and chose the architecture for each platform on its own terms.</li>
+      <li>Built the Windows client with the connection running in its own background service, so the interface and the tunnel could change without breaking each other.</li>
+      <li>Implemented the VPN protocol on iOS at a low level when no mature libraries existed, rather than waiting or switching protocols.</li>
+      <li>Shipped the Android app on a tight deadline by adapting a solid open-source base instead of writing a VPN from zero.</li>
+      <li>Owned automatic reconnection across all three apps, because a VPN that drops silently is worse than none.</li>
+    </ul>
+    <p class="stack"><b>Stack:</b> C#, WPF, WCF, MVVM, Swift, Java, OpenVPN</p>
+  </section>
+
+  <h2>Projects</h2>
+
+  <section class="item proj-block">
+    <div class="head">
+      <h3>OpenChair <a href="https://aminerol.github.io/#project/openchair">Case study</a></h3>
+      <span class="when">Mobile · 2026</span>
+    </div>
+    <p class="ctx">An on-demand barber marketplace. I own it end to end: the product rules, the design, two apps and the backend.</p>
+    <ul>
+      <li>Matches a customer with a nearby barber who is free right now, with a short confirmation window so nobody waits on a barber who just sat someone down.</li>
+      <li>Lets new customers send a request and watch barbers answer before creating an account.</li>
+      <li>Billing is built around how local barbers already pay, with no card on file, and a credit is only used when a match is fully confirmed.</li>
+      <li>End-to-end tests run a customer phone and a barber phone together against the real backend, the way people actually use it.</li>
+    </ul>
+    <p class="stack"><b>Stack:</b> React Native, Expo, TypeScript, Supabase, TanStack Query, Reanimated, Maestro, Sentry</p>
+  </section>
+
+  <section class="item proj-block">
+    <div class="head">
+      <h3>Gymo <a href="https://github.com/aminerol/gymo">github.com/aminerol/gymo</a></h3>
+      <span class="when">Mobile · Open source</span>
+    </div>
+    <p class="ctx">A digital front desk for a neighborhood gym, built on my own between 2020 and 2023, before AI tools could vibe-code an app in an afternoon.</p>
+    <ul>
+      <li>Shows members how busy the gym will be each hour by adding up everyone's workout plans, with no extra hardware.</li>
+      <li>Weekly schedules with reminders, where changing one day leaves the rest of the week alone.</li>
+      <li>Memberships that stay accurate on their own, reversible member removal, and a dashboard that compares each month with the last.</li>
+      <li>Owners message members directly and see how many notifications were actually seen. Two languages, including Arabic with right-to-left layouts.</li>
+      <li>Published <a href="https://github.com/aminerol/react-query-firestore">react-query-firestore</a> along the way, an open-source library with 103 stars.</li>
+    </ul>
+    <p class="stack"><b>Stack:</b> React Native, Expo, TypeScript, Firebase, React Query, Next.js, Fastlane, Sentry</p>
+  </section>
+
+  <section class="item proj-block">
+    <div class="head">
+      <h3>RAP Veto <a href="https://veto-rap.vercel.app/">veto-rap.vercel.app</a></h3>
+      <span class="when">Web · Live</span>
+    </div>
+    <p class="ctx">A fan-voted Moroccan rap chart, built for phones first. I built the product and the whole stack.</p>
+    <ul>
+      <li>Rebuilt a voting playlist that depended on a streaming service, so a phone number is now the only account a fan needs.</li>
+      <li>Anyone can vote in seconds. Anonymous votes only show interest, and they start to count once the fan confirms a phone number, which keeps the rankings honest.</li>
+      <li>Found and fixed a payment bug that could have charged fans for nothing. Failures are now retried, and a payment processed twice still counts once.</li>
+      <li>Share cards shaped for stories, posts and stickers turn every vote into an invite.</li>
+    </ul>
+    <p class="stack"><b>Stack:</b> Next.js, React, TypeScript, Tailwind, Firestore, Redis, payments</p>
+  </section>
+
+  <section class="item proj-block">
+    <div class="head">
+      <h3>ResumeByJob <a href="https://www.resumebyjob.com/">resumebyjob.com</a></h3>
+      <span class="when">Web · Live</span>
+    </div>
+    <p class="ctx">Tailors a resume to a job posting and exports a one-page PDF, without inventing an employer, skill or date.</p>
+    <ul>
+      <li>Every AI suggestion is checked first, and anything that adds a number or a skill not on your resume is thrown out.</li>
+      <li>No account: the resume, answers and history stay in the browser.</li>
+      <li>Every request has a deadline and a fallback, so an overloaded AI provider never wipes your work.</li>
+      <li>Also writes cover letters, drafts answers to application questions and turns a resume into a portfolio site.</li>
+    </ul>
+    <p class="stack"><b>Stack:</b> Next.js, React, TypeScript, LLMs, React PDF, Vitest, PostHog</p>
+  </section>
+
+  <section class="item proj-block">
+    <div class="head">
+      <h3>Reelmaxx <a href="https://aminerol.github.io/#project/shorts">Case study</a></h3>
+      <span class="when">macOS · Personal tool</span>
+    </div>
+    <p class="ctx">An AI studio for macOS that takes an idea to a published short video: script, voiceover, captions, footage, music and render.</p>
+    <ul>
+      <li>Measured why the app was slow to open and reordered loading, so the window shows up right away and heavier parts load when they're used.</li>
+      <li>Traced blank scrolling to decorative animations under frosted-glass panels. The effect was barely visible, so it went, and scrolling became smooth.</li>
+      <li>Restructured storage so a save only touches what changed, and the app no longer slows down the more you use it.</li>
+    </ul>
+    <p class="stack"><b>Stack:</b> Electron, React, TypeScript, tRPC, FFmpeg, Remotion, OpenAI, Gemini</p>
+  </section>
+
+  <h2>Skills</h2>
+  <div class="skills">
+    <p><b>Mobile:</b> React Native, Expo, New Architecture, Reanimated, Gesture Handler, Swift, Kotlin, Java</p>
+    <p><b>Web:</b> TypeScript, React, Next.js, Node.js, Tailwind</p>
+    <p><b>Desktop:</b> Electron, C#, WPF</p>
+    <p><b>Data:</b> GraphQL, React Query, Jotai, Firebase, Supabase, Redis</p>
+    <p><b>Shipping and quality:</b> Fastlane, EAS, over-the-air updates, Sentry, Maestro, Reassure, performance profiling</p>
+    <p><b>Languages:</b> English (fluent), French (intermediate)</p>
+  </div>
+
+  <h2>Education</h2>
+  <div class="plain">
+    <p><b>Specialized Technician Diploma, Software Engineering</b>, OFPPT, 2012 to 2015</p>
+    <p><b>Bachelor in Computer Science</b>, The City College of Rabat, 2012</p>
+  </div>
+
+</body>
+</html>

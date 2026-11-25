@@ -2,154 +2,142 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Amine Bouhlali — React Native Engineer</title>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<title>Amine Bouhlali · Senior Software Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  @page { size: A4; margin: 14mm 15mm 13mm; }
+  @page { size: A4; margin: 10mm 13mm 9mm; }
   * { box-sizing: border-box; }
   html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  body { margin: 0; font-family: 'Instrument Sans', -apple-system, 'Segoe UI', sans-serif; font-size: 9.6pt; line-height: 1.42; color: #16161d; word-spacing: .05em; }
-  a { color: inherit; text-decoration: none; }
-  .accent { color: #5b4be6; }
-  header { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; padding-bottom: 10px; border-bottom: 1.5px solid #16161d; }
-  h1 { margin: 0; font-size: 25pt; line-height: 1; letter-spacing: -.01em; word-spacing: .12em; font-weight: 600; }
-  .role { margin-top: 5px; font-size: 11.5pt; font-family: 'Instrument Serif', Georgia, serif; font-style: italic; color: #5b4be6; }
-  .contact { text-align: right; font-size: 9pt; line-height: 1.6; color: #3a3a46; }
-  .summary { margin: 11px 0 2px; font-size: 10pt; color: #2b2b35; }
-  h2 { margin: 15px 0 7px; font-size: 8.4pt; text-transform: uppercase; letter-spacing: .12em; font-weight: 700; color: #5b4be6; }
-  .job { margin-bottom: 11px; break-inside: avoid-page; }
-  .job__head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
-  .job__head h3 { margin: 0; font-size: 11pt; font-weight: 600; letter-spacing: -.01em; }
-  .job__head span { font-size: 8.8pt; color: #5a5a68; white-space: nowrap; }
-  .job__ctx { margin: 2px 0 5px; color: #4a4a57; font-size: 9.2pt; }
-  ul { margin: 0; padding-left: 13px; }
-  li { margin: 0 0 3px; padding-left: 1px; }
-  li b { font-weight: 600; }
-  .apps { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin: 4px 0 6px; }
-  .apps div { border: 1px solid #e3e1ee; border-radius: 6px; padding: 5px 8px; font-size: 8.9pt; color: #3a3a46; }
-  .apps b { color: #16161d; }
-  .projects { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 14px; }
-  .proj { break-inside: avoid; }
-  .proj h3 { margin: 0; font-size: 10pt; font-weight: 600; display: flex; justify-content: space-between; gap: 8px; }
-  .proj h3 small { font-weight: 400; font-size: 8.4pt; color: #5a5a68; }
-  .proj p { margin: 2px 0 0; font-size: 9pt; color: #33333e; }
-  .proj .stack { margin-top: 2px; font-size: 8.3pt; color: #6a6a78; }
-  .skills { display: grid; grid-template-columns: 112px 1fr; gap: 3px 10px; font-size: 9.2pt; }
-  .skills dt { font-weight: 600; }
-  .skills dd { margin: 0; color: #33333e; }
-  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .muted { color: #5a5a68; }
+  body { margin: 0; font-family: 'Inter', Arial, Helvetica, sans-serif; font-size: 9.4pt; line-height: 1.36; color: #17171f; }
+  a { color: #3f33c9; text-decoration: underline; text-decoration-thickness: .6pt; text-underline-offset: 1.6pt; font-weight: 600; }
+  header { padding-bottom: 8px; border-bottom: 1.2pt solid #17171f; }
+  h1 { margin: 0; font-size: 21pt; line-height: 1.05; font-weight: 700; letter-spacing: -.01em; }
+  .title { margin-top: 3px; font-size: 11pt; font-weight: 600; color: #3f33c9; }
+  .contact { margin-top: 5px; font-size: 9.6pt; color: #33333d; }
+  .contact span + span::before { content: "·"; margin: 0 7px; color: #9a9aa6; }
+  .summary { margin: 8px 0 0; font-size: 9.6pt; color: #26262f; }
+  h2 { margin: 10px 0 5px; padding-bottom: 2px; font-size: 9.6pt; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #17171f; border-bottom: .6pt solid #d6d5df; }
+  .item { margin-bottom: 6px; }
+  .item:last-child { margin-bottom: 0; }
+  .head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  .head h3 { margin: 0; font-size: 10.2pt; font-weight: 700; }
+  .head h3 .org { font-weight: 700; }
+  .head h3 .sep { margin: 0 5px; color: #9a9aa6; font-weight: 400; }
+  .head h3 a { font-size: 9.4pt; margin-left: 6px; }
+  .head .when { flex: none; font-size: 9pt; color: #4a4a56; }
+  .ctx { margin: 1px 0 3px; font-size: 9.1pt; color: #45454f; }
+  ul { margin: 0; padding-left: 14px; }
+  li { margin: 0 0 2px; }
+  .stack { margin-top: 2px; font-size: 8.7pt; color: #5a5a66; }
+  .proj p { margin: 1px 0 0; }
+  .skills { margin: 0; }
+  .skills p { margin: 0 0 2px; }
+  .skills b { font-weight: 700; }
+  .edu { margin: 0; }
+  .edu .dot { margin: 0 7px; color: #9a9aa6; }
 </style>
 </head>
 <body>
   <header>
-    <div>
-      <h1>Amine Bouhlali</h1>
-      <div class="role">React Native Engineer · 5 years in mobile</div>
-    </div>
+    <h1>Amine Bouhlali</h1>
+    <div class="title">Senior Software Engineer · Mobile, Web and Desktop</div>
     <div class="contact">
-      <a href="mailto:atlasbytezz@gmail.com">atlasbytezz@gmail.com</a><br>
-      <a href="https://aminerol.github.io" class="accent">aminerol.github.io</a><br>
-      <a href="https://github.com/aminerol">github.com/aminerol</a>
+      <span><a href="mailto:atlasbytezz@gmail.com">atlasbytezz@gmail.com</a></span>
+      <span><a href="https://aminerol.github.io">aminerol.github.io</a></span>
+      <span><a href="https://github.com/aminerol">github.com/aminerol</a></span>
     </div>
   </header>
 
-  <p class="summary">React Native engineer with five years shipping consumer and B2B mobile apps, and ten years writing software. I care about the parts people touch — real-time chat, gesture-driven UI, smooth lists — and the foundations that keep an app shippable: architecture, framework migrations, native modules and release automation.</p>
+  <p class="summary">Senior software engineer with ten years shipping products on mobile, web and desktop, from a 4.7-star social app to VPN clients for Windows, iOS and Android. I care about how a product feels and how easy its code is to change.</p>
 
   <h2>Experience</h2>
 
-  <section class="job">
-    <div class="job__head"><h3>React Native Engineer — Sircles</h3><span>Feb 2022 – Jun 2026 · iOS + Android</span></div>
-    <p class="job__ctx">Location-based social app built around close friends: check-ins, trusted recommendations, gamified badges and real-time chat. Rated 4.7★ from 927 App Store reviews. React Native, Expo, GraphQL, Firebase, Mapbox.</p>
+  <section class="item">
+    <div class="head">
+      <h3><span class="org">Sircles</span><span class="sep">|</span>React Native Engineer <a href="https://apps.apple.com/us/app/sircles/id1213538655">App Store</a></h3>
+      <span class="when">Feb 2022 to Jun 2026</span>
+    </div>
+    <p class="ctx">Location-based social app built around close friends. Rated 4.7 on the App Store.</p>
     <ul>
-      <li><b>Monorepo decomposition:</b> front and back end shared no code but all of the friction. Made the case for a standalone app repo and led the move, which unblocked Expo adoption and every React Native upgrade after it.</li>
-      <li><b>React Native 0.79 + New Architecture:</b> led the upgrade end to end — native build configs, dependency upgrades and a Recoil → Jotai state migration — while the app kept shipping.</li>
-      <li><b>Topic-threaded chat:</b> conversations organised by subject inside one chat; group and DM, media, reactions and typing indicators with optimistic UI over GraphQL WebSocket subscriptions.</li>
-      <li><b>Performance:</b> fixed rendering bottlenecks in virtualised lists, removed scroll jitter in high-throughput chat, cut re-renders with memoisation and raised animation frame rates with Reanimated.</li>
-      <li><b>Gesture-driven components:</b> a rotary category wheel tracking pan gestures in polar coordinates with snapping and haptics, and a drag-to-reorder grid with animated repositioning (Reanimated + Gesture Handler).</li>
-      <li><b>Deep linking:</b> one routing layer for 10+ entity types across iOS Universal Links, Android App Links and custom schemes, with deferred routing for signed-out users.</li>
-      <li><b>12-step onboarding:</b> Firebase phone verification on both platforms with rate limiting, code expiry and error recovery; permission grants; Lottie animations, staggered transitions and step persistence.</li>
-      <li><b>Native modules:</b> built and maintained modules for messaging notifications and storage, keeping behaviour consistent across iOS and Android; pushed for architecture and state-management work even before it was visible to users.</li>
+      <li>Gave the app its own repository and automated iOS and Android builds, then upgraded React Native to the New Architecture in stages without pausing releases.</li>
+      <li>Built the topic-based group chat, with instant messages that sync over GraphQL subscriptions.</li>
+      <li>Built gesture-driven screens and one deep-linking layer that takes new users straight to what a friend shared.</li>
+      <li>Wrote the native modules that keep notifications and badges accurate, and set up over-the-air updates that skip app store review.</li>
     </ul>
+    <p class="stack">React Native, Expo, TypeScript, GraphQL, Reanimated, Jotai, Swift, Kotlin, Sentry</p>
   </section>
 
-  <section class="job">
-    <div class="job__head"><h3>Lead React Native Engineer — Gemography</h3><span>Nov 2019 – Dec 2021 · iOS + Android</span></div>
-    <p class="job__ctx">People-operations platform shipped as two App Store apps from one shared codebase. React Native, React Query, Restyle, Fastlane.</p>
-    <div class="apps">
-      <div><b>POP by Gemo</b> — employees request and track leave, get holiday alerts and stay in sync with the team.</div>
-      <div><b>POP Manager</b> — managers handle their employees’ leave: team availability, leave calendars and approvals.</div>
+  <section class="item">
+    <div class="head">
+      <h3><span class="org">Gemography</span><span class="sep">|</span>Lead React Native Engineer <a href="https://apps.apple.com/us/app/pop-by-gemo/id1547411689">POP by Gemo</a> <a href="https://apps.apple.com/us/app/pop-manager/id1495368124">POP Manager</a></h3>
+      <span class="when">Nov 2019 to Dec 2021</span>
     </div>
+    <p class="ctx">People-ops platform shipped as two apps, for employees and for managers handling their team's leave.</p>
     <ul>
-      <li><b>Technical lead across both apps:</b> owned architecture, feature delivery and cross-platform consistency.</li>
-      <li><b>Shared monorepo:</b> shared UI and business logic between the two apps while working around the React Native tooling limits of the time.</li>
-      <li><b>Approve from the notification:</b> native module for rich notification actions so managers handle leave requests without opening the app.</li>
-      <li><b>Offline-first:</b> React Query hydration/dehydration keeps leave data available on unstable networks.</li>
-      <li><b>Design system:</b> themeable, composable component library on Restyle by Shopify, shared by both apps.</li>
-      <li><b>Performance &amp; release:</b> 60 fps calendar and scheduling screens despite heavy date maths; Fastlane CI/CD with isolated staging and production builds.</li>
+      <li>Led React Native on both apps from one shared codebase and a design system I built, with automated releases.</li>
+      <li>Built an iOS notification extension so managers approve or decline leave right from the lock screen.</li>
+      <li>Moved server data from Redux to React Query, ending stale-screen bugs, and made leave data work offline.</li>
     </ul>
+    <p class="stack">React Native, TypeScript, React Query, Restyle, Fastlane, Sentry</p>
   </section>
 
-  <section class="job">
-    <div class="job__head"><h3>Software Engineer, Platform Lead — VPN.Express</h3><span>Jul 2016 – Aug 2019 · Windows · iOS · Android</span></div>
-    <p class="job__ctx">No-logs VPN, 64 servers in 28 countries. My first product team. C#, WPF, WCF, Swift, Java, OpenVPN.</p>
+  <section class="item">
+    <div class="head">
+      <h3><span class="org">VPN.Express</span><span class="sep">|</span>Software Engineer, Platform Lead <a href="https://aminerol.github.io/#project/vpn">Case study</a></h3>
+      <span class="when">Jul 2016 to Aug 2019</span>
+    </div>
+    <p class="ctx">Encrypted, no-logs VPN with apps for Windows, iOS and Android.</p>
     <ul>
-      <li><b>Windows (C# / WPF):</b> MVVM desktop client with networking in a separate WCF service over IPC.</li>
-      <li><b>iOS (Swift) &amp; Android (Java):</b> iOS built from scratch with low-level OpenVPN; Android shipped on a short timeline.</li>
-      <li><b>Reliability:</b> owned reconnection and stable tunnelling on unstable mobile networks.</li>
+      <li>Owned the Windows, iOS and Android apps, including the VPN protocol on iOS before mature libraries existed.</li>
+      <li>Owned automatic reconnection as phones switched between Wi-Fi and mobile data.</li>
     </ul>
+    <p class="stack">C#, WPF, WCF, Swift, Java, OpenVPN</p>
   </section>
 
-  <h2 style="break-before: page; margin-top: 0">Selected projects</h2>
-  <div class="projects">
-    <div class="proj">
-      <h3>OpenChair <small>Mobile · 2026</small></h3>
-      <p>On-demand barber marketplace: customers broadcast a request, nearby barbers answer, the barber reconfirms within 45 s. Customer and barber apps in one codebase, English + Moroccan Arabic with full RTL; 37 screens / 73 states designed first, then built with automated visual, RTL and performance review gates.</p>
-      <p class="stack">Expo · React Native · Supabase Realtime · TanStack Query · Reanimated</p>
-    </div>
-    <div class="proj">
-      <h3>RAP Veto <small>veto-rap.vercel.app</small></h3>
-      <p>The people's chart for Moroccan rap. Phone-OTP verified votes vs anonymous “buzz”, vote packs and boosts, edge-rendered share cards with QR and a referral loop that pays out bonus votes. EN + Darija, RTL-first.</p>
-      <p class="stack">Next.js · TypeScript · Tailwind · Edge OG images · SMS OTP</p>
-    </div>
-    <div class="proj">
-      <h3>ResumeByJob <small>resumebyjob.com</small></h3>
-      <p>Tailors a resume to a job posting without inventing experience: a match score, every change a reviewable suggestion, data kept in the browser, a one-page PDF out. Also writes company-matched cover letters and turns a resume into a downloadable portfolio site.</p>
-      <p class="stack">Next.js · TypeScript · LLM generation · React PDF</p>
-    </div>
-    <div class="proj">
-      <h3>Reelmaxx <small>macOS · Electron</small></h3>
-      <p>AI studio for short-form video: prompt → script → voiceover → word-timed captions → render with FFmpeg or Remotion, UGC and slideshow editors, TikTok research, a publishing queue and analytics, plus automations that drive real iPhones. Multi-window app with tRPC over IPC.</p>
-      <p class="stack">Electron · React · OpenAI · Gemini · ElevenLabs · FFmpeg · Remotion</p>
-    </div>
-    <div class="proj">
-      <h3>Gymo <small>github.com/aminerol/gymo</small></h3>
-      <p>Two apps, one monorepo: Gymo for members (goal-based onboarding, gym crowd, workouts, chat) and Gymo Manager for gym owners (dashboard, members, memberships, broadcasts). Shared core, UI and types packages in Yarn workspaces; Arabic-first with RTL.</p>
-      <p class="stack">React Native · Firebase · react-query-firestore · Fastlane</p>
-    </div>
-  </div>
+  <h2>Projects</h2>
 
-  <h2>Open source</h2>
-  <p style="margin:0"><b>react-query-firestore</b> <span class="muted">(★ 103)</span> — React Query for Firestore, production-ready. &nbsp;·&nbsp; <b>jotai-recoil-adapter</b> — Recoil-compatible API on Jotai for incremental migrations. &nbsp;·&nbsp; <b>react-native-capture-traffic</b> — inspect and tamper with device HTTP(S) traffic.</p>
+  <section class="item proj">
+    <div class="head">
+      <h3>OpenChair <a href="https://aminerol.github.io/#project/openchair">Case study</a></h3>
+      <span class="when">Mobile · 2026</span>
+    </div>
+    <p>On-demand barber marketplace. Designed and built the customer and barber apps plus the backend, with real-time matching and end-to-end tests that run both apps on two phones at once. React Native, Expo, Supabase.</p>
+  </section>
+
+  <section class="item proj">
+    <div class="head">
+      <h3>Gymo <a href="https://github.com/aminerol/gymo">github.com/aminerol/gymo</a></h3>
+      <span class="when">Mobile · Open source</span>
+    </div>
+    <p>Two apps for gym members and owners from one codebase, with a crowd forecast built from workout plans and Arabic right-to-left layouts. Published <a href="https://github.com/aminerol/react-query-firestore">react-query-firestore</a> (103 stars). React Native, Firebase.</p>
+  </section>
+
+  <section class="item proj">
+    <div class="head">
+      <h3>RAP Veto <a href="https://veto-rap.vercel.app/">veto-rap.vercel.app</a></h3>
+      <span class="when">Web · Live</span>
+    </div>
+    <p>Fan-voted Moroccan rap chart: vote first and sign in later, paid votes that are retried instead of lost, and share cards that turn every vote into an invite. Next.js, Redis.</p>
+  </section>
+
+  <section class="item proj">
+    <div class="head">
+      <h3>ResumeByJob <a href="https://www.resumebyjob.com/">resumebyjob.com</a></h3>
+      <span class="when">Web · Live</span>
+    </div>
+    <p>Tailors a resume to a job posting without letting the AI invent experience. No account, and everything stays in the browser. Next.js, LLMs.</p>
+  </section>
 
   <h2>Skills</h2>
-  <dl class="skills">
-    <dt>Mobile</dt><dd>React Native, Expo, Reanimated, Gesture Handler, New Architecture, native modules, Swift, Java, Mapbox</dd>
-    <dt>State &amp; data</dt><dd>TypeScript, GraphQL, React Query, Jotai, Recoil, Firebase, Supabase</dd>
-    <dt>Shipping</dt><dd>Fastlane, EAS, TestFlight, App Store Connect API, LaunchDarkly</dd>
-    <dt>Quality</dt><dd>Detox, Jest, Storybook, performance profiling</dd>
-    <dt>Web &amp; desktop</dt><dd>React, Next.js, Electron, Node.js, Tailwind, C#, WPF</dd>
-  </dl>
-
-  <div class="row">
-    <div>
-      <h2>Education</h2>
-      <p style="margin:0"><b>Specialized Technician Diploma, Software Engineering</b> — OFPPT, 2012–2015<br><b>Bachelor in Computer Science</b> — The City College of Rabat, 2012</p>
-    </div>
-    <div>
-      <h2>Languages</h2>
-      <p style="margin:0">English (fluent) · French (intermediate)</p>
-    </div>
+  <div class="skills">
+    <p><b>Mobile:</b> React Native, Expo, New Architecture, Reanimated, Gesture Handler, Swift, Kotlin, Java</p>
+    <p><b>Web and desktop:</b> TypeScript, React, Next.js, Electron, Node.js, Tailwind, C#, WPF</p>
+    <p><b>Data:</b> GraphQL, React Query, Jotai, Firebase, Supabase, Redis</p>
+    <p><b>Shipping and quality:</b> Fastlane, EAS, over-the-air updates, Sentry, Maestro, performance profiling</p>
+    <p><b>Languages:</b> English (fluent), French (intermediate)</p>
   </div>
+
+  <h2>Education</h2>
+  <p class="edu"><b>Technician Diploma, Software Engineering</b>, OFPPT, 2015<span class="dot">·</span><b>Bachelor in Computer Science</b>, The City College of Rabat, 2012</p>
 </body>
 </html>
